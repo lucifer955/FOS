@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- external css file -->
     <link rel="stylesheet" href="..\css\style.css">
+     <link rel="stylesheet" href="..\css\styleLogged.css">
     <!-- google fonts -->
     <link href="https://fonts.googleapis.com/css?family=Pacifico|Roboto&display=swap" rel="stylesheet">
     
@@ -54,7 +55,7 @@
             <a class="nav-link" href="sign_in.php">My Orders</a>
           </li>
           <li class="nav-item <?php if($page=='cart') {echo 'active';}?>">
-            <a class="nav-link" href="#">Cart <i class="fa fa-cart-plus"></i></a>   
+            <a class="nav-link" href="cart.php">Cart <i class="fa fa-cart-plus"></i></a>   
           </li>
           <li class="nav-item dropdown <?php if($page=='myAccount') {echo 'active';}?>">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

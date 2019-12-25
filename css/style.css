@@ -2,7 +2,6 @@
 
 body{
     font-family: 'Roboto', sans-serif;
-
 }
 
 nav{
@@ -142,8 +141,6 @@ footer h5{
 .loggedProfile{
     color: black;
 }
-
-
 .loggedProfile .form-row{
     margin-bottom: 10px;
 }
@@ -176,4 +173,10 @@ footer h5{
 
 =========================================================*/
 
+/*=========================================================
 
+                        Food Menu / sidebar
+                ***********************************
+                           sideBarMenu
+
+=========================================================*/

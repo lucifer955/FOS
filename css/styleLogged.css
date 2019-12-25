@@ -1,0 +1,75 @@
+/*=========================================================
+
+                        Food Menu
+                ***********************************
+                           loggedFoodMenu
+
+=========================================================*/
+.loggedFoodMenu .breadcrumb{
+	margin-top: 50px;
+
+}
+
+.paginationCss{
+	background: white; 
+	margin-top: 20px;
+
+}
+
+.paginationCss .pagination .page-link{
+	color: #292b2c!important;
+}
+/*=========================================================
+
+                        Food Menu / sidebar
+                ***********************************
+                           sideBarMenu
+
+=========================================================*/
+
+.sidebar-menu .panel-body{
+	margin-top: 20px;
+}
+.sidebar-menu .panelContent{
+	margin-top: 50px;
+}	
+
+/* not active */
+.sidebar-menu .panelContent .sideBarMenu .nav-pills .nav-link:not(.active) {
+	background-color: #fff;
+    color: #292b2c;
+}
+
+/* active*/
+.sidebar-menu .panelContent .sideBarMenu .nav-pills .nav-link {
+    background-color: #292b2c;
+    color: white;
+}
+
+
+/*=========================================================
+
+                        Food Menu / detail
+                ***********************************
+                           loggedFoodMenuDetails
+
+=========================================================*/
+.loggedFoodMenuDetails .breadcrumb{
+	margin-top: 50px;
+}
+.loggedFoodMenuDetails .carouselCss{
+	margin-top: 30px;
+}
+.loggedFoodMenuDetails .detailCss {
+	margin-top: 30px;
+
+}
+.loggedFoodMenuDetails .detailCss .row{
+	margin-bottom: 20px;
+
+}
+
+.loggedFoodMenuDetails .topDeals {
+	margin-top: 60px;
+
+}

@@ -11,7 +11,7 @@
     <div>
         <form class="form-inline d-flex justify-content-center">
             <input class="form-control mx-1 col-6 col-md-4 col-sm-6" type="search" placeholder="Search Food" aria-label="Search">
-            <button class="btn btn-darkl mx-1 col-3 col-md-2 col-sm-2" type="submit"><i class="fa fa-search"></i></button>
+            <button class="btn btn-dark mx-1 col-3 col-md-2 col-sm-2" type="submit"><i class="fa fa-search"></i></button>
           </form>      
     </div>
 
