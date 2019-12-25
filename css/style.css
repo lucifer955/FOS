@@ -1,0 +1,179 @@
+/* index page styles */
+
+body{
+    font-family: 'Roboto', sans-serif;
+
+}
+
+nav{
+    background-image: url("../images/nav.png");
+}
+
+.jumbotron{
+    background-image: url("../images/bg4.jpg");
+    background-size: cover;
+    padding-top: 100px;
+    color: white; 
+}
+
+.jumbotron h1{
+    font-family: 'Pacifico', cursive;
+    font-size: 70px;
+}
+
+.jumbotron h5{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.howToStuff{
+    margin-top: 80px;
+    background: rgba(0, 0, 0, 0.486);
+    padding: 20px;
+}
+
+.containerDeals{
+    color: black;
+}
+
+.itemDeal{
+    margin-top: 20px;
+}
+
+footer{
+    margin-top: 100px;
+    padding: 20px;
+    background-image: url("../images/nav.png");
+    background-size: cover;
+    color: white;
+}
+
+footer h5{
+    font-style: bold;
+    color: tomato;
+}
+.socialIcons{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+
+/*bradcumbs*/
+.breadcumb{
+    margin-top: 50px;
+}
+
+
+
+
+/*=========================================================
+
+                Sign In Page/ User - not registered
+                ***********************************
+                           signInPage 
+
+=========================================================*/
+.signInPage form{
+    color: black;
+}
+
+.signInPage form .error{
+
+  margin: 0px auto; 
+  padding: 10px; 
+  color: #a94442; 
+  background: #f2dede; 
+  border-radius: 5px; 
+  text-align: center;
+}
+
+.signInPage form .success {
+  color: #3c763d; 
+  background: #dff0d8; 
+  border: 1px solid #3c763d;
+  margin-bottom: 20px;
+}
+/*=========================================================
+
+                Sign Up Page/ User - not registered
+                ***********************************
+                            signUpPage
+
+=========================================================*/
+
+.signUpPage{
+    color: black;
+}
+
+.signUpPage .form-row{
+    margin-bottom: 20px;
+}
+
+.signUpPage form .error{
+
+  margin: 0px auto; 
+  padding: 10px; 
+  color: #a94442; 
+  background: #f2dede; 
+  border-radius: 5px; 
+  text-align: center;
+}
+
+/*.signUpPage form .success {
+  color: #3c763d; 
+  background: #dff0d8; 
+  border: 1px solid #3c763d;
+  margin-bottom: 20px;
+}*/
+/*=========================================================
+
+                        loggedIndex Page
+                ***********************************
+                           loggedHowToStuff
+
+=========================================================*/
+
+
+/*=========================================================
+
+                        Profile logged
+                ***********************************
+                           loggedProfile
+
+=========================================================*/
+.loggedProfile{
+    color: black;
+}
+
+
+.loggedProfile .form-row{
+    margin-bottom: 10px;
+}
+.loggedProfile .regDateCss{
+    margin-bottom: 10px;
+}
+
+/*=========================================================
+
+                        Settings logged
+                ***********************************
+                           loggedSettings
+
+=========================================================*/
+
+.loggedSettings{
+    color: black;
+}
+
+.loggedSettings .form-control{
+    margin-bottom: 10px;
+}
+
+
+/*=========================================================
+
+                        Food Menu
+                ***********************************
+                           loggedFoodMenu
+
+=========================================================*/
+
+
