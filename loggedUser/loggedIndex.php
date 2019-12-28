@@ -49,70 +49,88 @@
     </div>
     
     <div class="row">
-      <div class="col-12 col-md-4 col-sm-4 itemDeal">
-          <div class="card">
-              <img class="card-img-top" src="..\images\bg2.png" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+          <div class="col-12 col-md-6 col-sm-12 col-lg-4 itemDeal">
+                  <div class="card">
+                    <img class="card-img-top" src="..\images\bg2.png" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <div class="text-center">
+                        <a href="#" class="btn btn-primary btn-dark">View</a>
+                        <a href="cart.php" class="btn btn-primary btn-dark">Add to Cart <i class="fa fa-cart-plus"></i></a>
+                      </div>
+                    </div>
+                  </div>
               </div>
-            </div>
-      </div>
-      <div class="col-12 col-md-4 col-sm-4 itemDeal">
-          <div class="card" >
-              <img class="card-img-top" src="..\images\bg2.png" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+              <div class="col-12 col-md-6 col-sm-12 col-lg-4 itemDeal">
+                  <div class="card">
+                    <img class="card-img-top" src="..\images\bg2.png" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <div class="text-center">
+                        <a href="#" class="btn btn-primary btn-dark">view</a>
+                        <a href="cart.php" class="btn btn-primary btn-dark">Add to Cart <i class="fa fa-cart-plus"></i></a>
+                      </div>
+                    </div>
+                  </div>
               </div>
-            </div>
-      </div>
-      <div class="col-12 col-md-4 col-sm-4 itemDeal">
-          <div class="card" >
-              <img class="card-img-top" src="..\images\bg2.png" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+              <div class="col-12 col-md col-sm-12 col-lg-4 itemDeal">
+                  <div class="card">
+                    <img class="card-img-top" src="..\images\bg2.png" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <div class="text-center">
+                        <a href="detail.php" class="btn btn-primary btn-dark">view</a>
+                        <a href="cart.php" class="btn btn-primary btn-dark">Add to Cart <i class="fa fa-cart-plus"></i></a>
+                      </div>
+                    </div>
+                  </div>
               </div>
-            </div>
-      </div>
-    </div>
+        </div>
 
     <div class="row">
-        <div class="col-12 col-md-4 col-sm-4 itemDeal">
-            <div class="card">
-                <img class="card-img-top" src="..\images\bg2.png" alt="Card image cap">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
+          <div class="col-12 col-md-6 col-sm-12 col-lg-4 itemDeal">
+                  <div class="card">
+                    <img class="card-img-top" src="..\images\bg2.png" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <div class="text-center">
+                        <a href="#" class="btn btn-primary btn-dark">View</a>
+                        <a href="cart.php" class="btn btn-primary btn-dark">Add to Cart <i class="fa fa-cart-plus"></i></a>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+              <div class="col-12 col-md-6 col-sm-12 col-lg-4 itemDeal">
+                  <div class="card">
+                    <img class="card-img-top" src="..\images\bg2.png" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <div class="text-center">
+                        <a href="#" class="btn btn-primary btn-dark">view</a>
+                        <a href="cart.php" class="btn btn-primary btn-dark">Add to Cart <i class="fa fa-cart-plus"></i></a>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+              <div class="col-12 col-md col-sm-12 col-lg-4 itemDeal">
+                  <div class="card">
+                    <img class="card-img-top" src="..\images\bg2.png" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <div class="text-center">
+                        <a href="detail.php" class="btn btn-primary btn-dark">view</a>
+                        <a href="cart.php" class="btn btn-primary btn-dark">Add to Cart <i class="fa fa-cart-plus"></i></a>
+                      </div>
+                    </div>
+                  </div>
               </div>
         </div>
-        <div class="col-12 col-md-4 col-sm-4 itemDeal">
-            <div class="card" >
-                <img class="card-img-top" src="..\images\bg2.png" alt="Card image cap">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-              </div>
-        </div>
-        <div class="col-12 col-md-4 col-sm-4 itemDeal">
-            <div class="card" >
-                <img class="card-img-top" src="..\images\bg2.png" alt="Card image cap">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-              </div>
-        </div>
-      </div>
   </div>
 
 <!-- include the footer files -->  

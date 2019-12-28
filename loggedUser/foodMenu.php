@@ -6,7 +6,7 @@
 <div class="loggedFoodMenu">
 	<div class="container">
 		<div class="col-md-12" > <!-- style="margin-top: 50px;" -->
-			<nav aria-label="breadcrumb rounded">
+			<nav aria-label="breadcrumb">
 			    <ol class="breadcrumb">
 			        <li class="breadcrumb-item"><a href="#">Home</a></li>
 			        <li class="breadcrumb-item active" aria-current="page">Food Menu</li>

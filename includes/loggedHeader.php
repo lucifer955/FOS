@@ -26,6 +26,8 @@
     <!-- external css file -->
     <link rel="stylesheet" href="..\css\style.css">
      <link rel="stylesheet" href="..\css\styleLogged.css">
+     <link rel="stylesheet" href="..\css\styleLogged2.css">
+     <link rel="stylesheet" href="..\css\styleLogged3.css">
     <!-- google fonts -->
     <link href="https://fonts.googleapis.com/css?family=Pacifico|Roboto&display=swap" rel="stylesheet">
     
@@ -52,7 +54,7 @@
             <a class="nav-link" href="foodMenu.php">Food Menu</a>
           </li>
           <li class="nav-item <?php if($page=='myOrders') {echo 'active';}?>">
-            <a class="nav-link" href="sign_in.php">My Orders</a>
+            <a class="nav-link" href="orders.php">My Orders</a>
           </li>
           <li class="nav-item <?php if($page=='cart') {echo 'active';}?>">
             <a class="nav-link" href="cart.php">Cart <i class="fa fa-cart-plus"></i></a>   
