@@ -39,7 +39,7 @@
                   <i class="fa fa-plus-square"></i>Food Category</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="foodCategory.php">Food Categogy</a>
-                  <a class="dropdown-item" href="#">Manage Food Category</a>
+                  <a class="dropdown-item" href="manageFoodCategory.php">Manage Food Category</a>
                 </div>
               </li>
               <!-- <li class=" <?php if($page=='foodMenu') {echo 'active1';}?>">
@@ -49,8 +49,8 @@
                 <a class="dropdown-toggle" href="search.php" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
                   <i class="fa fa-align-justify"></i>Food Menu</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="foodMenu.php">Add Food</a>
-                  <a class="dropdown-item" href="#">Manage Food Category</a>
+                  <a class="dropdown-item" href="foodMenu.php">Add Food Menu</a>
+                  <a class="dropdown-item" href="manageFoodMenu.php">Manage Food Menu</a>
                 </div>
               </li>
 
@@ -62,11 +62,10 @@
                 <a class="dropdown-toggle" href="search.php" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
                   <i class="fa fa-cart-plus"></i>Orders</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="foodMenu.php">Not Confirmed yet</a>
-                  <a class="dropdown-item" href="#">Order Confirmed</a>
-                  <a class="dropdown-item" href="#">Food being prepared</a>
-                  <a class="dropdown-item" href="#">Cancelled</a>
-                  <a class="dropdown-item" href="#">All orders</a>
+                  <a class="dropdown-item" href="orderNotConfirmed.php">Not Confirmed yet</a>
+                  <a class="dropdown-item" href="orderConfirmed.php">Order Confirmed</a>
+                  <a class="dropdown-item" href="orderCancelled.php">Cancelled</a>
+<!--                   <a class="dropdown-item" href="order.php">All orders</a> -->
                 </div>
               </li>
               <li class=" <?php if($page=='reports') {echo 'active1';}?>">

@@ -3,7 +3,7 @@
 ?>
 
                     <div class="row">
-                      <div class="col-lg-4 col-12 col-sm-4 col-md-4">
+                      <div class="col-lg-4 col-12 col-sm-12 col-md-4">
                       <div class="card text-white bg-primary mb-3">
                           <div class="card-header">Header</div>
                           <div class="card-body">
@@ -13,7 +13,7 @@
                         </div>  
                       </div>
 
-                      <div class="col-lg-4 col-12 col-sm-4 col-md-4">
+                      <div class="col-lg-4 col-12 col-sm-12 col-md-4">
                         <div class="card text-white bg-secondary mb-3">
                           <div class="card-header">Header</div>
                           <div class="card-body">
@@ -23,7 +23,7 @@
                         </div>
                       </div>
 
-                      <div class="col-lg-4 col-12 col-sm-4 col-md-4">
+                      <div class="col-lg-4 col-12 col-sm-12 col-md-4">
                           <div class="card text-white bg-warning mb-3">
                             <div class="card-header">Header</div>
                             <div class="card-body">
