@@ -17,7 +17,6 @@
     <div class="col-12 col-md-7 col-sm-12 ">
       
     <form method="post" action="sign_in.php">
-      <?php include('errors.php'); ?>
         <div class="form-group">
             <label for="exampleInputEmail1">Email address</label>
             <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="email">

@@ -16,8 +16,7 @@
   <div class="row align-items-center">
     <div class="col-12 col-md-7 col-sm-12 ">
 
-    <form method="post" action="sign_up.php">
-      <?php include('errors.php'); ?>
+    <form>
       <div class="form-row">
         <div class="col-12 col-sm">
           <label for="firstName">First Name</label>

@@ -98,27 +98,13 @@
 							</div>
 						</div>
 				</div>
+				<hr>
 				<div class="col-12 col-sm-12 col-md-12 text-center">
 					<h2 class="text-center">Order Details</h2>
 						<div class="card-body">
-						    <div class="table-responsive-md">
-								  	<table class="table table-hover table-bordered table-sm">
-										<tr>
-											<th>#</th>
-											<th>Food Name</th>
-											<th>Price</th>
-										</tr>
-										<tr>
-											<td>1</td>
-											<td>Chees</td>
-											<td>344</td>
-										</tr>
-										<tr>
-											<td colspan="2">Grand Total</td>
-											<td>500</td>
-										</tr>
-								  	</table>
-							</div>
+						    <div class="col-12 col-sm-12 col-md-3">
+						    	
+						    </div>
 						</div>
 				</div>
 		</div>

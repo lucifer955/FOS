@@ -1,17 +1,3 @@
-<?php 
-  session_start(); 
-
-  if (!isset($_SESSION['email'])) {
-    $_SESSION['msg'] = "You must log in first";
-    header('location: sign_in.php');
-  }
-  if (isset($_GET['logout'])) {
-    session_destroy();
-    unset($_SESSION['email']);
-    header("location: sign_in.php");
-  }
-?>
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -67,9 +53,7 @@
                 <a class="dropdown-item" href="settings.php">Settings</a>
                 <a class="dropdown-item" href="profile.php">Profile</a>
                 <div class="dropdown-divider"></div>
-                <?php  if (isset($_SESSION['email'])) : ?>
-                  <a class="dropdown-item" href="../user/index.php?logout='1'" style="color: red;">logout</a>
-                <?php endif ?>
+                  <a class="dropdown-item" href="" style="">logout</a>
               </div>
           </li>
         </ul>

@@ -13,14 +13,13 @@
 		</nav>
 	</div>
 </div>
-
 <div class="container">
 	<div class="row justify-content-center">
 		<div class="card col-12 text-center">
 				<h2 class="text-center">Manage Food Category </h2>
 					<div class="card-body">
 					    <div class="table-responsive-md">
-							  	<table class="table table-hover">
+							  	<table class="table table-hover table-bordered">
 									<thead>
 									    <tr>
 									      <th scope="col">S.NO</th>
@@ -34,7 +33,7 @@
 									      <th>1</th>
 									      <td>Mark</td>
 									      <td>Otto</td>
-									      <td><a href="">Edit</a></td>
+									      <td><a href="manageFoodCategoryEdit.php">Edit</a></td>
 									    </tr>
 									    <tr>
 									      <th>2</th>

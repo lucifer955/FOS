@@ -99,22 +99,42 @@
 						</div>
 				</div>
 				<div class="col-12 col-sm-12 col-md-12 text-center">
-					<h2 class="text-center">Order Details</h2>
+						<div class="card-body">
+						    <form>
+							    <div class="form-group">
+								    <label for="resturantStatus" class="col-sm-2 col-form-label">Resturant Remark:</label>
+								    <textarea class="form-control" id="resturantStatus" rows="3"></textarea>
+								</div>
+								<div class="form-group">
+								    <label for="exampleFormControlSelect2">Resturant Status:</label>
+								    <select class="form-control" id="exampleFormControlSelect2">
+								      <option>Order Confirmed</option>
+								      <option>Order Cancelled</option>
+<!-- 								      <option>Food B</option>
+								      <option>Order Pickup</option>
+								      <option>Food Delivered</option> -->
+								    </select>
+								  </div>							  
+							  <button type="submit" class="btn btn-primary">Update</button>
+							</form>
+						</div>
+				</div>
+
+				<div class="col-12 text-center">
+					<h2 class="text-center">Resturant Confirmation</h2>
 						<div class="card-body">
 						    <div class="table-responsive-md">
 								  	<table class="table table-hover table-bordered table-sm">
 										<tr>
 											<th>#</th>
-											<th>Food Name</th>
-											<th>Price</th>
+											<th>Remark</th>
+											<th>Status</th>
+											<th>Time</th>
 										</tr>
 										<tr>
 											<td>1</td>
 											<td>Chees</td>
 											<td>344</td>
-										</tr>
-										<tr>
-											<td colspan="2">Grand Total</td>
 											<td>344</td>
 										</tr>
 								  	</table>

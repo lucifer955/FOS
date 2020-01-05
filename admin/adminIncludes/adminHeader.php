@@ -35,7 +35,7 @@
                 <a href="foodCategory.php"><i class="fa fa-plus-square"></i>Food Category</a>
               </li> -->
               <li class=" <?php if($page=='foodCategory') {echo 'active1';}?>">
-                <a class="dropdown-toggle" href="search.php" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                <a class="dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
                   <i class="fa fa-plus-square"></i>Food Category</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="foodCategory.php">Food Categogy</a>
@@ -46,7 +46,7 @@
                 <a href="foodMenu.php"><i class="fa fa-align-justify"></i>Food Menu</a>
               </li> -->
               <li class=" <?php if($page=='foodMenu') {echo 'active1';}?>">
-                <a class="dropdown-toggle" href="search.php" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                <a class="dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
                   <i class="fa fa-align-justify"></i>Food Menu</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="foodMenu.php">Add Food Menu</a>
@@ -59,7 +59,7 @@
               </li> -->
 
               <li class=" <?php if($page=='orders') {echo 'active1';}?>">
-                <a class="dropdown-toggle" href="search.php" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                <a class="dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
                   <i class="fa fa-cart-plus"></i>Orders</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="orderNotConfirmed.php">Not Confirmed yet</a>
@@ -74,14 +74,14 @@
               <li class=" <?php if($page=='search') {echo 'active1';}?>">
                 <a href="search.php"><i class="fa fa-search"></i>Search</a>
               </li>
-              <!-- <li class="<?php if($page=='search') {echo 'active1';}?>">
-                <a class="dropdown-toggle" href="search.php" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
-                  <i class="fa fa-search"></i>Food Category</a>
+              <li class=" <?php if($page=='myAccount') {echo 'active1';}?>">
+                <a class="dropdown-toggle" href="adminAccount.php" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                  <i class="fa fa-user"></i>Admin Account</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#">Food Categogy</a>
-                  <a class="dropdown-item" href="#">Manage Food Category</a>
+                  <a class="dropdown-item" href="adminProfile.php">Profile</a>
+                  <a class="dropdown-item" href="adminChangePassword.php">Change Password</a>
                 </div>
-              </li> -->
+              </li>
             </ul>
           </aside>
 

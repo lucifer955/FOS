@@ -18,7 +18,7 @@
 				<h2 class="text-center">Order Details</h2>
 					<div class="card-body">
 					    <div class="table-responsive-md">
-							  	<table class="table table-hover">
+							  	<table class="table table-hover table-bordered">
 									<thead>
 									    <tr>
 									      <th scope="col">S.NO</th>
