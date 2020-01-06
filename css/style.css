@@ -74,21 +74,18 @@ footer h5{
     color: black;
 }
 
-.signInPage form .error{
-
-  margin: 0px auto; 
-  padding: 10px; 
-  color: #a94442; 
-  background: #f2dede; 
-  border-radius: 5px; 
-  text-align: center;
+/*error msg*/
+.signInPage .errorCust{
+  background:red;
+  color: white;
+  padding: 10px;
 }
 
-.signInPage form .success {
-  color: #3c763d; 
-  background: #dff0d8; 
-  border: 1px solid #3c763d;
-  margin-bottom: 20px;
+/*success message*/
+.signInPage .infoCust{
+  background:green;
+  color: white;
+  padding: 10px;
 }
 /*=========================================================
 
@@ -106,16 +103,23 @@ footer h5{
     margin-bottom: 20px;
 }
 
-.signUpPage form .error{
-
-  margin: 0px auto; 
-  padding: 10px; 
-  color: #a94442; 
-  background: #f2dede; 
-  border-radius: 5px; 
+.signUpPage .errmsg{
+  margin: 20px 0;
+/*  background:red;*/
+  border: 1px solid red; 
+  color: red;
+  padding: 10px;
   text-align: center;
 }
 
+.signUpPage .successmsg{
+  margin: 20px 0;
+/*  background:;*/
+  border: 1px solid green; 
+  color: green;
+  padding: 10px;
+  text-align: center;
+}
 /*.signUpPage form .success {
   color: #3c763d; 
   background: #dff0d8; 

@@ -3,6 +3,8 @@
   $page= 'signIn';include('../includes/header.php');
 ?>
 
+
+
 <div class="container breadcumb">
     <nav aria-label="breadcrumb rounded">
     <ol class="breadcrumb">
@@ -15,7 +17,23 @@
 <div class="container signInPage">
   <div class="row align-items-center">
     <div class="col-12 col-md-7 col-sm-12 ">
-      
+
+      <?php 
+
+        if (isset($errors) && !empty($errors)) {
+          echo '<p class = "errorCust text-center">Invalid Username / Password</P>';
+        } 
+
+      ?>
+
+      <?php  
+        if(isset($_GET['logout'])){
+          echo '<p class = "infoCust text-center">You have successfully logged out from the system</P>';
+        }
+                
+      ?>
+
+
     <form method="post" action="sign_in.php">
         <div class="form-group">
             <label for="exampleInputEmail1">Email address</label>

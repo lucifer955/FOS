@@ -1,3 +1,14 @@
+<?php session_start(); ?>
+<?php 
+  require_once('../includes/connection.php'); 
+?>
+<?php  
+
+  //checkin if a user is logged in
+  if (!isset($_SESSION['user_id'])) {
+    header('Location: admin_login.php');
+  }
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -12,6 +23,7 @@
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- external css file -->
     <link rel="stylesheet" href="..\css\adminPanel.css">
+ 
     <title>Admin Panel</title>
   </head>
 
@@ -76,7 +88,7 @@
               </li>
               <li class=" <?php if($page=='myAccount') {echo 'active1';}?>">
                 <a class="dropdown-toggle" href="adminAccount.php" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
-                  <i class="fa fa-user"></i>Admin Account</a>
+                  <i class="fa fa-user"></i><?php echo $_SESSION['user_name']; ?></a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="adminProfile.php">Profile</a>
                   <a class="dropdown-item" href="adminChangePassword.php">Change Password</a>
@@ -99,7 +111,7 @@
                   <a href="#"><i class="fa fa-bell"></i></a>
                 </div>
                 <div class="nav-item ml-auto">
-                  <a href="admin_login.php"><i class="fa fa-sign-out">Sign out</i></a>
+                  <a href="logout.php"><i class="fa fa-sign-out">Sign out</i></a>
                 </div>
               </div>
             </nav>

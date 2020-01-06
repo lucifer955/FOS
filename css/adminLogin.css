@@ -1,0 +1,21 @@
+/*=========================================================
+
+                       login 
+                ***********************************
+                ADMIN PAGE
+=========================================================*/
+
+
+/*error msg*/
+.formAdmin .errorAdmin{
+          background:red;
+          color: white;
+          padding: 10px;
+        }
+
+/*success message*/
+.formAdmin .infoAdmin{
+  background:green;
+  color: white;
+  padding: 10px;
+}

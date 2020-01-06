@@ -1,3 +1,7 @@
+<?php session_start(); ?>
+<?php 
+  require_once('../includes/connection.php'); 
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -14,6 +18,7 @@
     
     <!-- external css file -->
     <link rel="stylesheet" href="..\css\adminStyle.css">
+    <link rel="stylesheet" href="..\css\adminLogin.css">
     <title>Admin Page</title>
   </head>
   <body class="formAdmin">
@@ -60,3 +65,5 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
 </html>
+
+<?php mysqli_close($connection); ?>

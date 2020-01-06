@@ -10,6 +10,20 @@ body {
   min-height: 100%;
 }
 
+/*error msg*/
+.formAdmin .errorAdmin{
+          background:red;
+          color: white;
+          padding: 10px;
+        }
+
+/*success message*/
+.formAdmin .infoAdmin{
+  background:green;
+  color: white;
+  padding: 10px;
+}
+
 a {
   transition: background 0.2s, color 0.2s;
 }
@@ -17,6 +31,9 @@ a:hover,
 a:focus {
   text-decoration: none;
 }
+
+
+
 
 #wrapper {
   padding-left: 0;
@@ -254,3 +271,4 @@ a:focus {
     margin-right: 250px;
   }
 }
+
