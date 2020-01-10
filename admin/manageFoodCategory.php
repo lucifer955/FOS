@@ -29,7 +29,28 @@
 									    </tr>
 									  </thead>
 									  <tbody>
-									  	<tr>
+
+<?php  
+
+	// $category_list = '';
+
+	//getting the list of categories
+	$query_cat = "SELECT * FROM category";
+	$categories = mysqli_query($connection, $query_cat);
+
+	if($categories){
+		while ($cat = mysqli_fetch_assoc($categories)) {
+			echo "<tr>";
+			echo "<td>{$cat['categoryId']}</td>";
+			echo "<td>{$cat['categoryName']}</td>";
+			echo "<td>{$cat['creationDate']}</td>";
+			echo "<td><a href=\"manageFoodCategoryEdit.php\">Edit</a></td>";
+			echo "</tr>";
+		}
+	}
+
+?>	  	
+<!-- 									  	<tr>
 									      <th>1</th>
 									      <td>Mark</td>
 									      <td>Otto</td>
@@ -40,7 +61,7 @@
 									      <td>Mark</td>
 									      <td>Otto</td>
 									      <td>Otto</td>
-									    </tr>
+									    </tr> -->
 									  </tbody>
 							  	</table>
 						</div>

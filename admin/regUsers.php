@@ -27,26 +27,36 @@
 									      <th scope="col">Last Name</th>
 									      <th scope="col">Mobile Number</th>
 									      <th scope="col">Email</th>
+									      <th scope="col">Password</th>
 									      <th scope="col">Edit</th>
 									    </tr>
 									  </thead>
 									  <tbody>
-									  	<tr>
-									      <th>1</th>
-									      <td>Mark</td>
-									      <td>Otto</td>
-									      <td>@mdo</td>
-									      <td>Otto</td>
-									      <td><a href="adminUserDetail.php">Edit User Datails</a></td>
-									    </tr>
-									    <tr>
-									      <th>2</th>
-									      <td>Mark</td>
-									      <td>Otto</td>
-									      <td>@mdo</td>
-									      <td>Otto</td>
-									      <td>@mdo</td>
-									    </tr>
+
+<?php  
+
+	// $category_list = '';
+
+	//getting the list of categories
+	$query_reg = "SELECT * FROM customer";
+	$users = mysqli_query($connection, $query_reg);
+
+	if($users){
+		while ($user = mysqli_fetch_assoc($users)) {
+			echo "<tr>";
+			echo "<td>{$user['customerId']}</td>";
+			echo "<td>{$user['customerFirstName']}</td>";
+			echo "<td>{$user['customerLastName']}</td>";
+			echo "<td>{$user['customerEmail']}</td>";
+			echo "<td>{$user['customerContactNo']}</td>";
+			echo "<td>{$user['customerPassword']}</td>";
+			echo "<td><a href=\"adminUserDetail.php\">Edit</a></td>";
+			echo "</tr>";
+		}
+	}
+
+?>	
+
 									  </tbody>
 							  	</table>
 						</div>

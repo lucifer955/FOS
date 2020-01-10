@@ -83,10 +83,10 @@
       $mobile_number = mysqli_real_escape_string($connection, $_POST['mobile_number']);
       $password = mysqli_real_escape_string($connection, $_POST['password']);
 
-      $hashed_password = sha1($password);
+      // $hashed_password = sha1($password);
 
       $query = "INSERT INTO customer(customerFirstName,customerLastName,customerEmail,customerContactNo,customerPassword)
-        VALUES('{$first_name}','{$last_name}','{$email}','{$mobile_number}','{$hashed_password}')";
+        VALUES('{$first_name}','{$last_name}','{$email}','{$mobile_number}','{$password}')";
       // $query = "INSERT INTO customer(";
       // $query .= "customerFirstName,customerLastName,customerEmail,customerContactNo,customerPassword";
       // $query .= ")VALUES(";

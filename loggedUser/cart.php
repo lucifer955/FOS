@@ -47,34 +47,67 @@
 				  </div>
 				</div>
 			</div>
-			<div class="col-md-4 col-lg-4 shoppingCart">
+			<div class="col-md-4 col-lg-4 " id="shoppingCart">
 				<div class="card text-center">
 				  <div class="card-header">
 				   	Your Shopping Cart
 				  </div>
 				  <div class="card-body">
-				    <h5 class="card-title">Enter Your Location Here</h5>
+				    <h5 class="card-title"><strong>Enter Your Location Here</strong></h5>
 				    <form action="cart.php" method="post">
-				    	<div class="form-group">
-				    		<input type="text" name="flatOrBuildingNumber" placeholder="Flat or Flat or Building Number">
-					    	<input type="text" name="streetName" placeholder="Street Name">
-					    	<input type="text" name="area" placeholder="Area">
-					    	<input type="text" name="landmark" placeholder="If any Landmark">
-					    	<input type="text" name="city" placeholder="City">
+				    	<div class="form-group loc">
+				    		<input type="text" name="flatOrBuildingNumber" placeholder="Flat or Building Number" style="margin: 2px 0 2px 0;">
+					    	<input type="text" name="streetName" placeholder="Street Name" style="margin: 2px 0 2px 0;">
+					    	<input type="text" name="area" placeholder="Area" style="margin: 2px 0 2px 0;">
+					    	<input type="text" name="landmark" placeholder="If any Landmark" style="margin: 2px 0 2px 0;">
+					    	<input type="text" name="city" placeholder="City" style="margin: 2px 0 2px 0;">
 				    	</div>
-				    </form>
-				    
-				  </div>
+						    <div class="row justify-content-center">
+						     <label class="col-12 control-label" ><strong>Choose</strong></label>
+							    <div class="col-8">
+							     <select name="product_qty" class="form-control">
+							      <option>Delivery</option>
+							      <option>Take Away</option>
+							     </select>
+							    </div>
+						    </div>
+						        		
+						    <div class="row justify-content-center" style="margin-top: 10px;">
+						     <label class="col-12 control-label" ><strong>Size</strong></label>
+							    <div class="col-8">
+							     <select name="product_qty" class="form-control">
+							      <option>Medium</option>
+							      <option>Large</option>
+							      <option>Small</option>
+							     </select>
+							    </div>
+						    </div>
+						    <div class="row justify-content-center" style="margin-top: 10px;">
+						     <label class="col-12 control-label" ><strong>Product Quantity</strong></label>
+							    <div class="col-8 text-center">
+							     <select name="product_qty" class="form-control">
+							      <option>1</option>
+							      <option>2</option>
+							      <option>3</option>
+							      <option>4</option>
+							      <option>5</option>
+							     </select>
+							    </div>
+						    </div>
+
+						    <button type="submit" class="btn btn-primary" name="orderNow" style="margin: 20px 0 10px 0;">Order Now</button>
+				    	</form>
+				    </div>
+				</div>
+			 <!--  -->
 				  <div class="card-footer text-center">
 				    <h3>Total</h3>
 				    <h4>Rs.499/=</h4>
-				    <a href="#" class="btn btn-dark">Order</a>
 				    <h5 style="margin-top: 5px;">Free Delivery</h5>
 				  </div>
-				</div>
 			</div>	
 		</div>
-	</div>
+	</div>	
 </div>
 
 <!-- include the footer files -->

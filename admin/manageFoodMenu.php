@@ -23,25 +23,39 @@
 							  	<table class="table table-hover table-bordered">
 									<thead>
 									    <tr>
-									      <th scope="col">S.NO</th>
+									      <th scope="col">FoodMenu ID </th>
 									      <th scope="col">Category Name</th>
 									      <th scope="col">Item Name</th>
+									      <th scope="col">Item Desc.</th>
+									      <th scope="col">Item Quantity</th>
+									      <th scope="col">Food Price</th>
 									      <th scope="col">Action</th>
 									    </tr>
 									  </thead>
 									  <tbody>
-									  	<tr>
-									      <th>1</th>
-									      <td>Mark</td>
-									      <td>Otto</td>
-									      <td><a href="manageFoodMenuEdit.php">Edit</a></td>
-									    </tr>
-									    <tr>
-									      <th>2</th>
-									      <td>Mark</td>
-									      <td>Otto</td>
-									      <td>Otto</td>
-									    </tr>
+<?php  
+
+	// $category_list = '';
+
+	//getting the list of categories
+	$query_food = "SELECT * FROM foodmenu";
+	$fdmenus = mysqli_query($connection, $query_food);
+
+	if($fdmenus){
+		while ($fdmenu = mysqli_fetch_assoc($fdmenus)) {
+			echo "<tr>";
+			echo "<td>{$fdmenu['foodMenuId']}</td>";
+			echo "<td>{$fdmenu['categoryName']}</td>";
+			echo "<td>{$fdmenu['itemName']}</td>";
+			echo "<td>{$fdmenu['itemDescription']}</td>";
+			echo "<td>{$fdmenu['itemQuantity']}</td>";
+			echo "<td>{$fdmenu['itemPrice']}</td>";
+			echo "<td><a href=\"manageFoodMenuEdit.php\">Edit</a></td>";
+			echo "</tr>";
+		}
+	}
+
+?>	 
 									  </tbody>
 							  	</table>
 						</div>

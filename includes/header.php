@@ -27,7 +27,7 @@
         // save username adn password into variables
         $email = mysqli_real_escape_string($connection, $_POST['email']);
         $password = mysqli_real_escape_string($connection, $_POST['password']);
-        $hashed_password = sha1($password);
+        // $hashed_password = sha1($password);
 
         // prepare database query
         $query = "SELECT * FROM customer
@@ -98,8 +98,8 @@
           <li class="nav-item <?php if($page=='home') {echo 'active';}?> mr">
             <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item <?php if($page=='foodMenu') {echo 'active';}?>">
-            <a class="nav-link" href="#">Food Menu</a>
+          <li class="nav-item <?php if($page=='usrfoodMenu') {echo 'active';}?>">
+            <a class="nav-link" href="userFoodMenu.php">Food Menu</a>
           </li>
           <li class="nav-item <?php if($page=='signIn') {echo 'active';}?>">
             <a class="nav-link" href="sign_in.php">Sign in</a>
