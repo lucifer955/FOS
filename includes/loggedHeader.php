@@ -52,6 +52,7 @@
             $user = mysqli_fetch_assoc($result_set);
             $_SESSION['user_id'] = $user['customerId'];
             $_SESSION['first_name'] = $user['customerFirstName'];
+            
             //redirect to dashboard.php
             header('Location: ../loggedUser/loggedIndex.php');
           }else{
