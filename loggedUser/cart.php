@@ -1,34 +1,51 @@
 <!-- include the header files -->
 <?php 
   $page= 'cart';include('../includes/loggedHeader.php');
+
 ?>
 
 <?php  
-	
 	// $category_list = '';
 	$usr_id = $_SESSION['user_id'];
+	// $foodMenuId = $_SESSION['foodMenuId'];
+	$foodMenuId = $_GET['foodMenuId'];
 
 	//getting the list of categories
-	$query_cart = "SELECT * FROM foodmenu where foodMenuId = '$usr_id'";
+	$query_cart = "SELECT * FROM foodmenu where foodMenuId = $foodMenuId";
+
 	$categories = mysqli_query($connection, $query_cart);
 
-	$query_cart1 = "SELECT * FROM orderdetails where foodMenuId = '$usr_id'";
-	$categories1 = mysqli_query($connection, $query_cart);
+
+	if($categories){
+		while ($cart = mysqli_fetch_assoc($categories)) {
+			$query = "INSERT INTO cart (foodMenuId,itemName,foodImage,itemPrice) VALUES ('{$cart['foodMenuId']}','{$cart['itemName']}','{$cart['foodImage']}','{$cart['itemPrice']}')";
+
+      		$result = mysqli_query($connection,$query);
+      		$message = "New Category Added";
+
+      		if ($result) {
+      				$foodMenuId =  $cart['foodMenuId'];
+      			echo "<script type='text/javascript'>alert('$message');</script>";	
+      		}		
+		}
+	}
 
 
 ?>
 
 <?php  
 	$errors_cart = array();
+	$food_id = '';
 	$flatOrBuildingNumber = '';
 	$streetName = '';
 	$area = '';
 	$city = '';
 	$deliver_type = '';
-	$food_size = '';
 	$food_qty = '';
 
-	if (isset($_POST['orderNow'])) {
+	$ordergroup = 0;
+
+	if (isset($_POST['orderAnother'])) {
 		
 			$flatOrBuildingNumber = $_POST['flatOrBuildingNumber'];
 			$streetName = $_POST['streetName'];
@@ -36,13 +53,16 @@
 			$landmark = $_POST['landmark'];
 			$city = $_POST['city'];
 			$deliver_type = $_POST['deliver_type'];
-			$food_size = $_POST['food_size'];
 			$food_qty = $_POST['food_qty'];
+			$food_id = $_POST['food_id'];
+
+			$ordergroup = $_POST['ordergroup'];
+
 			// $usr = ($_SESSION['user_id']);
 
 
 
-			$req_fields = array('flatOrBuildingNumber','streetName','area','landmark', 'city','deliver_type','food_size','food_qty');
+			$req_fields = array('food_id','flatOrBuildingNumber','streetName','area','landmark', 'city','deliver_type','food_qty');
 			
 			//checking required fields
 			// if (empty(trim($_POST['new_item']))) {
@@ -63,25 +83,22 @@
 				$landmark =  mysqli_real_escape_string($connection,$_POST['landmark']);
 				$city =  mysqli_real_escape_string($connection,$_POST['city']);
 				$deliver_type =  mysqli_real_escape_string($connection,$_POST['deliver_type']);
-				$food_size =  mysqli_real_escape_string($connection,$_POST['food_size']);
 				$food_qty =  mysqli_real_escape_string($connection,$_POST['food_qty']);
+				$food_id =  mysqli_real_escape_string($connection,$_POST['food_id']);
 
+
+				$ordergroup =  mysqli_real_escape_string($connection,$_POST['ordergroup']);
 
 				$query = "INSERT INTO 
-				orderdetails(orderNo, flatBuildingNo, area, landMark, streetName, city, foodSize ,orderType, quantity, customerId, netPrice) 
-						VALUES('' , '{$flatOrBuildingNumber}' ,'{$area}' ,'{$landmark}','{$streetName}','{$city}','{$food_size}', '{$deliver_type}', '{$food_qty}', '{$usr_id}', '{$food_price}')";
-
-// '{$food_image}' foodImage, ,itemPrice,itemDescription,itemQuantity
-//,'{$food_desc}','{$food_quantity} ,'{$food_price}' // , '{$_SESSION['user_id']}' 
-				//orderType, quantity, ,'{$deliver_type}'  , ,  '{$food_qty}'
-
+				orderdetails(orderNo, flatBuildingNo, area, landMark, streetName, city,orderType, quantity,customerId,foodMenuId,orderGroup) 
+						VALUES('' , '{$flatOrBuildingNumber}' ,'{$area}' ,'{$landmark}','{$streetName}','{$city}', '{$deliver_type}', '{$food_qty}','{$usr_id}','{$food_id}','{$ordergroup}')";
 
 				$result = mysqli_query($connection, $query);
 
 		      	$message = "New order Added";
 				if ($result) {
 					echo "<script type='text/javascript'>alert('$message');</script>";
-						$flatOrBuildingNumber = '';					
+					header('Location: foodMenu.php');				
 				}else{
       				$errors_foodmenu[] = 'Failed to add the new Food';
 				}
@@ -89,8 +106,73 @@
 	}
 
 
+	if (isset($_POST['orderNow'])) {
+			$flatOrBuildingNumber = $_POST['flatOrBuildingNumber'];
+			$streetName = $_POST['streetName'];
+			$area = $_POST['area'];
+			$landmark = $_POST['landmark'];
+			$city = $_POST['city'];
+			$deliver_type = $_POST['deliver_type'];
+			$food_qty = $_POST['food_qty'];
+			$food_id = $_POST['food_id'];
+
+			$ordergroup = $_POST['ordergroup'];
+
+			// $usr = ($_SESSION['user_id']);
+
+			$req_fields = array('food_id','flatOrBuildingNumber','streetName','area','landmark', 'city','deliver_type','food_qty');
+			
+			//checking required fields
+			// if (empty(trim($_POST['new_item']))) {
+			// 	$errors_foodmenu[] = 'newsakdas';
+			// }
+			foreach ($req_fields as $field) {
+				if (empty(trim($_POST[$field]))) {
+							$errors_foodmenu[] = $field . ' is required';
+				}
+			}
+			//if category name is already exists
+
+			if (empty($errors_foodmenu)) {
+				//no errors adding new food menu record
+				$flatOrBuildingNumber =  mysqli_real_escape_string($connection,$_POST['flatOrBuildingNumber']);
+				$streetName =  mysqli_real_escape_string($connection,$_POST['streetName']);
+				$area =  mysqli_real_escape_string($connection,$_POST['area']);
+				$landmark =  mysqli_real_escape_string($connection,$_POST['landmark']);
+				$city =  mysqli_real_escape_string($connection,$_POST['city']);
+				$deliver_type =  mysqli_real_escape_string($connection,$_POST['deliver_type']);
+				$food_qty =  mysqli_real_escape_string($connection,$_POST['food_qty']);
+				$food_id =  mysqli_real_escape_string($connection,$_POST['food_id']);
+
+
+				$query = "INSERT INTO 
+				orderdetails(orderNo, flatBuildingNo, area, landMark, streetName, city,orderType, quantity,customerId,foodMenuId,orderGroup) 
+						VALUES('' , '{$flatOrBuildingNumber}' ,'{$area}' ,'{$landmark}','{$streetName}','{$city}', '{$deliver_type}', '{$food_qty}','{$usr_id}','{$food_id}','{$ordergroup}')";
+
+				$result = mysqli_query($connection, $query);
+
+		      	$message = "New order Added";
+				if ($result) {
+					
+					echo "<script type='text/javascript'>alert('$message');</script>";
+					header('Location: orders.php');
+				}else{
+      				$errors_foodmenu[] = 'Failed to add the new Food';
+				}
+			}
+	}
+
 ?>
 
+
+<?php
+
+
+
+
+
+
+?>
 
 <div class="loggedCart">
 	<div class="container">
@@ -121,30 +203,22 @@
 						  <tbody>
 <?php  
 
-	// $usr_id = $_GET['foodMenuId'];
-	// $food_price = $_GET['itemPrice'];
-
-	$usr = $usr_id;
-	$price = $food_price;
-
-	if($categories){
-		while ($cart = mysqli_fetch_assoc($categories)) {
+	$query_cart1 = "SELECT * FROM cart";
+	$categories1 = mysqli_query($connection, $query_cart1);
+	if($categories1){
+		while ($cart1 = mysqli_fetch_assoc($categories1)) {
 			echo "<tr class=\"text-center\">";
-			echo "<td class=\"align-middle\">{$cart['foodMenuId']}</td>";
-			echo "<td class=\"align-middle\">{$cart['itemName']}</td>";
-			echo "<td class=\"align-middle\" style=\"width:200px;height:200px;\"><img class=\"card-img-top\" src=\"../images/{$cart['foodImage']}\" alt=\"Card image cap\"></td>";
-			echo "<td class=\"align-middle\">{$cart['itemPrice']}</td>";
+			echo "<td class=\"align-middle\">{$cart1['foodMenuId']}</td>";
+			echo "<td class=\"align-middle\">{$cart1['itemName']}</td>";
+			echo "<td class=\"align-middle\" style=\"width:200px;height:200px;\"><img class=\"card-img-top\" src=\"../images/{$cart1['foodImage']}\" alt=\"Card image cap\"></td>";
+			echo "<td class=\"align-middle\">{$cart1['itemPrice']}</td>";
 			echo "</tr>";
 		}
 	}
 
+
+
 ?>
-<!-- 						    <tr class="text-center">
-							  <td class="align-middle">1</td>
-							  <td class="align-middle"></td>
-						      <td class="align-middle" ><img src="..\images\bg2.png" alt="..." class="img-thumbnail"><br>Cheese Pizza</td>
-						      <td class="align-middle">Rs.499</td>
-						    </tr> -->
 						  </tbody>
 						</table>
 				  </div>
@@ -174,6 +248,12 @@
 				    <form action="cart.php" method="post">
 
 				    	<div class="form-group loc">
+				    		<label class="col-12 control-label text-center">Enter the Food Id</label>
+				    		<input type="text" name="food_id" placeholder="Food Id" style="margin: 2px 0 2px 0;">
+				    		<input type="text" name="ordergroup" placeholder="Order Group" style="margin: 2px 0 2px 0;">
+				    		<br>
+				    		<br>
+				    		<label class="col-12 control-label text-center" >Enter the Location Details</label>
 				    		<input type="text" name="flatOrBuildingNumber" placeholder="Flat or Building Number" style="margin: 2px 0 2px 0;">
 					    	<input type="text" name="streetName" placeholder="Street Name" style="margin: 2px 0 2px 0;">
 					    	<input type="text" name="area" placeholder="Area" style="margin: 2px 0 2px 0;">
@@ -190,7 +270,7 @@
 							    </div>
 						    </div>
 						        		
-						    <div class="row justify-content-center" style="margin-top: 10px;">
+<!-- 						    <div class="row justify-content-center" style="margin-top: 10px;">
 						     <label class="col-12 control-label" ><strong>Size</strong></label>
 							    <div class="col-8">
 							     <select name="food_size" class="form-control">
@@ -199,7 +279,7 @@
 							      <option>Small</option>
 							     </select>
 							    </div>
-						    </div>
+						    </div> -->
 						    <div class="row justify-content-center" style="margin-top: 10px;">
 						     <label class="col-12 control-label" ><strong>Quantity</strong></label>
 							    <div class="col-8 text-center">
@@ -217,7 +297,7 @@
 							     </select>
 							    </div>
 						    </div>
-
+						    <button type="submit" class="btn btn-primary" name="orderAnother" style="margin: 20px 0 10px 0;">Order another</button><br>
 						    <button type="submit" class="btn btn-primary" name="orderNow" style="margin: 20px 0 10px 0;">Order Now</button>
 
 				    	</form>

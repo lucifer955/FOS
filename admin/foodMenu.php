@@ -58,7 +58,8 @@
 
 		      	$message = "New Food Added";
 				if ($result) {
-					echo "<script type='text/javascript'>alert('$message');</script>";						
+					echo "<script type='text/javascript'>alert('$message');</script>";
+					$_SESSION["foodMenuId"] = $foodMenuId;						
 				}else{
       				$errors_foodmenu[] = 'Failed to add the new Food';
 				}

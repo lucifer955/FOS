@@ -7,6 +7,8 @@
   if (!isset($_SESSION['user_id'])) {
     header('Location: ../user/sign_in.php');
   }
+
+  $ordergroup = 0;
 ?>
 <?php  
 

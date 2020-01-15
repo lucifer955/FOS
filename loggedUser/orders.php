@@ -14,41 +14,47 @@
 			    </ol>
 	    	</nav>
 		</div>
+
 		<div class="row">
-			<div class="card">
-				  <div class="card-header">
-				    Cart Items
-				  </div>
-				  <div class="card-body">
-				      <table class="table table-hover table-bordered">
-						  <thead>
-						    <tr>
-						      <th scope="col">Image</th>
-						      <th scope="col">Quantity</th>
-						      <th scope="col">Unit<br>Price</th>
-						      <th scope="col">SubTotal</th>
-						      <th scope="col">Deliver Status</th>
-						    </tr>
-						  </thead>
-						  <tbody>
-						    <tr class="text-center">
-						      <td class="align-middle" ><img src="..\images\bg2.png" alt="..." class="img-thumbnail"><br>Cheese Pizza</td>
-						      <td class="align-middle">2</td>
-						      <td class="align-middle">Rs.499</td>
-						      <td class="align-middle">Rs.998</td>
-						      <td class="align-middle">Delivered</td>
-						    </tr>
-						    <tr class="text-center">
-						      <td class="align-middle" ><img src="..\images\bg2.png" alt="..." class="img-thumbnail"><br>Mongolian Pizza</td>
-						      <td class="align-middle">1</td>
-						      <td class="align-middle">Rs.299</td>
-						      <td class="align-middle">Rs.299</td>
-						      <td class="align-middle">Cancelled</td>
-						    </tr>
-						  </tbody>
-						</table>
+
+<?php
+
+    //getting the list of food Menu
+    $query_or = "SELECT * FROM orderdetails ORDER BY orderNo DESC";
+    $odr = mysqli_query($connection, $query_or);
+    if($odr){
+        while ($or = mysqli_fetch_assoc($odr)) {
+
+            echo "
+            <div class=\"col-12 col-md-7 col-lg-7\">
+				<div class=\"card mb-3\">
+				  <div class=\"row no-gutters align-items-center\">
+				    <div class=\"col col-md-4\">
+				    	<img src=\"../images/bag(1).png\" alt=\"...\" class=\" rounded float-left offset-col-1\">
+				    </div>
+				    <div class=\" col col-md-8\">
+				      <div class=\"card-body\">
+				      	<div class=\"row\">
+				      		<div class=\"col col-md\">
+					      		<h5 class=\"card-title\">Order ID : <span>{$or['orderNo']}</span></h5>
+				        		<p class=\"card-text\">Order date : <span>2000.12.12</span></p>			      			
+				      		</div>
+				      		<div class=\"col col-md\">
+				      		<div class=\"text-center\">
+                                <a href=\"orderdetails.php?orderNo={$or['orderNo']}&foodMenuId={$or['foodMenuId']}&quantity={$or['quantity']}\" class=\"btn btn-primary btn-dark\" name=\"addtocart\">View Details</a>
+                            </div>	
+				      		</div>
+				      	</div>
+				      </div>
+				    </div>
 				  </div>
 				</div>
+			</div>
+            ";
+        }   
+    }
+
+?>
 		</div>
 	</div>
 </div>
