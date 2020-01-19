@@ -12,7 +12,7 @@
     <div>
         <form class="form-inline d-flex justify-content-center" action="loggedIndex.php" method="POST">
             <input class="form-control mx-1 col-6 col-md-4 col-sm-6" placeholder="Search Food" aria-label="Search" type="text" name="searchFood1" id="searchFood" autocomplete="off">
-            <button class="btn btn-dark mx-1 col-3 col-md-2 col-sm-2 buttonSearch" type="submit" name="searchSubmit" id="buttonSearch"><i class="fa fa-search"></i></button>
+            <button class="btn btn-dark mx-1 col-3 col-md-2 col-sm-2 buttonSearch" type="submit" name="searchSubmit" id="buttonSearch" onclick="smoothScroll(document.getElementById('searchResults'))"><i class="fa fa-search"></i></button>
           </form>      
     </div>
 
@@ -46,8 +46,9 @@
   <div class="container containerDeals">
 
    <!-- search results -->
-   <div>
-     <div class="row">
+   <div class="searchResults">
+     <div class="row " >
+         
 <?php
             //getting the list of food Menu
   $searchFood = '';
@@ -61,7 +62,10 @@
     if($fms1){
         while ($fm = mysqli_fetch_assoc($fms1)) {
 
-            echo "
+            echo "  <div class=\"col-12\" style=\"margin: 10px 0 40px 0;\">
+                        <h1 class=\"text-left \">Search Results....</h1>
+                        <hr>
+                    </div>
                     <div class=\"col-12 col-md-6 col-sm-12 col-lg-4 itemDeal\">
                     <form action=\"foodMenu.php\" method=\"GET\">
                         <div class=\"card\">

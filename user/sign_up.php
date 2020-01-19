@@ -1,4 +1,4 @@
-<?php session_start() ?>
+<?php ?>
 <?php 
   require_once('../includes/connection.php'); 
 ?>
@@ -6,7 +6,29 @@
   require_once('../includes/connection.php');
   require_once('../includes/functions.php');
 ?>
+<?php
 
+// $to = 'yasfer853@gmail.com'; 
+
+// $subject = 'my first email';
+
+// $body = 'This is my first email to send from local server';
+
+// $header = 'From: pizzamart.badulla@gmail.com';
+
+// $send = mail($to,$subject,$body,$header);
+
+// if($send){
+
+// echo 'message has been sent';
+
+// }else{
+
+// echo'message not sent';
+
+// }
+
+?>
 <?php  
 
   $errors = array();
@@ -83,10 +105,10 @@
       $mobile_number = mysqli_real_escape_string($connection, $_POST['mobile_number']);
       $password = mysqli_real_escape_string($connection, $_POST['password']);
 
-      // $hashed_password = sha1($password);
+      $hashed = sha1($password);
 
       $query = "INSERT INTO customer(customerFirstName,customerLastName,customerEmail,customerContactNo,customerPassword)
-        VALUES('{$first_name}','{$last_name}','{$email}','{$mobile_number}','{$password}')";
+        VALUES('{$first_name}','{$last_name}','{$email}','{$mobile_number}','{$hashed}')";
       // $query = "INSERT INTO customer(";
       // $query .= "customerFirstName,customerLastName,customerEmail,customerContactNo,customerPassword";
       // $query .= ")VALUES(";
@@ -97,6 +119,26 @@
 
       if($result){
         // query successfull... redirecting to loggedIndex page
+//           $to = 'ndr.nhk@gmail.com'; //your email
+
+//           $subject = 'my first email';
+
+//           $body = 'This is my first email to send from local server';
+
+//           $header = 'From: username@gmail.com';
+
+//           $send = mail($to,$subject,$body,$header);
+
+//           $msgs = "not sent";
+//           if($send){
+
+//           echo 'message has been sent';
+
+//           }else{
+
+//           echo "<script type='text/javascript'>alert('$msgs');</script>";
+
+// }
         header('Location: sign_in.php?added=true');
       }else{
         $errors[] = 'Failed to add the new record';

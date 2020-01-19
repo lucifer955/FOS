@@ -19,6 +19,7 @@
 
 <?php
 
+
     //getting the list of food Menu
     $query_or = "SELECT * FROM orderdetails ORDER BY orderNo DESC";
     $odr = mysqli_query($connection, $query_or);

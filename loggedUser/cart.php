@@ -56,7 +56,6 @@
 			$food_qty = $_POST['food_qty'];
 			$food_id = $_POST['food_id'];
 
-			$ordergroup = $_POST['ordergroup'];
 
 			// $usr = ($_SESSION['user_id']);
 
@@ -87,11 +86,10 @@
 				$food_id =  mysqli_real_escape_string($connection,$_POST['food_id']);
 
 
-				$ordergroup =  mysqli_real_escape_string($connection,$_POST['ordergroup']);
 
 				$query = "INSERT INTO 
-				orderdetails(orderNo, flatBuildingNo, area, landMark, streetName, city,orderType, quantity,customerId,foodMenuId,orderGroup) 
-						VALUES('' , '{$flatOrBuildingNumber}' ,'{$area}' ,'{$landmark}','{$streetName}','{$city}', '{$deliver_type}', '{$food_qty}','{$usr_id}','{$food_id}','{$ordergroup}')";
+				orderdetails(orderNo, flatBuildingNo, area, landMark, streetName, city,orderType, quantity,customerId,foodMenuId) 
+						VALUES('' , '{$flatOrBuildingNumber}' ,'{$area}' ,'{$landmark}','{$streetName}','{$city}', '{$deliver_type}', '{$food_qty}','{$usr_id}','{$food_id}')";
 
 				$result = mysqli_query($connection, $query);
 
@@ -116,8 +114,6 @@
 			$food_qty = $_POST['food_qty'];
 			$food_id = $_POST['food_id'];
 
-			$ordergroup = $_POST['ordergroup'];
-
 			// $usr = ($_SESSION['user_id']);
 
 			$req_fields = array('food_id','flatOrBuildingNumber','streetName','area','landmark', 'city','deliver_type','food_qty');
@@ -146,8 +142,8 @@
 
 
 				$query = "INSERT INTO 
-				orderdetails(orderNo, flatBuildingNo, area, landMark, streetName, city,orderType, quantity,customerId,foodMenuId,orderGroup) 
-						VALUES('' , '{$flatOrBuildingNumber}' ,'{$area}' ,'{$landmark}','{$streetName}','{$city}', '{$deliver_type}', '{$food_qty}','{$usr_id}','{$food_id}','{$ordergroup}')";
+				orderdetails(orderNo, flatBuildingNo, area, landMark, streetName, city,orderType, quantity,customerId,foodMenuId) 
+						VALUES('' , '{$flatOrBuildingNumber}' ,'{$area}' ,'{$landmark}','{$streetName}','{$city}', '{$deliver_type}', '{$food_qty}','{$usr_id}','{$food_id}')";
 
 				$result = mysqli_query($connection, $query);
 
@@ -250,7 +246,6 @@
 				    	<div class="form-group loc">
 				    		<label class="col-12 control-label text-center">Enter the Food Id</label>
 				    		<input type="text" name="food_id" placeholder="Food Id" style="margin: 2px 0 2px 0;">
-				    		<input type="text" name="ordergroup" placeholder="Order Group" style="margin: 2px 0 2px 0;">
 				    		<br>
 				    		<br>
 				    		<label class="col-12 control-label text-center" >Enter the Location Details</label>

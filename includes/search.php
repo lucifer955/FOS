@@ -1,4 +1,6 @@
 
+
+
 <?php
     if (isset($_POST['action'])) {
         switch ($_POST['action']) {
@@ -16,7 +18,8 @@
     if($fms1){
         while ($fm = mysqli_fetch_assoc($fms1)) {
 
-            echo "
+            echo "  
+
                     <div class=\"col-12 col-md-6 col-sm-12 col-lg-4 itemDeal\">
                     <form action=\"foodMenu.php\" method=\"GET\">
                         <div class=\"card\">
