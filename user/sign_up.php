@@ -234,4 +234,6 @@
 <?php 
   include('../includes/footer.php');
 ?>
-<?php mysqli_close($connection); ?>
+<?php 
+//mysqli_close($connection); 
+?>

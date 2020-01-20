@@ -3,6 +3,26 @@
   $page= 'myOrders';include('../includes/loggedHeader.php');
 ?>
 
+<?php  
+	
+	$sql = "SELECT foodMenuId FROM orderdetails";
+	$result = mysqli_query($connection,$sql);
+	$datas = array();
+
+	if (mysqli_num_rows($result) > 0) {
+		while ($row = mysqli_fetch_assoc($result)) {
+			$datas[] = $row;
+		}
+	}
+
+	$insert_data = base64_encode(serialize($datas));
+	// serialize($datas);
+	$query12 = "INSERT INTO orderno (orderNumber,foodMenuIds) VALUES ('','{$insert_data}')";
+	// $cmp = unserialize(base64_decode($insert_data));
+	// print_r($cmp);
+    $result = mysqli_query($connection,$query12);
+    $_SESSION["insert_data"] = $datas;
+?>
 
 <div class="loggedOrders">
 	<div class="container">
@@ -21,7 +41,7 @@
 
 
     //getting the list of food Menu
-    $query_or = "SELECT * FROM orderdetails ORDER BY orderNo DESC";
+    $query_or = "SELECT * FROM orderno ORDER BY orderNumber DESC";
     $odr = mysqli_query($connection, $query_or);
     if($odr){
         while ($or = mysqli_fetch_assoc($odr)) {
@@ -37,12 +57,12 @@
 				      <div class=\"card-body\">
 				      	<div class=\"row\">
 				      		<div class=\"col col-md\">
-					      		<h5 class=\"card-title\">Order ID : <span>{$or['orderNo']}</span></h5>
-				        		<p class=\"card-text\">Order date : <span>2000.12.12</span></p>			      			
+					      		<h5 class=\"card-title\">Order ID : <span>{$or['orderNumber']}</span></h5>
+				        		<p class=\"card-text\">Order date : <span>{$or['orderedTime']}</span></p>			      			
 				      		</div>
 				      		<div class=\"col col-md\">
 				      		<div class=\"text-center\">
-                                <a href=\"orderdetails.php?orderNo={$or['orderNo']}&foodMenuId={$or['foodMenuId']}&quantity={$or['quantity']}\" class=\"btn btn-primary btn-dark\" name=\"addtocart\">View Details</a>
+                                <a href=\"orderdetails.php?orderNumber={$or['orderNumber']}&insert_data=$insert_data\" class=\"btn btn-primary btn-dark\" name=\"addtocart\">View Details</a>
                             </div>	
 				      		</div>
 				      	</div>
@@ -59,6 +79,7 @@
 		</div>
 	</div>
 </div>
+
 
 
 <!-- include the footer files -->

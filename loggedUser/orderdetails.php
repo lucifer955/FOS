@@ -7,16 +7,12 @@
 	// $category_list = '';
 	$usr_id = $_SESSION['user_id'];
 	// $foodMenuId = $_SESSION['foodMenuId'];
-	$orderNo = $_GET['orderNo'];
+	$orderNumber = $_GET['orderNumber'];
 
-	$foodMenuId = $_GET['foodMenuId'];
-	$quantity = $_GET['quantity'];
-
+	$insert_data = $_GET['insert_data'];
 	//getting the list of categories
-
-
+	$cmp = unserialize(base64_decode($insert_data));
 ?>
-
 
 <div class="loggedOrders">
 	<div class="container">
@@ -29,56 +25,56 @@
 	    	</nav>
 		</div>
 		<div class="row">
-
+			
+			<div class="col-12 col-md-7 col-lg-7">
 
 <?php
+	
+	foreach($cmp as $item) {
+    	$foodMenuId = $item['foodMenuId'];
 
-    //getting the list of food Menu
-	$query_od = "SELECT * FROM orderdetails where orderNo = $orderNo";
+			$query1 = "SELECT * FROM foodmenu where foodMenuId = $foodMenuId";
 
-	$query1 = "SELECT * FROM foodmenu where foodMenuId = $foodMenuId";
+			// $orders = mysqli_query($connection, $query_od);
 
-	$orders = mysqli_query($connection, $query_od);
+			$orders1 = mysqli_query($connection, $query1);
 
-	$orders1 = mysqli_query($connection, $query1);
+		    if($orders1){
+		        while ($or = mysqli_fetch_assoc($orders1)) {
 
-    if($orders1){
-        while ($or = mysqli_fetch_assoc($orders1)) {
+		            echo "
 
-            echo "
-            <div class=\"col-12 col-md-7 col-lg-7\">
-				<div class=\"card\">
-				  <div class=\"card-body\">
-				  	<div class=\"row align-items-center\">
-					  	<div class=\"col-4 col-md-4 col-lg-4\">
-					  		<img src=\"../images/{$or['foodImage']}\" alt=\"...\" class=\" rounded float-left\" height=\"128px\" width=\"128px\">
-					  	</div>
+						<div class=\"card\">
+						  <div class=\"card-body\">
+						  	<div class=\"row align-items-center\">
+							  	<div class=\"col-4 col-md-4 col-lg-4\">
+							  		<img src=\"../images/{$or['foodImage']}\" alt=\"...\" class=\" rounded float-left\" height=\"128px\" width=\"128px\">
+							  	</div>
 
-					  	<div class=\"col-5 col-md-5 col-lg-5 float-left\">
-					  		<h5 class=\"card-title\">{$or['itemName']}</h5>
+							  	<div class=\"col-5 col-md-5 col-lg-5 float-left\">
+							  		<h5 class=\"card-title\">{$or['itemName']}</h5>
 
-					    	<p class=\"card-text\"{$or['itemDescription']}</p>
-					  	</div>
+							    	<p class=\"card-text\"{$or['itemDescription']}</p>
+							  	</div>
 
-					  	<div class=\"col-2 col-md-2 col-lg-2 float-left\">
-					  		<p>Rs.{$or['itemPrice']}/=</p>
-					  	</div>	
-					  	</div>
-				  </div>
-				</div>
-			</div>	
-            ";
+							  	<div class=\"col-2 col-md-2 col-lg-2 float-left\">
+							  		<p>Rs.{$or['itemPrice']}/=</p>
+							  	</div>	
+							  	</div>
+						  </div>
+						</div>
 
-            $itemPrice = $or['itemPrice'];
-        }   
-    }
+		            ";
+
+		            $itemPrice = $or['itemPrice'];
+		        }   
+		    }
+
+		}
 
 ?>
-			
-
-
-
-			<div class="col-12 col-md-5 col-lg-5" id="shoppingCart">
+</div>	
+			<div class="col-12 col-md-5 col-lg-5 " id="shoppingCart">
 				<div class="card text-center">
 				  <div class="card-header">
 				  <div class="card-body">
@@ -87,8 +83,9 @@
 
 <?php
 
+	
     //getting the list of food Menu
-	$query_od = "SELECT * FROM orderdetails where orderNo = $orderNo";
+	$query_od = "SELECT * FROM orderdetails LIMIT 1";
 
 	$orders = mysqli_query($connection, $query_od);
 
@@ -96,7 +93,7 @@
         while ($or = mysqli_fetch_assoc($orders)) {
 
             echo "
-				  <label class=\"col control-label text-center\"><b>Food Id 	: </b><span>{$or['foodMenuId']}</span></label>
+				  <label class=\"col control-label text-center\"><b>Food Id 	: </b><span>$orderNumber</span></label>
 				  <label class=\"col control-label text-center\"><b>Flat or Building No 	: </b><span>{$or['flatBuildingNo']}</span></label>
 				  <label class=\"col control-label text-center\"><b>Street Name 	: </b><span>{$or['streetName']}</span></label>
 				  <label class=\"col control-label text-center\"><b>Landmark 	: </b><span>{$or['landMark']}</span></label>

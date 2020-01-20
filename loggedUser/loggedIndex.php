@@ -22,20 +22,20 @@
                 <img src="..\images\search.png" class="rounded mx-auto d-block" alt="...">
               
                 <h5>Select</h3>
-                <p class="d-none d-md-block">Selct the food item you want.</p>
+                <p class="d-none d-md-block">Select the food item you want.</p>
               </div>
               <div class="col-4 col-sm-4">
                 <img src="..\images\order-food.png" class="rounded mx-auto d-block" alt="...">
              
                 <h5>Order</h3>
-                <p class="d-none d-md-block">Selct the food item you want.</p>
+                <p class="d-none d-md-block">Select the food item you want.</p>
               </div>
           
               <div class="col-4 col-sm-4">
                 <img src="..\images\pizza.png" class="rounded mx-auto d-block" alt="...">
                 
                 <h5>Enjoy</h3>
-                <p class="d-none d-md-block">Selct the food item you want.</p>        
+                <p class="d-none d-md-block">Select the food item you want.</p>        
               </div>
             </div>
         </div>    
@@ -62,11 +62,11 @@
     if($fms1){
         while ($fm = mysqli_fetch_assoc($fms1)) {
 
-            echo "  <div class=\"col-12\" style=\"margin: 10px 0 40px 0;\">
+            echo "  <div class=\"col-12\">
                         <h1 class=\"text-left \">Search Results....</h1>
                         <hr>
                     </div>
-                    <div class=\"col-12 col-md-6 col-sm-12 col-lg-4 itemDeal\">
+                    <div class=\"col-12 col-md-6 col-sm-12 col-lg-4 itemDeal\" style=\"margin-bottom: 100px\">
                     <form action=\"foodMenu.php\" method=\"GET\">
                         <div class=\"card\">
                           <img class=\"card-img-top\" src=\"../images/{$fm['foodImage']}\" alt=\"Card image cap\" style=\"height:150px;\">
@@ -91,7 +91,7 @@
    </div>
 
     <div>
-      <h1 class="text-center">Our Hot Deals</h1>
+      <h1 class="text-center" >Our Hot Deals</h1>
       <hr>
     </div>
     
@@ -103,7 +103,7 @@
                       <h5 class="card-title">Card title</h5>
                       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                       <div class="text-center">
-                        <a href="#" class="btn btn-primary btn-dark">View</a>
+                       
                         <a href="cart.php" class="btn btn-primary btn-dark">Add to Cart <i class="fa fa-cart-plus"></i></a>
                       </div>
                     </div>
@@ -116,7 +116,7 @@
                       <h5 class="card-title">Card title</h5>
                       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                       <div class="text-center">
-                        <a href="#" class="btn btn-primary btn-dark">View</a>
+                        
                         <a href="cart.php" class="btn btn-primary btn-dark">Add to Cart <i class="fa fa-cart-plus"></i></a>
                       </div>
                     </div>
@@ -129,7 +129,7 @@
                       <h5 class="card-title">Card title</h5>
                       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                       <div class="text-center">
-                        <a href="#" class="btn btn-primary btn-dark">View</a>
+                       
                         <a href="cart.php" class="btn btn-primary btn-dark">Add to Cart <i class="fa fa-cart-plus"></i></a>
                       </div>
                     </div>

@@ -21,20 +21,20 @@
                 <img src="..\images\search.png" class="rounded mx-auto d-block" alt="...">
               
                 <h5>Select</h3>
-                <p class="d-none d-md-block">Selct the food item you want.</p>
+                <p class="d-none d-md-block">Select the food item you want.</p>
               </div>
               <div class="col-4 col-sm-4">
                 <img src="..\images\order-food.png" class="rounded mx-auto d-block" alt="...">
              
                 <h5>Order</h3>
-                <p class="d-none d-md-block">Selct the food item you want.</p>
+                <p class="d-none d-md-block">Select the food item you want.</p>
               </div>
           
               <div class="col-4 col-sm-4">
                 <img src="..\images\pizza.png" class="rounded mx-auto d-block" alt="...">
                 
                 <h5>Enjoy</h3>
-                <p class="d-none d-md-block">Selct the food item you want.</p>        
+                <p class="d-none d-md-block">Select the food item you want.</p>        
               </div>
             </div>
         </div>    

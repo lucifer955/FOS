@@ -38,7 +38,7 @@
         while ($fm = mysqli_fetch_assoc($fms)) {
 
             echo "
-                    <div class=\"col-12 col-md-6 col-sm-12 col-lg-4 itemDeal\">
+                    <div class=\"col-12 col-md-6 col-sm-12 col-lg-4 itemDeal\" >
                     <form action=\"foodMenu.php\" method=\"GET\">
                         <div class=\"card\">
                           <img class=\"card-img-top\" src=\"../images/{$fm['foodImage']}\" alt=\"Card image cap\" style=\"height:150px;\">

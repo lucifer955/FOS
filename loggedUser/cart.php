@@ -161,15 +161,6 @@
 ?>
 
 
-<?php
-
-
-
-
-
-
-?>
-
 <div class="loggedCart">
 	<div class="container">
 		<div class="col-md-12"> <!-- style="margin-top: 50px;" -->		
@@ -314,3 +305,5 @@
 <?php 
   include('../includes/loggedFooter.php');
 ?>
+
+
