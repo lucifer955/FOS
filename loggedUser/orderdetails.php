@@ -142,6 +142,8 @@
 
 
 <!-- include the footer files -->
-<?php 
+<?php
+		$qw = "truncate table orderdetails";
+	$rs = mysqli_query($connection,$qw); 
   include('../includes/loggedFooter.php');
 ?>
