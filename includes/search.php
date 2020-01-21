@@ -1,6 +1,3 @@
-
-
-
 <?php
     if (isset($_POST['action'])) {
         switch ($_POST['action']) {
@@ -12,7 +9,7 @@
 
 
     function insert() {
-            //getting the list of food Menu
+
     $query3 = "SELECT * FROM foodmenu where itemName= $searchFood";
     $fms1 = mysqli_query($connection, $query3);
     if($fms1){

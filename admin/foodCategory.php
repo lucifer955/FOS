@@ -27,7 +27,7 @@
       if (empty($errors_category)) {
       	//adding new category
 
-      	$query = "INSERT INTO category (categoryId,categoryName,creationDate) VALUES ('','{$category_name}','')";
+      	$query = "INSERT INTO category (categoryId,categoryName) VALUES ('','{$category_name}')";
 
       	$result = mysqli_query($connection,$query);
       	$message = "New Category Added";

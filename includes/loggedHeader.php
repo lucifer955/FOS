@@ -85,18 +85,24 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- external css file -->
     <link rel="stylesheet" href="..\css\style.css">
+
      <link rel="stylesheet" href="..\css\styleLogged.css">
      <link rel="stylesheet" href="..\css\styleLogged2.css">
      <link rel="stylesheet" href="..\css\styleLogged3.css">
+     <link rel="stylesheet" href="..\css\styleLogged4.css">
+      <link rel="stylesheet" href="..\css\styleCards.css">
+     
     <!-- google fonts -->
     <link href="https://fonts.googleapis.com/css?family=Pacifico|Roboto&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <title>Index</title>
   </head>
   <body>
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="#"><strong>PIZZAMART</strong></a>
+      <a class="navbar-brand" href="#"><strong><span style="color: red">PIZZA</span>MART</strong></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>

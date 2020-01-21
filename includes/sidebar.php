@@ -1,6 +1,6 @@
 <div class="panel panel-default sidebar-menu">
 
-	<div class="panel-body" >  <!-- style="margin-top: 20px;" -->
+	<!-- <div class="panel-body" >
 		<div class="panel-heading">
 			<h3 class="panel-title">Search Food</h3>
 		</div>
@@ -14,7 +14,7 @@
     			</div>
 		  	</div>
 		</div>
-	</div>
+	</div> -->
 	
 	<div class="panel-body panelContent"><!--  style="margin-top: 50px;" -->
 		<div class="panel-heading">

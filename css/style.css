@@ -17,20 +17,38 @@ nav{
 
 .jumbotron h1{
     font-family: 'Pacifico', cursive;
+     text-shadow: 1px 1px 6px #000000;
     font-size: 70px;
+ 
+}
+
+.jumbotron p{
+  color: white;
+  text-shadow: 2px 2px 4px #000000;
 }
 
 .jumbotron h5{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    color: white;
 }
 .howToStuff{
     margin-top: 80px;
-    background: rgba(0, 0, 0, 0.486);
+    background: rgba(0, 0, 0, 0.5);
     padding: 20px;
 }
 
 .containerDeals{
     color: black;
+}
+
+.containerDeals h1{
+   font-family: 'Pacifico', cursive;
+   font-size: 60px;
+
+   background: -webkit-linear-gradient( #333, #343a40);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
 }
 
 .itemDeal{
@@ -39,7 +57,8 @@ nav{
 
 footer{
     margin-top: 100px;
-    padding: 20px;
+    padding-top: 100px;
+    padding-bottom: 100px;
     background-image: url("../images/nav.png");
     background-size: cover;
     color: white;

@@ -1,0 +1,23 @@
+.howToStuff{
+    margin-top: 80px;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+}
+
+.containerDeals{
+    color: black;
+}
+
+.containerDeals h1{
+   font-family: 'Pacifico', cursive;
+   font-size: 60px;
+
+   background: -webkit-linear-gradient( #333, #343a40);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+}
+
+.itemDeal{
+    margin-top: 20px;
+}

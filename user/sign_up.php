@@ -3,7 +3,6 @@
   require_once('../includes/connection.php'); 
 ?>
 <?php  
-  require_once('../includes/connection.php');
   require_once('../includes/functions.php');
 ?>
 <?php
@@ -87,6 +86,7 @@
 
     $query = "SELECT * FROM customer WHERE customerEmail = '{$email}' LIMIT 1";
 
+    //
     $result_set = mysqli_query($connection, $query);
 
     if ($result_set) {
@@ -105,10 +105,10 @@
       $mobile_number = mysqli_real_escape_string($connection, $_POST['mobile_number']);
       $password = mysqli_real_escape_string($connection, $_POST['password']);
 
-      $hashed = sha1($password);
+      // $hashed = sha1($password);
 
       $query = "INSERT INTO customer(customerFirstName,customerLastName,customerEmail,customerContactNo,customerPassword)
-        VALUES('{$first_name}','{$last_name}','{$email}','{$mobile_number}','{$hashed}')";
+        VALUES('{$first_name}','{$last_name}','{$email}','{$mobile_number}','{$password}')";
       // $query = "INSERT INTO customer(";
       // $query .= "customerFirstName,customerLastName,customerEmail,customerContactNo,customerPassword";
       // $query .= ")VALUES(";
