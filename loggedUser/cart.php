@@ -35,9 +35,25 @@
 			$area1 = '';
 			$landmark1 = '';
 			$city1 = '';
-			$deliver_type1 = '' ;
-			$food_qty1 = '';
-			$food_id1 ='' ;
+
+
+	// $customerId = $_GET['x'];
+	$query_reg = "SELECT * FROM orderdetails where foodMenuId = $foodMenuId";
+	$users3 = mysqli_query($connection, $query_reg);
+
+  		$flatOrBuildingNumber1  = '';
+  		$streetName1 = '';
+  		$area1 = '';
+  		$city1 = '';
+
+  		if($users3){
+				while ($usr = mysqli_fetch_assoc($users3)) {
+					$flatOrBuildingNumber1 = $usr['flatBuildingNo'];
+					$streetName1 = $usr['streetName'];
+					$area1 = $usr['area'];
+					$city1 = $usr['city'];
+				}
+		}
 ?>
 
 <?php  
@@ -68,10 +84,6 @@
 			$area1 = $_POST['area'];
 			$landmark1 = $_POST['landmark'];
 			$city1 = $_POST['city'];
-			$deliver_type1 = $_POST['deliver_type'];
-			$food_qty1 = $_POST['food_qty'];
-			$food_id1 = $_POST['food_id'];
-
 
 			// $usr = ($_SESSION['user_id']);
 

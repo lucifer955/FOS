@@ -63,8 +63,8 @@
                 <div class="serv-section-2">
                     <div class="serv-section-2-icon"> <i class="fas fa-concierge-bell"></i> </div>
                     <div class="serv-section-desc">
-                        <h4>Planning</h4>
-                        <h5>Business Planning</h5> </div>
+                        <h4>On time</h4>
+                        <h5>We provide better service</h5> </div>
                     <div class="section-heading-line-left"></div>
                 </div>
             </div>
@@ -72,8 +72,8 @@
                 <div class="serv-section-2 serv-section-2-act">
                     <div class="serv-section-2-icon serv-section-2-icon-act"> <i class="fas fa-pepper-hot"></i> </div>
                     <div class="serv-section-desc">
-                        <h4>Management</h4>
-                        <h5>Retirement Planning</h5> </div>
+                        <h4>Hot n Spicy</h4>
+                        <h5>Larger Collection of PIZZA</h5></div>
                     <div class="section-heading-line-left"></div>
                    
                 </div>
@@ -82,8 +82,8 @@
                 <div class="serv-section-2">
                     <div class="serv-section-2-icon"> <i class="fas fa-info"></i> </div>
                     <div class="serv-section-desc">
-                        <h4>Accumulation</h4>
-                        <h5>Support and Sell</h5> </div>
+                        <h4>Info</h4>
+                        <h5>Contact us for more details</h5></div>
                     <div class="section-heading-line-left"></div>
                     
                 </div>
