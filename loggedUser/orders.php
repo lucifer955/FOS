@@ -45,8 +45,8 @@
     $odr = mysqli_query($connection, $query_or);
     if($odr){
         while ($or = mysqli_fetch_assoc($odr)) {
-
-            echo "
+        	echo 
+        	"
             <div class=\"col-12 col-md-7 col-lg-7\">
 				<div class=\"card mb-3\">
 				  <div class=\"row no-gutters align-items-center\">

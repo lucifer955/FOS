@@ -23,15 +23,15 @@
 					        <div class="form-row">
 					            <div class="col-12 col-sm-12">
 					              <label for="password">Current Password</label>
-					              <input type="password" class="form-control" placeholder="Current Password" id="currentPassword">
+					              <input type="password" class="form-control" placeholder="Current Password" id="currentPassword" name="currentPassword">
 					            </div>
 					            <div class="col-12 col-sm-12">
 					              <label for="newPassword">New Password</label>
-					              <input type="password" class="form-control" placeholder=" New Password" id="newPassword">
+					              <input type="password" class="form-control" placeholder=" New Password" id="newPassword" name="newPassword">
 					            </div>
 					            <div class="col-12 col-sm-12">
 					              <label for="repeatNewPassword">Repeat Password</label>
-					              <input type="password" class="form-control" placeholder="Repeat Password" id="repeatNewPassword">
+					              <input type="password" class="form-control" placeholder="Repeat Password" id="repeatNewPassword" name="repeatPassword">
 					            </div>
 					      </div>
 					      <br>

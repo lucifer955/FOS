@@ -21,7 +21,7 @@
 							  	<table class="table table-hover table-bordered">
 									<thead>
 									    <tr>
-									      <th scope="col">S.NO</th>
+									      <th scope="col">Order NO</th>
 									      <th scope="col">Order Number</th>
 									      <th scope="col">Order Date</th>
 									      <th scope="col">Action</th>
@@ -38,7 +38,7 @@
 									      <th>2</th>
 									      <td>Mark</td>
 									      <td>Otto</td>
-									      <td>Otto</td>
+									      <td><a href="viewCancelledOrderDetail.php">View Details</a></td>
 									    </tr>
 									  </tbody>
 							  	</table>

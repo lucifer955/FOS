@@ -38,7 +38,7 @@
 
 		    if ($result_set) {
 		     	if (mysqli_num_rows($result_set) == 1) {
-		      		$errors_foodmenu[] = 'Food Menu name is alreaddy exists';      		
+		      		$errors_foodmenu[] = 'Food Menu name is already exists';      		
 	    		}
 			}
 
@@ -84,7 +84,7 @@
 		<div class="container">
 				<div class="row justify-content-center">
 					<div class="card col-12 col-sm-12 col-md-6">
-						<h2 class="text-center">Manage Food Category</h2>
+						<h2 class="text-center">Add Food Item</h2>
 						<br>
 					  	<br>
 

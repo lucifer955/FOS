@@ -20,7 +20,7 @@
 
       if ($result_set) {
       	if (mysqli_num_rows($result_set) == 1) {
-      		$errors_category[] = 'Category name is alreaddy exists';      		
+      		$errors_category[] = 'Category name is already exists';      		
       	}
       }
 

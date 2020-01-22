@@ -26,19 +26,40 @@
 		</div>
 		<div class="row">
 			
-			<div class="col-12 col-md-7 col-lg-7">
+			<div class="col-12 col-md-8 col-lg-8">
+				<div class="card">
+						  <div class="card-body">
+						  	<div class="row align-items-center">
+							  	<div class="col-4 col-md-4 col-lg-4 text-center">
+							  		<h5><b>Image</b></h5>
+							  	</div>
 
+							  	<div class="col-3 col-md-3 col-lg-3 float-left">
+							  		<h5 class="card-title text-center"><b>Food Name</b></h5>
+							  	</div>
+							  	<div class="col-3 col-md-3 col-lg-3 float-left">
+							  		<h5 class="card-title text-center"><b>Quantity</b></h5>
+							  	</div>
+							  	<div class="col-2 col-md-2 col-lg-2 float-left">
+							  		<h5 class="card-title text-center"><b>Price</b></h5>
+							  	</div>	
+							  	</div>
+						  </div>
+						</div>
 <?php
 	
 	foreach($cmp as $item) {
     	$foodMenuId = $item['foodMenuId'];
 
-			$query1 = "SELECT * FROM foodmenu where foodMenuId = $foodMenuId";
+    		$query1 = "SELECT *
+			FROM foodmenu  
+			INNER JOIN orderdetails
+			ON foodmenu.foodMenuId = orderdetails.foodMenuId where foodmenu.foodMenuId = $foodMenuId";  
+			// $query1 = "SELECT * FROM `foodmenu` CROSS JOIN `orderdetails` where foodMenuId = $foodMenuId " ;
 
-			// $orders = mysqli_query($connection, $query_od);
+			// $orders = mysqli_query($connection, $query_od);SELECT * FROM foodmenu
 
 			$orders1 = mysqli_query($connection, $query1);
-
 		    if($orders1){
 		        while ($or = mysqli_fetch_assoc($orders1)) {
 
@@ -48,17 +69,19 @@
 						  <div class=\"card-body\">
 						  	<div class=\"row align-items-center\">
 							  	<div class=\"col-4 col-md-4 col-lg-4\">
+							  	<p class=\"text-center\">
 							  		<img src=\"../images/{$or['foodImage']}\" alt=\"...\" class=\" rounded float-left\" height=\"128px\" width=\"128px\">
+							  	</p>
 							  	</div>
 
-							  	<div class=\"col-5 col-md-5 col-lg-5 float-left\">
-							  		<h5 class=\"card-title\">{$or['itemName']}</h5>
-
-							    	<p class=\"card-text\"{$or['itemDescription']}</p>
+							  	<div class=\"col-3 col-md-3 col-lg-3 float-left\">
+							  		<h5 class=\"card-title text-center\">{$or['itemName']}</h5>
 							  	</div>
-
+							  	<div class=\"col-3 col-md-3 col-lg-3 float-left\">
+							  		<h5 class=\"card-title text-center\">{$or['quantity']}</h5>
+							  	</div>
 							  	<div class=\"col-2 col-md-2 col-lg-2 float-left\">
-							  		<p>Rs.{$or['itemPrice']}/=</p>
+							  		<h5 class=\"card-title text-center\">Rs.{$or['itemPrice']}/=</h5>
 							  	</div>	
 							  	</div>
 						  </div>
@@ -74,7 +97,7 @@
 
 ?>
 </div>	
-			<div class="col-12 col-md-5 col-lg-5 " id="shoppingCart">
+			<div class="col-12 col-md-4 col-lg-4 " id="shoppingCart">
 				<div class="card text-center">
 				  <div class="card-header">
 				  <div class="card-body">
@@ -93,7 +116,7 @@
         while ($or = mysqli_fetch_assoc($orders)) {
 
             echo "
-				  <label class=\"col control-label text-center\"><b>Food Id 	: </b><span>$orderNumber</span></label>
+				  <label class=\"col control-label text-center\"><b>Order Id 	: </b><span>$orderNumber</span></label>
 				  <label class=\"col control-label text-center\"><b>Flat or Building No 	: </b><span>{$or['flatBuildingNo']}</span></label>
 				  <label class=\"col control-label text-center\"><b>Street Name 	: </b><span>{$or['streetName']}</span></label>
 				  <label class=\"col control-label text-center\"><b>Landmark 	: </b><span>{$or['landMark']}</span></label>
@@ -103,7 +126,10 @@
 
 
             ";
-        }   
+            $quantity = $or['quantity'];
+        }
+
+
     }
 
 ?>
@@ -122,14 +148,15 @@
 				  <div class="card-footer text-center">
 				  	<form>
 				  		<div class="text-center">
-                                <a href="invoice.php?foodMenuId=<?php echo "$foodMenuId"?>&orderNo=<?php echo "$orderNo"?>&quantity=<?php echo "$quantity"?>&itemPrice=<?php echo "$itemPrice" ?>" class="btn btn-primary btn-dark" name="addtocart"  target="_blank">Invoice</a>
-                            </div>				  		<br>
+                                <a href="invoice.php?orderNo=<?php echo "$orderNo"?>&quantity=<?php echo "$quantity"?>&itemPrice=<?php echo "$itemPrice" ?>" target="_blank" class="btn btn-primary btn-dark" name="addtocart" >Invoice</a>
+                            </div>	
+                            			  		<br>
 				  		<a href="cancelOrder.php" target="_blank">cancel order</a>
 
 				  		<br>
-					    <h3>Total</h3>
+					    <!-- <h3>Total</h3>
 
-					    <h4>Rs.499/=</h4>
+					    <h4>Rs.499/=</h4> -->
 					    <h5 style="margin-top: 5px;">Free Delivery</h5>		  		
 				  	</form>
 
@@ -143,7 +170,10 @@
 
 <!-- include the footer files -->
 <?php
-		$qw = "truncate table orderdetails";
-	$rs = mysqli_query($connection,$qw); 
+    $qw1 = "truncate table orderdetails";
+    $rs2 = mysqli_query($connection,$qw1);
+    $qw = "truncate table cart";
+    $rs = mysqli_query($connection,$qw);
+
   include('../includes/loggedFooter.php');
 ?>

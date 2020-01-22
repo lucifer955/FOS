@@ -1,5 +1,4 @@
-  <?php session_start(); ?>
-
+<?php session_start(); ?>
   <?php 
     require_once('../includes/connection.php'); 
   ?>
@@ -88,7 +87,10 @@
 
 
   </div>
-
+<?php 
+    $qw = "truncate table orderdetails";
+    $rs = mysqli_query($connection,$qw);
+?>
 
       <!-- Optional JavaScript -->
       <!-- jQuery first, then Popper.js, then Bootstrap JS -->

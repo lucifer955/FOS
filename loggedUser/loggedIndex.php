@@ -41,6 +41,58 @@
         </div>    
     </div>
 
+
+
+</div>
+  <!-- top deals -->
+  <div class="container containerDeals">
+
+   <!-- search results -->
+   <div class="searchResults">
+     <div class="row " >
+         
+<?php
+
+  $searchFood = '';
+
+
+  if (isset($_POST['searchSubmit'])) {
+      $searchFood1 = $_POST['searchFood1'];
+
+    $query3 = "SELECT * FROM foodmenu where itemName = '$searchFood1'";
+    $fms1 = mysqli_query($connection, $query3);
+    if($fms1){
+        while ($fm = mysqli_fetch_assoc($fms1)) {
+
+            echo "  <div class=\"col-12\" style=\"margin-top:100px\">
+                        <h1 class=\"text-left \">Search Results....</h1>
+                        <hr>
+                    </div>
+                    <div class=\"col-12 col-md-6 col-sm-12 col-lg-4 itemDeal\" style=\"margin-bottom: 100px\">
+                    <form action=\"foodMenu.php\" method=\"GET\">
+                        <div class=\"card\">
+                          <img class=\"card-img-top\" src=\"../images/{$fm['foodImage']}\" alt=\"Card image cap\" style=\"height:150px;\">
+                          <div class=\"card-body\">
+                            <h5 class=\"card-title\"> {$fm['itemName']} </h5>
+                            <p class=\"card-text\"> {$fm['itemDescription']} </p>
+
+                            <div class=\"text-center\">
+                                <a href=\"cart.php?foodMenuId={$fm['foodMenuId']}\" class=\"btn btn-primary btn-dark\" name=\"addtocart\">Add to Cart <i class=\"fa fa-cart-plus\"></i></a>
+                            </div>
+                          </div>
+                        </div>
+                        </form>     
+                    </div>
+            ";
+        }   
+    }
+  }
+?>
+ 
+     </div>
+   </div>
+</div>
+
 <div class="container containerDeals" style="margin-top: 100px">
   <div>
       <h1 class="text-center">About Us</h1>
@@ -89,57 +141,8 @@
     </div>
 </div>  
 
-</div>
-  <!-- top deals -->
-  <div class="container containerDeals">
 
-   <!-- search results -->
-   <div class="searchResults">
-     <div class="row " >
-         
-<?php
-
-  $searchFood = '';
-
-
-  if (isset($_POST['searchSubmit'])) {
-      $searchFood1 = $_POST['searchFood1'];
-
-    $query3 = "SELECT * FROM foodmenu where itemName = '$searchFood1'";
-    $fms1 = mysqli_query($connection, $query3);
-    if($fms1){
-        while ($fm = mysqli_fetch_assoc($fms1)) {
-
-            echo "  <div class=\"col-12\">
-                        <h1 class=\"text-left \">Search Results....</h1>
-                        <hr>
-                    </div>
-                    <div class=\"col-12 col-md-6 col-sm-12 col-lg-4 itemDeal\" style=\"margin-bottom: 100px\">
-                    <form action=\"foodMenu.php\" method=\"GET\">
-                        <div class=\"card\">
-                          <img class=\"card-img-top\" src=\"../images/{$fm['foodImage']}\" alt=\"Card image cap\" style=\"height:150px;\">
-                          <div class=\"card-body\">
-                            <h5 class=\"card-title\"> {$fm['itemName']} </h5>
-                            <p class=\"card-text\"> {$fm['itemDescription']} </p>
-
-                            <div class=\"text-center\">
-                                <a href=\"cart.php?foodMenuId={$fm['foodMenuId']}\" class=\"btn btn-primary btn-dark\" name=\"addtocart\">Add to Cart <i class=\"fa fa-cart-plus\"></i></a>
-                            </div>
-                          </div>
-                        </div>
-                        </form>     
-                    </div>
-            ";
-        }   
-    }
-  }
-?>
  
-     </div>
-   </div>
-</div>
-
-
 <!-- top deals -->
   <div class="container containerDeals" style="margin-top: 150px;">
     <div>
@@ -153,82 +156,43 @@
       
       <div class="col-12 col-md-4 col-sm-4 itemDeal">
           <div class="card">
-                    <img class="card-img-top" src="..\images\bg2.png" alt="Card image cap">
+                    <img class="card-img-top" src="..\images\BBQChickenPizza-foodgawker (1).jpg" alt="Card image cap">
                     <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <div class="text-center">
+                      <h5 class="card-title">Chicken Bacon</h5>
+                      <p class="card-text">Chicken Bacon Pizza is loaded with chicken bacon and onions & green chillies with a double layer of mozzarella cheese.</p>
+                      <!-- <div class="text-center">
                         <a href="#" class="btn btn-primary btn-dark">Add to Cart <i class="fa fa-cart-plus"></i></a>
-                      </div>
+                      </div> -->
                     </div>
                   </div>
       </div>
       <div class="col-12 col-md-4 col-sm-4 itemDeal">
           <div class="card">
-                    <img class="card-img-top" src="..\images\bg2.png" alt="Card image cap">
+                    <img class="card-img-top" src="..\images\Hot-Spicy-Pizza.jpg" alt="Card image cap">
                     <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <div class="text-center">
+                      <h5 class="card-title">Spicy Seafood</h5>
+                      <p class="card-text">A fiery mix of prawns, devilled fish, olives, bell peppers and onions with a double layer of mozzarella cheese.</p>
+                      <!-- <div class="text-center">
                         <a href="#" class="btn btn-primary btn-dark">Add to Cart <i class="fa fa-cart-plus"></i></a>
-                      </div>
+                      </div> -->
                     </div>
                   </div>
       </div>
       <div class="col-12 col-md-4 col-sm-4 itemDeal">
           <div class="card">
-                    <img class="card-img-top" src="..\images\bg2.png" alt="Card image cap">
+                    <img class="card-img-top" src="..\images\chicken-bacon-ranch-pizza.jpg" alt="Card image cap">
                     <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <div class="text-center">
+                      <h5 class="card-title">Hot Garlic Prawns</h5>
+                      <p class="card-text">Spicy prawns, hot garlic sauce, onions, peppers and tomatoes with a double layer of mozzarella cheese.</p>
+                      <!-- <div class="text-center">
                         <a href="#" class="btn btn-primary btn-dark">Add to Cart <i class="fa fa-cart-plus"></i></a>
-                      </div>
+                      </div> -->
                     </div>
                   </div>
       </div>
     </div>
-
-    <div class="row">
-        <div class="col-12 col-md-4 col-sm-4 itemDeal">
-            <div class="card">
-                    <img class="card-img-top" src="..\images\bg2.png" alt="Card image cap">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <div class="text-center">
-                        <a href="#" class="btn btn-primary btn-dark">Add to Cart <i class="fa fa-cart-plus"></i></a>
-                      </div>
-                    </div>
-                  </div>
-        </div>
-        <div class="col-12 col-md-4 col-sm-4 itemDeal">
-            <div class="card">
-                    <img class="card-img-top" src="..\images\bg2.png" alt="Card image cap">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <div class="text-center">
-                        <a href="#" class="btn btn-primary btn-dark">Add to Cart <i class="fa fa-cart-plus"></i></a>
-                      </div>
-                    </div>
-                  </div>
-        </div>
-        <div class="col-12 col-md-4 col-sm-4 itemDeal">
-            <div class="card">
-                    <img class="card-img-top" src="..\images\bg2.png" alt="Card image cap">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <div class="text-center">
-                        <a href="#" class="btn btn-primary btn-dark">Add to Cart <i class="fa fa-cart-plus"></i></a>
-                      </div>
-                    </div>
-                  </div>
-        </div>
-      </div>
   </div>
-<div class="container containerDeals" style="margin-top: 100px;">
+<div class="container containerDeals d-none d-lg-block" style="margin-top: 100px;">
   <div>
       <h1 class="text-center">Visit Us</h1>
       <hr>

@@ -108,8 +108,8 @@
 								<div class="form-group">
 								    <label for="exampleFormControlSelect2">Resturant Status:</label>
 								    <select class="form-control" id="exampleFormControlSelect2">
-								      <option>Order Confirmed</option>
-								      <option>Order Cancelled</option>
+								      <option>Confirm the Order</option>
+								      <option>Cancel the Order</option>
 <!-- 								      <option>Food B</option>
 								      <option>Order Pickup</option>
 								      <option>Food Delivered</option> -->
@@ -127,14 +127,15 @@
 								  	<table class="table table-hover table-bordered table-sm">
 										<tr>
 											<th>#</th>
+											<th>Order Number</th>
 											<th>Remark</th>
 											<th>Status</th>
 											<th>Time</th>
 										</tr>
 										<tr>
 											<td>1</td>
-											<td>Chees</td>
-											<td>344</td>
+											<td>resturant remark here</td>
+											<td>Order Confirmed</td>
 											<td>344</td>
 										</tr>
 								  	</table>

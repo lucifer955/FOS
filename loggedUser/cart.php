@@ -21,7 +21,7 @@
 			$query = "INSERT INTO cart (foodMenuId,itemName,foodImage,itemPrice) VALUES ('{$cart['foodMenuId']}','{$cart['itemName']}','{$cart['foodImage']}','{$cart['itemPrice']}')";
 
       		$result = mysqli_query($connection,$query);
-      		$message = "New Category Added";
+      		$message = "Added to cart";
 
       		if ($result) {
       				$foodMenuId =  $cart['foodMenuId'];
@@ -30,7 +30,14 @@
 		}
 	}
 
-
+			$flatOrBuildingNumber1 = '';
+			$streetName1 = '';
+			$area1 = '';
+			$landmark1 = '';
+			$city1 = '';
+			$deliver_type1 = '' ;
+			$food_qty1 = '';
+			$food_id1 ='' ;
 ?>
 
 <?php  
@@ -55,6 +62,15 @@
 			$deliver_type = $_POST['deliver_type'];
 			$food_qty = $_POST['food_qty'];
 			$food_id = $_POST['food_id'];
+
+			$flatOrBuildingNumber1 = $_POST['flatOrBuildingNumber'];
+			$streetName1 = $_POST['streetName'];
+			$area1 = $_POST['area'];
+			$landmark1 = $_POST['landmark'];
+			$city1 = $_POST['city'];
+			$deliver_type1 = $_POST['deliver_type'];
+			$food_qty1 = $_POST['food_qty'];
+			$food_id1 = $_POST['food_id'];
 
 
 			// $usr = ($_SESSION['user_id']);
@@ -235,16 +251,19 @@
 				    <form action="cart.php" method="post">
 
 				    	<div class="form-group loc">
-				    		<label class="col-12 control-label text-center">Enter the Food Id</label>
+				    		<label class="col-12 control-label text-center" >Enter the Food Id</label>
 				    		<input type="text" name="food_id" placeholder="Food Id" style="margin: 2px 0 2px 0;">
 				    		<br>
 				    		<br>
 				    		<label class="col-12 control-label text-center" >Enter the Location Details</label>
-				    		<input type="text" name="flatOrBuildingNumber" placeholder="Flat or Building Number" style="margin: 2px 0 2px 0;">
-					    	<input type="text" name="streetName" placeholder="Street Name" style="margin: 2px 0 2px 0;">
-					    	<input type="text" name="area" placeholder="Area" style="margin: 2px 0 2px 0;">
-					    	<input type="text" name="landmark" placeholder="If any Landmark" style="margin: 2px 0 2px 0;">
-					    	<input type="text" name="city" placeholder="City" style="margin: 2px 0 2px 0;">
+				    		<input type="text" name="flatOrBuildingNumber" placeholder="Flat or Building Number" style="margin: 2px 0 2px 0;" <?php echo 'value ="' . $flatOrBuildingNumber1 . '"'; ?>>
+					    	<input type="text" name="streetName" placeholder="Street Name" style="margin: 2px 0 2px 0;" <?php echo 'value ="' . $streetName1 . '"'; ?>>
+					    	<input type="text" name="area" placeholder="Area" style="margin: 2px 0 2px 0;"
+					    	<?php echo 'value ="' . $area1 . '"'; ?>>
+					    	<input type="text" name="landmark" placeholder="If any Landmark" style="margin: 2px 0 2px 0;"
+					    	>
+					    	<input type="text" name="city" placeholder="City" style="margin: 2px 0 2px 0;"
+					    	<?php echo 'value ="' . $city1 . '"'; ?>>
 				    	</div>
 						    <div class="row justify-content-center">
 						     <label class="col-12 control-label" ><strong>Choose</strong></label>
@@ -292,8 +311,8 @@
 				</div>
 			 <!--  -->
 				  <div class="card-footer text-center">
-				    <h3>Total</h3>
-				    <h4>Rs.499/=</h4>
+				   <!--  <h3>Total</h3>
+				    <h4>Rs.499/=</h4> -->
 				    <h5 style="margin-top: 5px;">Free Delivery</h5>
 				  </div>
 			</div>	

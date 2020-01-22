@@ -22,7 +22,7 @@
 							  	<table class="table table-hover table-bordered">
 									<thead>
 									    <tr>
-									      <th scope="col">S.NO</th>
+									      <th scope="col">CID</th>
 									      <th scope="col">First Name</th>
 									      <th scope="col">Last Name</th>
 									      <th scope="col">Mobile Number</th>
@@ -36,7 +36,7 @@
 <?php  
 
 	// $category_list = '';
-
+	$x = '';
 	//getting the list of categories
 	$query_reg = "SELECT * FROM customer";
 	$users = mysqli_query($connection, $query_reg);
@@ -50,7 +50,7 @@
 			echo "<td>{$user['customerEmail']}</td>";
 			echo "<td>{$user['customerContactNo']}</td>";
 			echo "<td>{$user['customerPassword']}</td>";
-			echo "<td><a href=\"adminUserDetail.php\">Edit</a></td>";
+			echo "<td><a href=\"adminUserDetail.php?x={$user['customerId']}\">Edit</a></td>";
 			echo "</tr>";
 		}
 	}
