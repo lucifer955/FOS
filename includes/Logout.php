@@ -10,5 +10,5 @@
 
 	session_destroy();
 
-	header('Location: ../user/sign_in.php?logout=yes');
+	header('Location: ../sign_in.php?logout=yes');
 ?>

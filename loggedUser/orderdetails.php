@@ -41,7 +41,7 @@
 							  		<h5 class="card-title text-center"><b>Quantity</b></h5>
 							  	</div>
 							  	<div class="col-2 col-md-2 col-lg-2 float-left">
-							  		<h5 class="card-title text-center"><b>Price</b></h5>
+							  		<h5 class="card-title text-center"><b>Unit Price</b></h5>
 							  	</div>	
 							  	</div>
 						  </div>

@@ -1,6 +1,6 @@
 <!-- include the header files -->
 <?php 
-  $page= 'signIn';include('../includes/header.php');
+  $page= 'signIn';include('includes/header.php');
 ?>
 
 
@@ -60,12 +60,12 @@
 
     <div class="col-12 col-md-5 col-sm-12">
       <h3 class="" style="color:black;">Just Sign in to Order the food you want.</h3>
-      <img class="mx-auto d-block" src="..\images\log-in.png" alt="">
+      <img class="mx-auto d-block" src="images\log-in.png" alt="">
     </div>
   </div>
 </div>
 
 <!-- include the footer files -->
 <?php 
-  include('../includes/footer.php');
+  include('includes/footer.php');
 ?>

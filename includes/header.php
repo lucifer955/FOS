@@ -1,6 +1,6 @@
 <?php session_start(); ?>
 <?php 
-  require_once('../includes/connection.php'); 
+  require_once('includes/connection.php'); 
 ?>
 
 <?php  
@@ -48,7 +48,7 @@
             $_SESSION['user_id'] = $user['customerId'];
             $_SESSION['first_name'] = $user['customerFirstName'];
             //redirect to dashboard.php
-            header('Location: ../loggedUser/loggedIndex.php');
+            header('Location: loggedUser/loggedIndex.php');
           }else{
             //user name and password invalid
 
@@ -75,8 +75,8 @@
     <!-- font awesome cdn -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- external css file -->
-    <link rel="stylesheet" href="..\css\style.css">
-    <link rel="stylesheet" href="..\css\styleCards.css">
+    <link rel="stylesheet" href="css\style.css">
+    <link rel="stylesheet" href="css\styleCards.css">
     <!-- google fonts -->
     <link href="https://fonts.googleapis.com/css?family=Pacifico|Roboto&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">

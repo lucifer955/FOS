@@ -1,9 +1,9 @@
 <?php ?>
 <?php 
-  require_once('../includes/connection.php'); 
+  require_once('includes/connection.php'); 
 ?>
 <?php  
-  require_once('../includes/functions.php');
+  require_once('includes/functions.php');
 ?>
 <?php
 
@@ -151,7 +151,7 @@
 
 <!-- include the header files -->
 <?php 
-  $page= 'signUp';include('../includes/header.php');
+  $page= 'signUp';include('includes/header.php');
 ?>
 
 <div class="container breadcumb">
@@ -225,14 +225,14 @@
 
     <div class="col-12 col-md-5 col-sm-12">
       <h3 style="color:black">Just Sign up to Order the food you want.</h3>
-      <img class="mx-auto d-block" src="..\images\sign-up.png" alt="">
+      <img class="mx-auto d-block" src="images\sign-up.png" alt="">
     </div>
   </div>
 </div>
 
 <!-- include the footer files -->
 <?php 
-  include('../includes/footer.php');
+  include('includes/footer.php');
 ?>
 <?php 
 //mysqli_close($connection); 

@@ -1,6 +1,6 @@
 <!-- include the header files -->
 <?php 
-  $page= 'usrfoodMenu';include('../includes/header.php');
+  $page= 'usrfoodMenu';include('includes/header.php');
 ?>
 
 <div class="userfoodMenu">
@@ -16,7 +16,7 @@
 		<div class="row">
 			<div class="col-md-3 col-lg-3">
 				<?php 
-					include('../includes/sidebar.php');
+					include('includes/sidebar.php');
 				?>
 			</div>
 
@@ -40,7 +40,7 @@
                     <div class=\"col-12 col-md-6 col-sm-12 col-lg-4 itemDeal\" >
                     <form action=\"foodMenu.php\" method=\"GET\">
                         <div class=\"card\">
-                          <img class=\"card-img-top\" src=\"../images/{$fm['foodImage']}\" alt=\"Card image cap\" style=\"height:150px;\">
+                          <img class=\"card-img-top\" src=\"images/{$fm['foodImage']}\" alt=\"Card image cap\" style=\"height:150px;\">
                           <div class=\"card-body\">
                             <h5 class=\"card-title\"> {$fm['itemName']} </h5>
                             <p class=\"card-text\"> {$fm['itemDescription']} </p>
@@ -119,5 +119,5 @@
 </div>
 <!-- include the footer files -->
 <?php 
-  include('../includes/loggedFooter.php');
+  include('includes/footer.php');
 ?>

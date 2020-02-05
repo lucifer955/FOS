@@ -31,16 +31,16 @@
     
     <div class="row socialIcons justify-content-center">
       <div class="col-2 col-sm-1">
-        <img src="..\images\facebook.png" alt="">
+        <img src="images\facebook.png" alt="">
       </div>
       <div class="col-2 col-sm-1">
-          <img src="..\images\instagram.png" alt="">
+          <img src="images\instagram.png" alt="">
       </div>
       <div class="col-2 col-sm-1">
-        <img src="..\images\whatsapp.png" alt="">
+        <img src="images\whatsapp.png" alt="">
       </div>
       <div class="col-2 col-sm-1">
-        <img src="..\images\gmail.png" alt="">
+        <img src="images\gmail.png" alt="">
       </div>
     </div>
 

@@ -5,7 +5,7 @@
 <?php  
   //checkin if a user is logged in
   if (!isset($_SESSION['user_id'])) {
-    header('Location: ../user/sign_in.php');
+    header('Location: ../sign_in.php');
   }
 
   $ordergroup = 0;

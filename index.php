@@ -1,6 +1,6 @@
 <!-- include the header files -->
 <?php 
-  $page= 'home';include('../includes/header.php');
+  $page= 'home';include('includes/header.php');
 ?>
 <!-- jumbotron -->
 <div class="jumbotron jumbotron-fluid">
@@ -20,20 +20,20 @@
     <div class="container howToStuff rounded">
         <div class="row justify-content-center text-center">
             <div class="col-4 col-sm-4">
-                <img src="..\images\search.png" class="rounded mx-auto d-block" alt="...">
+                <img src="images\search.png" class="rounded mx-auto d-block" alt="...">
               
                 <h5><b>Select</b></h5>
                 <p class="d-none d-md-block">Select the food item you want.</p>
               </div>
               <div class="col-4 col-sm-4">
-                <img src="..\images\order-food.png" class="rounded mx-auto d-block" alt="...">
+                <img src="images\order-food.png" class="rounded mx-auto d-block" alt="...">
              
                 <h5><b>Order</b></h5>
                 <p class="d-none d-md-block">Select the food item you want.</p>
               </div>
           
               <div class="col-4 col-sm-4">
-                <img src="..\images\pizza.png" class="rounded mx-auto d-block" alt="...">
+                <img src="images\pizza.png" class="rounded mx-auto d-block" alt="...">
                 
                 <h5><b>Enjoy</b></h5>
                 <p class="d-none d-md-block">Select the food item you want.</p>        
@@ -107,7 +107,7 @@
       
       <div class="col-12 col-md-4 col-sm-4 itemDeal">
           <div class="card">
-                    <img class="card-img-top" src="..\images\BBQChickenPizza-foodgawker (1).jpg" alt="Card image cap">
+                    <img class="card-img-top" src="images\BBQChickenPizza-foodgawker (1).jpg" alt="Card image cap">
                     <div class="card-body">
                       <h5 class="card-title">Chicken Bacon</h5>
                       <p class="card-text">Chicken Bacon Pizza is loaded with chicken bacon and onions & green chillies with a double layer of mozzarella cheese.
@@ -120,7 +120,7 @@
       </div>
       <div class="col-12 col-md-4 col-sm-4 itemDeal">
           <div class="card">
-                    <img class="card-img-top" src="..\images\Hot-Spicy-Pizza.jpg" alt="Card image cap">
+                    <img class="card-img-top" src="images\Hot-Spicy-Pizza.jpg" alt="Card image cap">
                     <div class="card-body">
                       <h5 class="card-title">Spicy Seafood</h5>
                       <p class="card-text">A fiery mix of prawns, devilled fish, olives, bell peppers and onions with a double layer of mozzarella cheese.</p>
@@ -132,7 +132,7 @@
       </div>
       <div class="col-12 col-md-4 col-sm-4 itemDeal">
           <div class="card">
-                    <img class="card-img-top" src="..\images\chicken-bacon-ranch-pizza.jpg" alt="Card image cap">
+                    <img class="card-img-top" src="images\chicken-bacon-ranch-pizza.jpg" alt="Card image cap">
                     <div class="card-body">
                       <h5 class="card-title">Hot Garlic Prawns</h5>
                       <p class="card-text">Spicy prawns, hot garlic sauce, onions, peppers and tomatoes with a double layer of mozzarella cheese.</p>
@@ -159,5 +159,5 @@
 </div>
 <!-- include the footer files -->  
 <?php 
-  include('../includes/footer.php');
+  include('includes/footer.php');
 ?>
