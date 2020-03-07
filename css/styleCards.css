@@ -79,7 +79,7 @@
 }
 
 .serv-section-2-icon i {
-    color: #ff6347;
+    color: red;
     font-size: 48px;
     line-height: 65px;
     transition: all 0.4s ease-in-out;
@@ -110,7 +110,7 @@
     display: block;
     width: 100px;
     height: 3px;
-    background: #ff6347;
+    background: red;
     border-radius: 25%;
     margin-top: 15px;
     margin-bottom: 5px;
@@ -126,5 +126,5 @@
 }
 
 .serv-section-2:hover:before {
-    background: #ff6347;
+    background: red;
 }

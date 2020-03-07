@@ -3,9 +3,11 @@
   $page= 'myOrders';include('../includes/loggedHeader.php');
 ?>
 <?php
+
+	$usr_id = $_SESSION['user_id'];
 $med = 1;
 $tot=0;
-$query_cart3 = "SELECT * FROM cart";
+$query_cart3 = "SELECT * FROM cart where customerId= '{$usr_id}'";
 	$categories1 = mysqli_query($connection, $query_cart3);
 
 		if($categories1){
@@ -144,7 +146,7 @@ $query_cart3 = "SELECT * FROM cart";
 				  <tbody>
 
 <?php  
-	$query_cart1 = "SELECT * FROM cart";
+	$query_cart1 = "SELECT * FROM cart where customerId= '{$usr_id}'";
 	$categories1 = mysqli_query($connection, $query_cart1);
 
 			if($categories1){
@@ -239,15 +241,20 @@ $query_cart3 = "SELECT * FROM cart";
 						    </div>
 						    <div class="row justify-content-center" >
 						    	<button type="submit" class="btn btn-success btn-sm btn-block" name="orderNow" style="margin: 20px 0 10px 0;">Order Now</button>
-						    	<button type="submit" class="btn btn-danger btn-sm btn-block" name="cancel" style="margin: 5px 0 10px 0;">Cancel</button>
+						    	
 						    </div>
 
 
 				    	</form>
 
-				    </div>				    	
+				    <div>
+				    </div>	
+
+				    </div>
+
 				  </div>
 				</div>
+
 			</div>
 		</div>
 	</div>

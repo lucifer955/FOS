@@ -154,18 +154,34 @@
   $page= 'signUp';include('includes/header.php');
 ?>
 
-<div class="container breadcumb">
-    <nav aria-label="breadcrumb rounded">
+<!-- <div class="container userLogg">
+    <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#">Home</a></li>
         <li class="breadcrumb-item active" aria-current="page">Sign up</li>
     </ol>
     </nav>
-</div>
+</div> -->
+<div class="logg"></div>
 
 <div class="container signUpPage">
-  <div class="row align-items-center">
-    <div class="col-12 col-md-7 col-sm-12 ">
+  <div class="row justify-content-around">
+    <div class="col-12 col-md-4 col-sm-12">
+      <!-- <h3 style="color:black">Just Sign up to Order the food you want.</h3>
+      <img class="mx-auto d-block" src="images\sign-up.png" alt=""> -->
+    </div>
+    <div class="col-12 col-md-8 col-sm-12" style="
+    /*-webkit-box-shadow: 0 8px 6px -6px black;
+     -moz-box-shadow: 0 8px 6px -6px black;
+          box-shadow: 0 8px 6px -6px black;*/
+-webkit-box-shadow: 7px -7px 42px -10px rgba(48,38,39,0.71);
+-moz-box-shadow: 7px -7px 42px -10px rgba(48,38,39,0.71);
+box-shadow: 7px -7px 42px -10px rgba(48,38,39,0.71);
+          padding: 50px;
+          border-radius: 0.9rem;
+      
+
+    ">
 
 
     <?php  
@@ -187,46 +203,46 @@
       <div class="form-row">
         <div class="col-12 col-sm">
           <label for="firstName">First Name</label>
-          <input type="text" class="form-control" placeholder="First name" name="first_name" <?php echo 'value ="' . $first_name . '"'; ?>>
+          <input type="text" class="form-control" placeholder="First name" name="first_name" <?php echo 'value ="' . $first_name . '"'; ?> style="border-radius: 0.9rem;">
         </div>
         <div class="col-12 col-sm">
           <label for="lastName">Last Name</label>
-          <input type="text" class="form-control" placeholder="Last name" name="last_name" <?php echo 'value ="' . $last_name . '"'; ?>>
+          <input type="text" class="form-control" placeholder="Last name" name="last_name" <?php echo 'value ="' . $last_name . '"'; ?> style="border-radius: 0.9rem;">
         </div>
       </div>
       <div class="form-row">
         <div class="col-12 col-sm">
           <label for="emailAddress">Email Address</label>
-          <input type="text" class="form-control" placeholder="Email Address"  name="email" <?php echo 'value ="' . $email . '"'; ?>>
+          <input type="text" class="form-control" placeholder="Email Address"  name="email" <?php echo 'value ="' . $email . '"'; ?> style="border-radius: 0.9rem;">
           <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
         </div>
         <div class="col-12 col-sm">
           <label for="mobileNumber">Mobile Number</label>
-          <input type="text" class="form-control" placeholder="Mobile Number"  name="mobile_number" <?php echo 'value ="' . $mobile_number . '"'; ?>>
+          <input type="text" class="form-control" placeholder="Mobile Number"  name="mobile_number" <?php echo 'value ="' . $mobile_number . '"'; ?> style="border-radius: 0.9rem;">
           <small id="mobileNumHelp" class="form-text text-muted">We'll never share your mobile number with anyone else.</small>
         </div>
       </div>
       <div class="form-row">
         <div class="col-12 col-sm">
           <label for="password">Password</label>
-          <input type="password" class="form-control" placeholder="Password"  name="password">
+          <input type="password" class="form-control" placeholder="Password"  name="password" style="border-radius: 0.9rem;">
         </div>
         <div class="col-12 col-sm">
           <label for="repeatPassword">Repeat Password</label>
-          <input type="password" class="form-control" placeholder="Repeat Password"  name="repeat_password">
+          <input type="password" class="form-control" placeholder="Repeat Password"  name="repeat_password" style="border-radius: 0.9rem;">
         </div>
       </div>
-      <button type="submit" class="btn btn-primary" name="reg_user">Sign up</button>
-      <p>
-        Already a member? <a href="sign_in.php">Sign in</a>
-      </p>
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary btn-block" name="reg_user">Sign up</button>
+          <p>
+            Already a member? <a href="sign_in.php">Sign in</a>
+          </p>    
+      </div>
+      
     </form>
     </div>
 
-    <div class="col-12 col-md-5 col-sm-12">
-      <h3 style="color:black">Just Sign up to Order the food you want.</h3>
-      <img class="mx-auto d-block" src="images\sign-up.png" alt="">
-    </div>
+    
   </div>
 </div>
 

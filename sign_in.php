@@ -5,19 +5,32 @@
 
 
 
-<div class="container breadcumb">
-    <nav aria-label="breadcrumb rounded">
+<!-- <div class="container  userLogg">
+    <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#">Home</a></li>
         <li class="breadcrumb-item active" aria-current="page">Sign in</li>
     </ol>
     </nav>
-</div>
+</div> -->
+<div class="logg"></div>
 
 <div class="container signInPage">
-  <div class="row align-items-center">
-    <div class="col-12 col-md-7 col-sm-12 ">
+  <div class="row justify-content-around">
 
+    <div class="col-12 col-md-5 col-sm-12">
+      <!-- <h3 class="" style="color:black;">Just Sign in to Order the food you want.</h3>
+      <img class="mx-auto d-block" src="images\log-in.png" alt=""> -->
+    </div>
+    <div class="col-12 col-md-7 col-sm-12" style="padding:40px;border-radius: 0.9rem;
+
+-webkit-box-shadow: 7px -7px 42px -10px rgba(48,38,39,0.71);
+-moz-box-shadow: 7px -7px 42px -10px rgba(48,38,39,0.71);
+box-shadow: 7px -7px 42px -10px rgba(48,38,39,0.71);
+          padding: 50px;
+          border-radius: 0.9rem;
+
+    ">
       <?php 
 
         if (isset($errors) && !empty($errors)) {
@@ -37,31 +50,29 @@
     <form method="post" action="sign_in.php">
         <div class="form-group">
             <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="email">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            <input type="email" class="form-control text-center" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="email" style="border-radius: 0.9rem;">
+            <small id="emailHelp" class="form-text text-muted">*We'll never share your email with anyone else.</small>
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
+            <input type="password" class="form-control text-center" id="exampleInputPassword1" placeholder="Password" name="password" style="border-radius: 0.9rem;">
         </div>
-        <div class="forget-password">
-          <p style="color:tomato"><a href="">Forgot Your Password?</a></p>
-        </div>
-        <button type="submit" class="btn btn-primary" name="login_user">Sign in</button>
-        
-
-        <div class="form-footer">
-          <div>
-            <p style="color:black;margin-top:10px;">Don't you have an Account? <a href="sign_up.php">Sign Up</a></p>
+        <div class="text-center">
+          <div class="forget-password">
+            <p style="color:tomato"><a href="">Forgot Your Password?</a></p>
           </div>
-			  </div>
+          
+          <button type="submit" class="btn btn-primary btn-block" name="login_user">Sign in</button>
+          <div class="form-footer">
+            <div>
+              <p style="color:black;margin-top:10px;">Don't you have an Account? <a href="sign_up.php">Sign Up</a></p>
+            </div>
+  			  </div>
+        </div>
     </form>        
     </div>
 
-    <div class="col-12 col-md-5 col-sm-12">
-      <h3 class="" style="color:black;">Just Sign in to Order the food you want.</h3>
-      <img class="mx-auto d-block" src="images\log-in.png" alt="">
-    </div>
+    
   </div>
 </div>
 

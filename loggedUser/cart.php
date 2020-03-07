@@ -19,7 +19,7 @@
 
 		if($categories){
 			while ($cart = mysqli_fetch_assoc($categories)) {
-				$query = "INSERT INTO cart (foodMenuId,itemName,foodImage,itemPrice) VALUES ('{$cart['foodMenuId']}','{$cart['itemName']}','{$cart['foodImage']}','{$cart['itemPrice']}')";
+				$query = "INSERT INTO cart (foodMenuId,itemName,foodImage,itemPrice,customerId) VALUES ('{$cart['foodMenuId']}','{$cart['itemName']}','{$cart['foodImage']}','{$cart['itemPrice']}','{$usr_id}')";
 
 	      		$result = mysqli_query($connection,$query);
 	      		$message = "Added to cart";
@@ -81,7 +81,7 @@
 				  <tbody>
 
 <?php  
-	$query_cart1 = "SELECT * FROM cart";
+	$query_cart1 = "SELECT * FROM cart where customerId='{$usr_id}'";
 	$categories1 = mysqli_query($connection, $query_cart1);
 
 			if($categories1){
