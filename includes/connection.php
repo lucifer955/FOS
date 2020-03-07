@@ -3,9 +3,9 @@
 	$dbhost = 'localhost';
 	$dbuser = 'root';
 	$dbpass = '';
-	$dbname = 'food_ordering_system';
+	$dbname = 'fosdbnew';
 
-	$connection = mysqli_connect('localhost','root','','food_ordering_system');
+	$connection = mysqli_connect('localhost','root','','fosdbnew');
 
 	//cheking the connection
 	if(mysqli_connect_errno()){

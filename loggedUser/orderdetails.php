@@ -2,16 +2,112 @@
 <?php 
   $page= 'myOrders';include('../includes/loggedHeader.php');
 ?>
+<?php
+$med = 1;
+$tot=0;
+$query_cart3 = "SELECT * FROM cart";
+	$categories1 = mysqli_query($connection, $query_cart3);
 
+		if($categories1){
+
+			while ($cart1 = mysqli_fetch_assoc($categories1)) {		
+
+				$med = $cart1['itemPrice']*$cart1['foodQuantity'];
+				$tot = $tot + $med;
+			}
+		}
+
+
+
+?>
 <?php  
-	// $category_list = '';
-	$usr_id = $_SESSION['user_id'];
-	// $foodMenuId = $_SESSION['foodMenuId'];
-	$orderNumber = $_GET['orderNumber'];
 
-	$insert_data = $_GET['insert_data'];
-	//getting the list of categories
-	$cmp = unserialize(base64_decode($insert_data));
+?>
+
+<?php 
+
+	// $category_list = '';
+	$usr_id = $_SESSION['user_id']; 
+	$errors_foodmenu = array();
+	$food_id = '';
+	$flatOrBuildingNumber = '';
+	$streetName = '';
+	$area = '';
+	$city = '';
+	$deliver_type = '';
+
+
+
+	if (isset($_POST['orderNow'])) {
+			$flatOrBuildingNumber = $_POST['flatOrBuildingNumber'];
+			$streetName = $_POST['streetName'];
+			$area = $_POST['area'];
+			$landmark = $_POST['landmark'];
+			$city = $_POST['city'];
+			$deliver_type = $_POST['deliver_type'];
+
+
+			// $usr = ($_SESSION['user_id']);
+
+			$req_fields = array('flatOrBuildingNumber','streetName','area','landmark', 'city','deliver_type');
+
+			foreach ($req_fields as $field) {
+				if (empty(trim($_POST[$field]))) {
+							$errors_foodmenu[] = $field . ' is required';
+				}
+			}
+
+			//if there is no any errors
+			if (empty($errors_foodmenu)) {
+				//no errors adding new food menu record
+				$flatOrBuildingNumber =  mysqli_real_escape_string($connection,$_POST['flatOrBuildingNumber']);
+				$streetName =  mysqli_real_escape_string($connection,$_POST['streetName']);
+				$area =  mysqli_real_escape_string($connection,$_POST['area']);
+				$landmark =  mysqli_real_escape_string($connection,$_POST['landmark']);
+				$city =  mysqli_real_escape_string($connection,$_POST['city']);
+				$deliver_type =  mysqli_real_escape_string($connection,$_POST['deliver_type']);
+
+
+				$query = "INSERT INTO 
+				orderdetails(
+				orderId, 
+				flatBuildingNo, 
+				area, 
+				landMark, 
+				streetName, 
+				city,
+				orderType, 
+				customerId,
+				orderDate,
+				total)
+
+				VALUES(
+				'', 
+				'{$flatOrBuildingNumber}',
+				'{$area}',
+				'{$landmark}',
+				'{$streetName}',
+				'{$city}',
+				'{$deliver_type}',
+				'{$usr_id}',
+				NOW(),
+				'$tot'
+			)";
+
+				$result = mysqli_query($connection, $query);
+
+		      	$message = "New order Added";
+				if ($result) {
+					
+					echo "<script type='text/javascript'>alert('$message');</script>";
+					header('Location: orders.php');
+				}else{
+      				$errors_foodmenu[] = 'Failed to add the new Food';
+				}
+			}
+
+
+	}
 ?>
 
 <div class="loggedOrders">
@@ -20,160 +116,150 @@
 			<nav aria-label="breadcrumb">
 			    <ol class="breadcrumb">
 			        <li class="breadcrumb-item"><a href="#">Home</a></li>
-			        <li class="breadcrumb-item active" aria-current="page">Orders</li>
+			        <li class="breadcrumb-item"><a href="#">Orders</a></li>
+			        <li class="breadcrumb-item active" aria-current="page">Order Details</li>
 			    </ol>
 	    	</nav>
 		</div>
-		<div class="row">
+	</div>
+
+	<div class="container">
+		<div class="row justify-content-around">
+			<div class="col-8 text-center">
+				
+				<table class="table table-hover table-responsive-sm table-sm">
+				  <thead>
+				    <tr>
+				  <!--     <th scope="col">Cart  Id</th> -->
+				      <th class=" p-3 mb-2 bg-info text-white" scope="col">Food Id</th>
+				      <th class=" p-3 mb-2 bg-info text-white" scope="col"></th>
+				      <th class=" p-3 mb-2 bg-info text-white" scope="col">Food Name</th>
+				      <th class=" p-3 mb-2 bg-info text-white"scope="col">Price</th>
+				      <th class=" p-3 mb-2 bg-info text-white" scope="col">Quantity</th>
+				      <th class=" p-3 mb-2 bg-info text-white" scope="col">Sub Total</th>
+				      <th class=" p-3 mb-2 bg-info text-white" scope="col"></th>
+
+				    </tr>
+				  </thead>
+				  <tbody>
+
+<?php  
+	$query_cart1 = "SELECT * FROM cart";
+	$categories1 = mysqli_query($connection, $query_cart1);
+
+			if($categories1){
+				$x=0;
+					while ($cart1 = mysqli_fetch_assoc($categories1)) {
+						$x=$x+1;
+			echo "		<form method='post' action='cart.php'>		  		
+						<tr>
+						  <td  class=\"align-middle\" id=\"menuId\">{$cart1['foodMenuId']}</td>
+					      <td  class=\"align-middle\"><img src=\"../images/{$cart1['foodImage']}\" height=\"50px\" width=\"70px\"></td>
+					      <td class=\"align-middle\">{$cart1['foodImage']}</td>
+					      <td class=\"align-middle\" id=\"unitPrice$x\">{$cart1['itemPrice']}.00</td>
+					      <td class=\"align-middle\">{$cart1['foodQuantity']}</td>
+					     ";
+					     $med = $cart1['itemPrice']*$cart1['foodQuantity'];
+			echo " 
+					      <td class=\"align-middle\"  id=\"subTotal$x\">".$med.".00</td>
+
+					      <td class=\"align-middle\"><i class=\"fa fa-window-close\" style=\"color: red\"></i></td>
+					      
+					      <input type='hidden' value='1' name='subData$x' id='IDsubData$x'> 
+					      <input type='hidden' id='del$x' name='foodmID$x' value={$cart1['foodMenuId']}>
+
+
+					    </tr>	";
+
 			
-			<div class="col-12 col-md-8 col-lg-8">
-				<div class="card">
-						  <div class="card-body">
-						  	<div class="row align-items-center">
-							  	<div class="col-4 col-md-4 col-lg-4 text-center">
-							  		<h5><b>Image</b></h5>
-							  	</div>
 
-							  	<div class="col-3 col-md-3 col-lg-3 float-left">
-							  		<h5 class="card-title text-center"><b>Food Name</b></h5>
-							  	</div>
-							  	<div class="col-3 col-md-3 col-lg-3 float-left">
-							  		<h5 class="card-title text-center"><b>Quantity</b></h5>
-							  	</div>
-							  	<div class="col-2 col-md-2 col-lg-2 float-left">
-							  		<h5 class="card-title text-center"><b>Unit Price</b></h5>
-							  	</div>	
-							  	</div>
-						  </div>
-						</div>
-<?php
-	
-	foreach($cmp as $item) {
-    	$foodMenuId = $item['foodMenuId'];
+					}
+					echo "<input type='hidden' name='counter' value=$x>";
+}
+	echo "
 
-    		$query1 = "SELECT *
-			FROM foodmenu  
-			INNER JOIN orderdetails
-			ON foodmenu.foodMenuId = orderdetails.foodMenuId where foodmenu.foodMenuId = $foodMenuId";  
-			// $query1 = "SELECT * FROM `foodmenu` CROSS JOIN `orderdetails` where foodMenuId = $foodMenuId " ;
-
-			// $orders = mysqli_query($connection, $query_od);SELECT * FROM foodmenu
-
-			$orders1 = mysqli_query($connection, $query1);
-		    if($orders1){
-		        while ($or = mysqli_fetch_assoc($orders1)) {
-
-		            echo "
-
-						<div class=\"card\">
-						  <div class=\"card-body\">
-						  	<div class=\"row align-items-center\">
-							  	<div class=\"col-4 col-md-4 col-lg-4\">
-							  	<p class=\"text-center\">
-							  		<img src=\"../images/{$or['foodImage']}\" alt=\"...\" class=\" rounded float-left\" height=\"128px\" width=\"128px\">
-							  	</p>
-							  	</div>
-
-							  	<div class=\"col-3 col-md-3 col-lg-3 float-left\">
-							  		<h5 class=\"card-title text-center\">{$or['itemName']}</h5>
-							  	</div>
-							  	<div class=\"col-3 col-md-3 col-lg-3 float-left\">
-							  		<h5 class=\"card-title text-center\">{$or['quantity']}</h5>
-							  	</div>
-							  	<div class=\"col-2 col-md-2 col-lg-2 float-left\">
-							  		<h5 class=\"card-title text-center\">Rs.{$or['itemPrice']}/=</h5>
-							  	</div>	
-							  	</div>
-						  </div>
-						</div>
-
-		            ";
-
-		            $itemPrice = $or['itemPrice'];
-		        }   
-		    }
-
-		}
-
+			<tr>
+				<td class='text-middle  p-2 mb-2  text-primary' colspan='5'><b>Total</b></td>
+				<td class='align-middle p-2 mb-2 bg-success text-white' colspan='2'>Rs.".$tot."/=</td>
+			</tr>
+			
+			";
 ?>
-</div>	
-			<div class="col-12 col-md-4 col-lg-4 " id="shoppingCart">
-				<div class="card text-center">
-				  <div class="card-header">
-				  <div class="card-body">
-				    <h5 class="card-title"><strong>Location Details</strong></h5>
-
-
-<?php
-
-	
-    //getting the list of food Menu
-	$query_od = "SELECT * FROM orderdetails LIMIT 1";
-
-	$orders = mysqli_query($connection, $query_od);
-
-    if($orders){
-        while ($or = mysqli_fetch_assoc($orders)) {
-
-            echo "
-				  <label class=\"col control-label text-center\"><b>Order Id 	: </b><span>$orderNumber</span></label>
-				  <label class=\"col control-label text-center\"><b>Flat or Building No 	: </b><span>{$or['flatBuildingNo']}</span></label>
-				  <label class=\"col control-label text-center\"><b>Street Name 	: </b><span>{$or['streetName']}</span></label>
-				  <label class=\"col control-label text-center\"><b>Landmark 	: </b><span>{$or['landMark']}</span></label>
-				  <label class=\"col control-label text-center\"><b>Area 	: </b><span>{$or['area']}</span></label>
-				  <label class=\"col control-label text-center\"><b>City 	: </b><span>{$or['city']}</span></label>	
-				</div>           
-
-
-            ";
-            $quantity = $or['quantity'];
-        }
-
-
-    }
-
-?>
-<!-- 				    	<div class="form-group loc text-center">
-				    			<label class="col control-label text-center"><b>Food Id 	: </b><span>#h12321334</span></label>
-				    			<label class="col control-label text-center"><b>Flat or Building No 	: </b><span>12</span></label>
-				    			<label class="col control-label text-center"><b>Street Name 	: </b><span>asdfga</span></label>
-				    			<label class="col control-label text-center"><b>Landmark 	: </b><span>asfdawsd</span></label>
-				    			<label class="col control-label text-center"><b>Area 	: </b><span>qwerqw</span></label>
-				    			<label class="col control-label text-center"><b>Land Mark 	: </b><span>werwe</span></label>	
-				    	</div>
- -->
-				    </div>
+		    		
+				  </tbody>
+				</table>
+				<div class="row">
+					<div class="col-auto mr-auto"><button type="button" class="btn btn-primary btn-sm">Continue shopping</button></div>
+<!-- 				  	<div class="col-auto"><button type="submit" name="updateCart" class="btn btn-success btn-sm">OrderNow</button></div> -->
+				  </form>
 				</div>
+				<div class="row">
+					
 
-				  <div class="card-footer text-center">
-				  	<form>
-				  		<div class="text-center">
-                                <a href="invoice.php?orderNo=<?php echo "$orderNo"?>&quantity=<?php echo "$quantity"?>&itemPrice=<?php echo "$itemPrice" ?>" target="_blank" class="btn btn-primary btn-dark" name="addtocart" >Invoice</a>
-                            </div>	
-                            			  		<br>
-				  		<a href="cancelOrder.php" target="_blank">cancel order</a>
+				</div>
+			</div>
 
-				  		<br>
-					    <!-- <h3>Total</h3>
+			<div class="col-3">
 
-					    <h4>Rs.499/=</h4> -->
-					    <h5 style="margin-top: 5px;">Free Delivery</h5>		  		
-				  	</form>
+				<div class="card">
+				  <div class="card-body text-center">
+				<h5 class="card-title"><strong>Enter Your Location Here</strong></h5>
+<?php  
 
+	if (!empty($errors_foodmenu)) {
+		echo '<div class="text-danger">';
+		echo '<b>*There were missing field(s)</b><br>';
+		// foreach ($errors_foodmenu as $error) {
+		// 	echo '- ' . $error . '<br>';
+		// }
+		echo '</div>';
+	}
+
+?>
+				    <form action="orderdetails.php" method="post">
+
+				    	<div class="form-group loc">
+				    		<input class="text-center" type="text" name="flatOrBuildingNumber" placeholder="Flat or Building Number" style="margin: 2px 0 2px 0; border-radius: 0.4rem;">
+					    	<input class="text-center" type="text" name="streetName" placeholder="Street Name" style="margin: 2px 0 2px 0; border-radius: 0.4rem;">
+					    	<input class="text-center" type="text" name="area" placeholder="Area" style="margin: 2px 0 2px 0; border-radius: 0.4rem;"
+					    	>
+					    	<input class="text-center" type="text" name="landmark" placeholder="If any Landmark" style="margin: 2px 0 2px 0; border-radius: 0.4rem;"
+					    	>
+					    	<input  class="text-center" type="text" name="city" placeholder="City" style="margin: 2px 0 2px 0; border-radius: 0.4rem;"
+					    	>
+				    	</div>
+						    <div class="row justify-content-center">
+						     <label class="col-12 control-label" ><strong>Choose</strong></label>
+							    <div class="col-8">
+							     <select name="deliver_type" class="form-control form-control-sm">
+							      <option>Delivery</option>
+							      <option>Take Away</option>
+							     </select>
+							    </div>
+						    </div>
+						    <div class="row justify-content-center" >
+						    	<button type="submit" class="btn btn-success btn-sm btn-block" name="orderNow" style="margin: 20px 0 10px 0;">Order Now</button>
+						    	<button type="submit" class="btn btn-danger btn-sm btn-block" name="cancel" style="margin: 5px 0 10px 0;">Cancel</button>
+						    </div>
+
+
+				    	</form>
+
+				    </div>				    	
 				  </div>
-			</div>	
+				</div>
+			</div>
 		</div>
 	</div>
+
+	
 </div>
-</div>
+
 
 
 <!-- include the footer files -->
 <?php
-    $qw1 = "truncate table orderdetails";
-    $rs2 = mysqli_query($connection,$qw1);
-    $qw = "truncate table cart";
-    $rs = mysqli_query($connection,$qw);
-
+	// $qw = "truncate table orderdetails";
+	// $rs = mysqli_query($connection,$qw);
   include('../includes/loggedFooter.php');
 ?>

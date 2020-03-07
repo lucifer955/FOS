@@ -4,24 +4,12 @@
 ?>
 
 <?php  
-	
-	$sql = "SELECT foodMenuId FROM orderdetails";
-	$result = mysqli_query($connection,$sql);
-	$datas = array();
+	// $category_list = '';
+	$usr_id = $_SESSION['user_id'];
 
-	if (mysqli_num_rows($result) > 0) {
-		while ($row = mysqli_fetch_assoc($result)) {
-			$datas[] = $row;
-		}
-	}
 
-	$insert_data = base64_encode(serialize($datas));
-	// serialize($datas);
-	$query12 = "INSERT INTO orderno (orderNumber,foodMenuIds) VALUES ('','{$insert_data}')";
-	// $cmp = unserialize(base64_decode($insert_data));
-	// print_r($cmp);
-    $result = mysqli_query($connection,$query12);
-    $_SESSION["insert_data"] = $datas;
+
+
 ?>
 
 <div class="loggedOrders">
@@ -34,49 +22,60 @@
 			    </ol>
 	    	</nav>
 		</div>
+	</div>
 
-		<div class="row">
-
-<?php
-
-
-    //getting the list of food Menu
-    $query_or = "SELECT * FROM orderno ORDER BY orderNumber DESC";
-    $odr = mysqli_query($connection, $query_or);
-    if($odr){
-        while ($or = mysqli_fetch_assoc($odr)) {
-        	echo 
-        	"
-            <div class=\"col-12 col-md-7 col-lg-7\">
-				<div class=\"card mb-3\">
-				  <div class=\"row no-gutters align-items-center\">
-				    <div class=\"col col-md-4\">
-				    	<img src=\"../images/bag(1).png\" alt=\"...\" class=\" rounded float-left offset-col-1\">
-				    </div>
-				    <div class=\" col col-md-8\">
-				      <div class=\"card-body\">
-				      	<div class=\"row\">
-				      		<div class=\"col col-md\">
-					      		<h5 class=\"card-title\">Order ID : <span>{$or['orderNumber']}</span></h5>
-				        		<p class=\"card-text\">Order date : <span>{$or['orderedTime']}</span></p>			      			
-				      		</div>
-				      		<div class=\"col col-md\">
-				      		<div class=\"text-center\">
-                                <a href=\"orderdetails.php?orderNumber={$or['orderNumber']}&insert_data=$insert_data\" class=\"btn btn-primary btn-dark\" name=\"addtocart\">View Details</a>
-                            </div>	
-				      		</div>
-				      	</div>
-				      </div>
-				    </div>
+	<div class="container">
+		<div class="row justify-content-around">
+			<div class="col-2">
+				<div class="card">
+				  <div class="card-body">
+					    
 				  </div>
-				</div>
+				</div>				
 			</div>
+			<div class="col-9">
+				<div class="col-12">
+
+<?php  
+
+//getting the list of food Menu
+    $query_orderdetails = "SELECT * FROM orderdetails";
+    $ordr = mysqli_query($connection, $query_orderdetails);
+    if($ordr){
+        while ($fm = mysqli_fetch_assoc($ordr)) {
+
+            echo "
+					<div class=\"card\" >
+					  <div class=\"card-body text-center\">
+					  	<div class=\"row justify-content-around\">
+					  	<div class='col-3 align-self-center'>
+					  		<div class=\" align-self-center\">order Id : {$fm['orderId']}</div>
+					  	</div>
+
+					  		<div class=\"col-3 align-self-center\">
+								<img src=\"../images/bag.png\" height=\"80px\" width=\"80px\" class='img-thumbnail'></div>
+					  		<div class=\"col-4 align-self-center\">
+					  			<p>order date : {$fm['orderDate']}</p>
+					  			<p>customer Id : ".$_SESSION['user_id']."</p>
+					  		</div>
+					  		<div class=\"col-2 align-self-center\">Total : Rs.{$fm['total']}/=</div>	
+					  	</div>
+					  </div>
+					</div>
+
+                    
             ";
         }   
-    }
+    }	
+
+
 
 ?>
-		</div>
+
+				</div>
+			</div>
+
+		</div>	
 	</div>
 </div>
 
