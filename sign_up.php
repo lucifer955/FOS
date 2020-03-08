@@ -107,8 +107,8 @@
 
       // $hashed = sha1($password);
 
-      $query = "INSERT INTO customer(customerFirstName,customerLastName,customerEmail,customerContactNo,customerPassword)
-        VALUES('{$first_name}','{$last_name}','{$email}','{$mobile_number}','{$password}')";
+      $query = "INSERT INTO customer(customerFirstName,customerLastName,customerEmail,customerContactNo,customerPassword,customerRegDate)
+        VALUES('{$first_name}','{$last_name}','{$email}','{$mobile_number}','{$password}',NOW())";
       // $query = "INSERT INTO customer(";
       // $query .= "customerFirstName,customerLastName,customerEmail,customerContactNo,customerPassword";
       // $query .= ")VALUES(";

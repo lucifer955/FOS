@@ -29,9 +29,9 @@
 			<div class="col-3">
 					<div class="table">
 				  <div class="card-body text-center">
-				  	<h4 class="p-4 mb-4 bg-secondary text-white">Your Orders are Here</h4>
+				  	<h4 class="p-4 mb-4 bg-dark text-white">Your Orders are Here</h4>
 				  	<p><i class="fa fa-truck fa-4x text-success"  ></i></p>
-				  	<p><i class="fa fa-arrow-right fa-2x text-warning"  ></i></p>
+				  	<p><i class="fa fa-arrow-right fa-2x text-dark"  ></i></p>
 				  </div>
 				</div>			
 			</div>
@@ -40,9 +40,28 @@
 
 <?php  
 
+ 	
+?>
+
+<?php  
+
 //getting the list of food Menu
     $query_orderdetails = "SELECT * FROM orderdetails where customerId = '{$usr_id}'";
     $ordr = mysqli_query($connection, $query_orderdetails);
+
+   //  if(!$ordr){
+	  //  	echo "
+	  //   <div class=\"container\">
+			//     <div class=\"row\">
+	  //     			<h3 class=\"text-danger offset-1\">Order Canceled :( <span style=\"font-size: 20px;margin-left: 40px\"><a href=\"foodMenu.php\">Return to Food Menu</a></span></h3>
+	  //   		</div>
+			// </div>
+
+	  //   "; 	
+   //  }
+
+
+
     if($ordr){
         while ($fm = mysqli_fetch_assoc($ordr)) {
 
@@ -112,7 +131,9 @@ echo "
                     
      //        ";
         }   
-    }	
+    }
+
+    	
 
 
 

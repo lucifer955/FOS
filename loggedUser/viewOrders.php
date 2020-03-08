@@ -6,15 +6,16 @@
 <?php  
 	// $category_list = '';
 	$usr_id = $_SESSION['user_id'];
-
-	if (isset($_GET['orderId'])) {
-		$orderId = $_GET['orderId'];
-	}	
-
-
-
-
+		
 ?>
+
+<!-- cancel order -->
+<?php
+		if(isset($_GET['orderId'])) {
+			$orderId = $_GET['orderId'];
+		}
+?>
+
 
 <div class="loggedOrders">
 	<div class="container">
@@ -50,67 +51,95 @@ border-right: 10px solid black;
 				    <div class="row">
 				    	<div class="col-6">
 				    		
-							<table class="table">
+				<table class="table">
 							 
-							  <tbody>
+					  <tbody>						
+<?php
+
+	$queryView = 	"SELECT *
+					FROM orderdetails 
+					INNER JOIN customer 
+					ON orderdetails.customerId=customer.customerId where customer.customerId = '{$usr_id}'";
+
+ 				$view = mysqli_query($connection, $queryView);
+    				if($view){
+        				while ($fm = mysqli_fetch_assoc($view)) {
+
+					echo "
+
+
 							    <tr>
 							      <th>Customer Name</th>
-							      <td>Mark</td>
+							      <td class='text-secondary'>{$fm['customerFirstName']} {$fm['customerLastName']}</td>
+							    </tr>
+							    <tr>
+							      <th>Customer Reg Date</th>
+							      <td class='text-secondary'>0000{$fm['customerRegDate']}</td>
 							    </tr>
 							    <tr>
 							      <th>Customer Id</th>
-							      <td>Jacob</td>
+							      <td class='text-secondary'>0000{$fm['customerId']}</td>
 							    </tr>
 							    <tr>
 							      <th>Customer Mobile Number</th>
-							      <td>Larry</td>
+							      <td class='text-secondary'>{$fm['customerContactNo']}</td>
 							    </tr>
 							    <tr>
 							      <th>Customer Email</th>
-							      <td>Larry</td>
+							      <td class='text-secondary'>{$fm['customerEmail']}</td>
 							    </tr>
 							  </tbody>
 							</table>
 
 				    	</div>
-				    	<div class="col-6">
-				    		<table class="table">
+				    	<div class=\"col-6\">
+				    		<table class=\"table\">
 							 
 							  <tbody>
+							  	<tr>
+							      <th>Order Id</th>
+							      <td class='text-secondary'>0000{$fm['orderId']}</td>
+							    </tr>
 							    <tr>
 							      <th>Flat/Buidlding No</th>
-							      <td>Mark</td>
+							      <td class='text-secondary'>{$fm['flatBuildingNo']}</td>
 							    </tr>
 							    <tr>
 							      <th>Street Name</th>
-							      <td>Jacob</td>
+							      <td class='text-secondary'>{$fm['streetName']}</td>
 							    </tr>
 							    <tr>
 							      <th>City</th>
-							      <td>Larry</td>
+							      <td class='text-secondary'>{$fm['city']}</td>
 							    </tr>
 							    <tr>
 							      <th>Order Type</th>
-							      <td>Larry</td>
+							      <td class='text-secondary'>{$fm['orderType']}</td>
 							    </tr>
 							    <tr>
 							      <th>Order Date</th>
-							      <td>Larry</td>
+							      <td class='text-secondary'>{$fm['orderDate']}</td>
 							    </tr>
 							    <tr>
 							      <th>Total</th>
-							      <td>Larry</td>
+							      <td>Rs.<span class='text-success'>{$fm['total']}</span>/=</td>
 							    </tr>							    
 							  </tbody>
 							</table>
-				    	</div>
+</div>
 				    </div>
 				    <!-- cancel order -->
-				    <div class="text-center">
-				    	<form>
-							<button type="button" class="btn btn-danger">Cancel Order</button>
-						</form>
+				    <div class=\"text-center\">
+				    	<a href=\"cancelOrder.php?orderId={$fm['orderId']}\" class=\"btn btn-danger\" name=\"cancelOrder\">Cancel Order</a>
 				    </div>
+					";
+				}
+			}
+?>
+<!-- <button type=\"submit"  name="cancelOrder" class="btn btn-danger">Cancel Order</button> -->
+				    	
+
+				    	
 				  </div>
 				</div>
 			</div>
@@ -119,8 +148,6 @@ border-right: 10px solid black;
 		</div>
 	</div>
 </div>
-
-
 
 <!-- include the footer files -->
 <?php

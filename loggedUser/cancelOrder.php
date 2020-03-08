@@ -1,54 +1,51 @@
+<!-- include the header files -->
 <?php 
-  require_once('../includes/connection.php'); 
+  $page= 'myOrders';include('../includes/loggedHeader.php');
+?>
+
+<?php  
+  // $category_list = '';
+  $usr_id = $_SESSION['user_id'];
+    
+?>
+
+<!-- cancel order -->
+<?php
+    if(isset($_GET['orderId'])) {
+      $orderId = $_GET['orderId'];
+    }
+
+    $query = "DELETE FROM orderdetails WHERE orderId = '{$orderId}'";
+    $rs = mysqli_query($connection,$query);
+
 ?>
 
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-    <title>Cancel Order</title>
-  </head>
-  <body>
-    <h1 class="text-center" style="margin-top: 60px">Cancel Order</h1>
-
-<div class="row justify-content-center">
-  <div class="col-6 text-center">
-    <table class="table table-hover table-bordered">
-  <thead>
-    <tr>
-      <th colspan="3">Cancel Order<span></span></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>Order Number</th>
-      <th>Current Status</th>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>Jacob</td>
-    </tr>
-  </tbody>    
+<div class="loggedOrders">
+  <div class="container">
+    <div class="col-md-12"> <!-- style="margin-top: 50px;" -->
+      <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="#">Orders</a></li>
+              <li class="breadcrumb-item"><a href="#">Order Details</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Cancel Order</li>
+          </ol>
+        </nav>
+    </div>
   </div>
 
-</table>  
+  <div class="container">
+    <div class="row">
+      <h3 class="text-danger offset-1">Order Canceled :( <span style="font-size: 20px;margin-left: 40px"><a href="foodMenu.php">Return to Food Menu</a></span></h3>
+    </div>
 
-
-
+  </div>
 </div>
 
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-  </body>
-</html>
+<!-- include the footer files -->
+<?php
+  // $qw = "truncate table orderdetails";
+  // $rs = mysqli_query($connection,$qw);
+  include('../includes/loggedFooter.php');
+?>

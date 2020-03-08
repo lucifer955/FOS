@@ -98,7 +98,8 @@
 					      <td class=\"align-middle\"  id=\"subTotal$x\">{$cart1['itemPrice']}.00</td>
 
 
-					      <td class=\"align-middle\"><i class=\"fa fa-window-close\" style=\"color: red\"></i></td>
+					      <td class=\"align-middle\"><i class=\"fa fa-window-close\" style=\"color: red\" 
+					      onclick=\"dltfunc(document.getElementById('del$x'))\" ></i></td>
 					      
 					      <input type='hidden' value='1' name='subData$x' id='IDsubData$x'> 
 					      <input type='hidden' id='del$x' name='foodmID$x' value={$cart1['foodMenuId']}>
@@ -124,9 +125,9 @@
 
 				<div class="table">
 				  <div class="card-body text-center">
-				  	<h4 class="p-4 mb-4 bg-secondary text-white">Your Shopping Cart is Here</h4>
+				  	<h4 class="p-4 mb-4 bg-dark text-white">Your Shopping Cart is Here</h4>
 				  	<p><i class="fa fa-cart-plus fa-4x text-success"  ></i></p>
-				  	<p><i class="fa fa-arrow-left fa-2x text-warning"  ></i></p>
+				  	<p><i class="fa fa-arrow-left fa-2x text-dark"  ></i></p>
 				  </div>
 				</div>
 			</div>
@@ -148,6 +149,24 @@
 		var tot = up * x;
 		z.innerHTML = tot.toFixed(2);
 		b.value=x;
+	}
+
+	function dltfunc(m){
+		var x = parseInt(m.value);
+		// alert(x);
+
+		$.ajax({
+			method : "post",
+			url : "delete.php",
+			data : {foodid: x},
+			success:function(result){
+
+				alert(result);
+				location.reload(true);
+			}
+		})
+
+
 	}
 </script>
 <!-- include the footer files -->

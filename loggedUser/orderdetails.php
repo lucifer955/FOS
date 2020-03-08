@@ -165,7 +165,7 @@ $query_cart3 = "SELECT * FROM cart where customerId= '{$usr_id}'";
 			echo " 
 					      <td class=\"align-middle\"  id=\"subTotal$x\">".$med.".00</td>
 
-					      <td class=\"align-middle\"><i class=\"fa fa-window-close\" style=\"color: red\"></i></td>
+					      <td class=\"align-middle\"><i class=\"fa fa-window-close\" style=\"color: red\" onclick=\"dltfunc(document.getElementById('del$x'))\"></i></td>
 					      
 					      <input type='hidden' value='1' name='subData$x' id='IDsubData$x'> 
 					      <input type='hidden' id='del$x' name='foodmID$x' value={$cart1['foodMenuId']}>
@@ -262,7 +262,25 @@ $query_cart3 = "SELECT * FROM cart where customerId= '{$usr_id}'";
 	
 </div>
 
+<script type="text/javascript">
+	function dltfunc(m){
+		var x = parseInt(m.value);
+		// alert(x);
 
+		$.ajax({
+			method : "post",
+			url : "delete.php",
+			data : {foodid: x},
+			success:function(result){
+
+				alert(result);
+				location.reload(true);
+			}
+		})
+
+
+	}
+</script>
 
 <!-- include the footer files -->
 <?php
