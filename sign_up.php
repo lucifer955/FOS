@@ -7,25 +7,6 @@
 ?>
 <?php
 
-// $to = 'yasfer853@gmail.com'; 
-
-// $subject = 'my first email';
-
-// $body = 'This is my first email to send from local server';
-
-// $header = 'From: pizzamart.badulla@gmail.com';
-
-// $send = mail($to,$subject,$body,$header);
-
-// if($send){
-
-// echo 'message has been sent';
-
-// }else{
-
-// echo'message not sent';
-
-// }
 
 ?>
 <?php  
@@ -117,28 +98,17 @@
 
       $result = mysqli_query($connection,$query);
 
+       
+
+
       if($result){
-        // query successfull... redirecting to loggedIndex page
-//           $to = 'ndr.nhk@gmail.com'; //your email
-
-//           $subject = 'my first email';
-
-//           $body = 'This is my first email to send from local server';
-
-//           $header = 'From: username@gmail.com';
-
-//           $send = mail($to,$subject,$body,$header);
-
-//           $msgs = "not sent";
-//           if($send){
-
-//           echo 'message has been sent';
-
-//           }else{
-
-//           echo "<script type='text/javascript'>alert('$msgs');</script>";
-
-// }
+     //send mail
+        $to = $email;
+        $subject = "Pizza Mart";
+        $txt = "You have successfully registered!";
+        $headers = "From: pizzamart.badulla@gmail.com";
+        mail($to,$subject,$txt,$headers);
+        
         header('Location: sign_in.php?added=true');
       }else{
         $errors[] = 'Failed to add the new record';
