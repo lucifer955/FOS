@@ -34,11 +34,12 @@
 	$cats = mysqli_query($connection, $query_ct);
 
 	if($cats){
+		$x = 0;
 		while ($cat = mysqli_fetch_assoc($cats)) {
+			$x = $x+1;
 			echo "
-
-			      <a class=\"nav-link {$cat['categoryName']} \" id=\"{$cat['categoryName']}\" data-toggle=\"pill\" href=\"#v-pills-home\" role=\"tab\" aria-controls=\"v-pills-home\" aria-selected=\"true\" > {$cat['categoryName']} </a>
-
+			      <a class=\"nav-link {$cat['categoryName']} \" id=\"cat$x\" data-toggle=\"pill\" href=\"#v-pills-home\" role=\"tab\" aria-controls=\"v-pills-home\" aria-selected=\"true\" onclick=\"filterFoodMenu(document.getElementById('cats$x'))\" > {$cat['categoryName']} </a>
+			    <input type='hidden' id='cats$x' name='filter$x' value={$cat['categoryId']}>  
 			";
 		}
 	}
@@ -53,3 +54,4 @@
 		</div>
 	</div>
 </div>
+

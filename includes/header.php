@@ -27,13 +27,13 @@
         // save username and password into variables
         $email = mysqli_real_escape_string($connection, $_POST['email']);
         $password = mysqli_real_escape_string($connection, $_POST['password']);
-        // $hashed_password = sha1($password);
+        $password_hash = md5($password);
 
         // prepare database query
         $query = "SELECT * FROM customer
                     WHERE customerEmail = '{$email}'
                     -- hashed password should be included
-                    AND customerPassword =  '{$password}'
+                    AND customerPassword =  '{$password_hash}'
                     LIMIT 1";
                     // add hash password
         $result_set = mysqli_query($connection,$query);

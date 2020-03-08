@@ -106,9 +106,9 @@
       $password = mysqli_real_escape_string($connection, $_POST['password']);
 
       // $hashed = sha1($password);
-
+      $password_hash = md5($password);
       $query = "INSERT INTO customer(customerFirstName,customerLastName,customerEmail,customerContactNo,customerPassword,customerRegDate)
-        VALUES('{$first_name}','{$last_name}','{$email}','{$mobile_number}','{$password}',NOW())";
+        VALUES('{$first_name}','{$last_name}','{$email}','{$mobile_number}','{$password_hash}',NOW())";
       // $query = "INSERT INTO customer(";
       // $query .= "customerFirstName,customerLastName,customerEmail,customerContactNo,customerPassword";
       // $query .= ")VALUES(";
@@ -154,15 +154,32 @@
   $page= 'signUp';include('includes/header.php');
 ?>
 
-<!-- <div class="container userLogg">
-    <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
+<div class="container" >
+    <nav aria-label="breadcrumb" >
+    <ol class="breadcrumb" 
+    style="
+
+margin-top: 50px;
+background-color: white !important;
+  /*-webkit-box-shadow: 2px 6px 4px -6px black;
+     -moz-box-shadow: 2px 6px 4px -6px black;
+          box-shadow: 2px 6px 4px -6px black;*/
+  -webkit-box-shadow: 1px 1px 6px 0px rgba(50, 50, 50, 0.5);
+-moz-box-shadow:    1px 1px 6px 0px rgba(50, 50, 50, 0.5);
+box-shadow:         1px 1px 6px 0px rgba(50, 50, 50, 0.5);
+             border-left: 3px solid red;
+/*             border-right: 3px solid #cc0000;*/
+             border-radius: 0 !important;
+             margin-bottom: 40px;
+
+
+">
         <li class="breadcrumb-item"><a href="#">Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Sign up</li>
+        <li class="breadcrumb-item active" aria-current="page">Sign Up</li>
     </ol>
     </nav>
-</div> -->
-<div class="logg"></div>
+</div>
+<!-- <div class="logg"></div> -->
 
 <div class="container signUpPage">
   <div class="row justify-content-around">

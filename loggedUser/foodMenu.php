@@ -28,6 +28,20 @@
             
     
                 <div class="row">
+<!-- get the category name -->
+<?php  
+    
+    // if(isset($_POST['filterMenu'])){
+
+    //             $catex=$_POST['filterMenu'];
+    // }
+
+
+?>
+
+<!-- <form action="foodMenu.php" method="post">
+    <input type='submit' role="button" id='cateNamex' name='filterMenu' value="" style="display: none">    
+</form> -->
 
 <?php
 
@@ -81,6 +95,25 @@
         </nav>
     </div>
 </div>
+
+<script type="text/javascript">
+    function filterFoodMenu(f){
+        var cateId = parseInt(f.value);
+        // h.value = y;
+
+        $.ajax({
+            method : "POST",
+            url : "filter.php",
+            data : {cateId : cateId},
+            success:function(result){
+                alert(result);
+                // location.reload(true);
+            }
+        })
+
+
+    }
+</script>
 <!-- include the footer files -->
 <?php 
   include('../includes/loggedFooter.php');

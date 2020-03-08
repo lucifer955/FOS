@@ -59,7 +59,7 @@ border-right: 10px solid black;
 	$queryView = 	"SELECT *
 					FROM orderdetails 
 					INNER JOIN customer 
-					ON orderdetails.customerId=customer.customerId where customer.customerId = '{$usr_id}'";
+					ON orderdetails.customerId=customer.customerId where customer.customerId = '{$usr_id}' and orderdetails.orderId='{$orderId}'";
 
  				$view = mysqli_query($connection, $queryView);
     				if($view){
