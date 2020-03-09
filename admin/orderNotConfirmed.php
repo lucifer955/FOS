@@ -35,7 +35,7 @@
 <?php  
 
     //getting the list of food Menu
-    $query_fm = "SELECT * FROM orderdetails where orderStaus=0";
+    $query_fm = "SELECT * FROM orderdetails where orderStatus = 0";
     $fms = mysqli_query($connection, $query_fm);
     if($fms){
         while ($fm = mysqli_fetch_assoc($fms)) {

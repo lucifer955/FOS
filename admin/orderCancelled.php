@@ -21,25 +21,42 @@
 							  	<table class="table table-hover table-bordered">
 									<thead>
 									    <tr>
-									      <th scope="col">Order NO</th>
-									      <th scope="col">Order Number</th>
-									      <th scope="col">Order Date</th>
-									      <th scope="col">Action</th>
+									      <th scope="col">Order Id</th>
+									      <th scope="col">Customer Id</th>
+									      <th scope="col">Total</th>
+									      <th scope="col">Delivery Type</th>
 									    </tr>
 									  </thead>
-									  <tbody>
+									  	<tbody>
+
+<?php  
+
+    //getting the list of food Menu
+    $query_fm = "SELECT * FROM orderdetails where orderStatus = 2";
+    $fms = mysqli_query($connection, $query_fm);
+    if($fms){
+        while ($fm = mysqli_fetch_assoc($fms)) {
+
+            echo "
+
 									  	<tr>
-									      <th>1</th>
-									      <td>Mark</td>
-									      <td>Otto</td>
-									      <td><a href="viewCancelledOrderDetail.php">View Details</a></td>
+									      <th>0000{$fm['orderId']}</th>
+									      <td>0000{$fm['customerId']}</td>
+									      <td>Rs.{$fm['total']}/=</td>
+									      <td><a href=\"viewCancelledOrderDetail.php?orderId={$fm['orderId']}&cutomerId={$fm['customerId']}\">View Details</a></td>
 									    </tr>
-									    <tr>
-									      <th>2</th>
-									      <td>Mark</td>
-									      <td>Otto</td>
-									      <td><a href="viewCancelledOrderDetail.php">View Details</a></td>
-									    </tr>
+
+
+
+            ";
+        }   
+    }
+
+
+
+
+?>									  
+
 									  </tbody>
 							  	</table>
 						</div>
@@ -47,6 +64,7 @@
 			</div>	
 	</div>
 </div>
+
 <?php 
   include('adminIncludes/adminFooter.php');
 ?>

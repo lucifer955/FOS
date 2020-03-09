@@ -19,19 +19,35 @@
 	if (isset($_POST['submitStatus'])) {
 		
 			$selectOrderType = $_POST['selectOrderType'];
+			$orderId = $_POST['orderIdHidden'];
 
 			if ( $confirmed == $selectOrderType) {
-				$queryStatus = "UPDATE orderdetails SET orderStatus=1 WHERE orderId={$_GET['orderId']}";
+				$queryStatus = "UPDATE orderdetails SET orderStatus=1 WHERE orderId=$orderId";
 				mysqli_query($connection,$queryStatus);
 				$msg = "Order Confirmed";
-				echo "<script type='text/javascript'>alert('$msg');</script>";			
+				echo "<script type='text/javascript'>alert('$msg');</script>";
+							     //send mail
+        		$to = $email;
+        		$subject = "Pizza Mart Order Confirmed";
+        		$txt = "Your Order '{$email}' is Confimed!";
+        		$headers = "From: pizzamart.badulla@gmail.com";
+        		mail($to,$subject,$txt,$headers);
+		
 			}else if ($canceled == $selectOrderType) {
-				$queryStatus = "UPDATE orderdetails SET orderStatus=2 WHERE orderId={$_GET['orderId']}";
+				$queryStatus = "UPDATE orderdetails SET orderStatus=2 WHERE orderId=$orderId";
 				mysqli_query($connection,$queryStatus);				
 				$msg = "Order Canceled!";
-				echo "<script type='text/javascript'>alert('$msg');</script>";			
-
+				echo "<script type='text/javascript'>alert('$msg');</script>";
+							     //send mail
+        		$to = $email;
+        		$subject = "Pizza Mart Order Canceled";
+        		$txt = "Your Order '{$email}' is Confimed!";
+        		$headers = "From: pizzamart.badulla@gmail.com";
+        		mail($to,$subject,$txt,$headers);
 			}
+
+
+
 	}
 
 
@@ -146,7 +162,7 @@
 
 <?php  
 
-					$query2 = "SELECT * from cart";					
+					$query2 = "SELECT * from cart where customerId = '{$customerId}'";					
 					$view2 = mysqli_query($connection, $query2);
     				if($view2){
         				while ($fm2 = mysqli_fetch_assoc($view2)) {
@@ -178,14 +194,9 @@
 							</div>
 						</div>
 				</div>
-<?php
-
-		}
-    }
 
 
 
-?>
 
 				<div class="col-12 col-sm-12 col-md-12 text-center">
 						<div class="card-body">
@@ -203,12 +214,19 @@
 								      <option>Order Pickup</option>
 								      <option>Food Delivered</option> -->
 								    </select>
-								  </div>							  
+								  </div>
+								  <input type="hidden" name="orderIdHidden" value="<?php echo "{$fm['orderId']}"; ?>">							  
 							  <button type="submit" class="btn btn-primary" name="submitStatus">Update</button>
 							</form>
 						</div>
 				</div>
+<?php		
+		}
+    }
 
+
+
+?>
 				<div class="col-12 text-center">
 					<h2 class="text-center">Resturant Confirmation</h2>
 						<div class="card-body">

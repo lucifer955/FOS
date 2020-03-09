@@ -46,7 +46,7 @@
 <?php  
 
 //getting the list of food Menu
-    $query_orderdetails = "SELECT * FROM orderdetails where customerId = '{$usr_id}'";
+    $query_orderdetails = "SELECT * FROM orderdetails where customerId = '{$usr_id}' ORDER BY orderDate DESC";
     $ordr = mysqli_query($connection, $query_orderdetails);
 
    //  if(!$ordr){

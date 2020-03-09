@@ -31,7 +31,7 @@
 		</div>
 	</div>
 
-	<div class="container">
+	<div class="container" >
 		<div class="row justify-content-center">
 			<div class="col-9">
 				<div class="card" style="
@@ -130,9 +130,20 @@ border-right: 10px solid black;
 				    </div>
 				    <!-- cancel order -->
 				    <div class=\"text-center\">
-				    	<a href=\"cancelOrder.php?orderId={$fm['orderId']}\" class=\"btn btn-danger\" name=\"cancelOrder\">Cancel Order</a>
+				    	<a href=\"cancelOrder.php?orderId={$fm['orderId']}\" class=\"btn btn-danger\" name=\"cancelOrder\" id=\"disableCancel\" >Cancel Order</a>
 				    </div>
-					";
+";
+		if (0 == $fm['orderStatus']) {
+			echo "<p class='text-center text-warning mt-2'>Order Not Confirmed</p>";
+		}else if(1 == $fm['orderStatus']){
+			echo "<p class='text-center text-success  mt-2'>Order Confirmed</p>";
+		}else if(2 == $fm['orderStatus']){
+			echo "<p class='text-center text-danger  mt-2'>Order Cancelled</p>";			
+		}
+
+
+				    // <p class='text-center'>asgg</p>
+						
 				}
 			}
 ?>
@@ -148,7 +159,12 @@ border-right: 10px solid black;
 		</div>
 	</div>
 </div>
-
+<script type="text/javascript">
+			function disableButton() {
+ 			 // document.getElementById("disableCancel").classList.add("btn btn-danger disabled");
+ 			 document.getElementById("disableCancel").className += " disabled";
+			}		
+</script>
 <!-- include the footer files -->
 <?php
 	// $qw = "truncate table orderdetails";
