@@ -49,11 +49,13 @@
                 <a href="foodCategory.php"><i class="fa fa-plus-square"></i>Food Category</a>
               </li> -->
               <li class=" <?php if($page=='foodCategory') {echo 'active1';}?>">
-                <a class="dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                <a class="dropdown-toggle " href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="fa fa-plus-square"></i>Food Category</a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="foodCategory.php">Food Categogy</a>
-                  <a class="dropdown-item" href="manageFoodCategory.php">Manage Food Category</a>
+                <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                  <div style="display: block">
+                    <a class="dropdown-item text-white" href="foodCategory.php">Food Categogy</a>
+                    <a class="dropdown-item text-white" href="manageFoodCategory.php">Manage Food Category</a>                    
+                  </div>
                 </div>
               </li>
               <!-- <li class=" <?php if($page=='foodMenu') {echo 'active1';}?>">
@@ -62,25 +64,21 @@
               <li class=" <?php if($page=='foodMenu') {echo 'active1';}?>">
                 <a class="dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
                   <i class="fa fa-align-justify"></i>Food Menu</a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="foodMenu.php">Add Food Menu</a>
-                  <a class="dropdown-item" href="manageFoodMenu.php">Manage Food Menu</a>
+                <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item text-white" href="foodMenu.php">Add Food Menu</a>
+                  <a class="dropdown-item text-white" href="manageFoodMenu.php">Manage Food Menu</a>
                 </div>
               </li>
-
-             <!--  <li class=" <?php if($page=='orders') {echo 'active1';}?>">
-                <a href="orders.php"><i class="fa fa-cart-plus"></i>Orders</a>
-              </li> -->
 
               <li class=" <?php if($page=='orders') {echo 'active1';}?>">
                 <a class="dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
                   <i class="fa fa-cart-plus"></i>Orders</a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="orderNotConfirmed.php">Not Confirmed yet</a>
-                  <a class="dropdown-item" href="orderConfirmed.php">Order Confirmed</a>
-                  <a class="dropdown-item" href="orderCancelled.php">Cancelled</a>
-<!--                   <a class="dropdown-item" href="order.php">All orders</a> -->
-                </div>
+                <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item text-white" href="orderNotConfirmed.php">Not Confirmed yet</a>
+                  <a class="dropdown-item text-white" href="orderConfirmed.php">Order Confirmed</a>
+                  <a class="dropdown-item text-white" href="orderCancelled.php">Cancelled</a>
+<!--                   <a class="dropdown-item text-white" href="order.php">All orders</a> -->
+                <!-- </div> -->
               </li>
               <li class=" <?php if($page=='reports') {echo 'active1';}?>">
                 <a href="reports.php"><i class="fa fa-file"></i>Reports</a>
@@ -91,9 +89,9 @@
               <li class=" <?php if($page=='myAccount') {echo 'active1';}?>">
                 <a class="dropdown-toggle" href="adminAccount.php" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
                   <i class="fa fa-user"></i><?php echo $_SESSION['user_name']; ?></a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="adminProfile.php">Profile</a>
-                  <a class="dropdown-item" href="adminChangePassword.php">Change Password</a>
+                <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item text-white" href="adminProfile.php">Profile</a>
+                  <a class="dropdown-item text-white" href="adminChangePassword.php">Change Password</a>
                 </div>
               </li>
             </ul>

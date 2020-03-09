@@ -2,6 +2,41 @@
   $page= 'orders';include('adminIncludes/adminHeader.php');
 ?>
 
+<?php  
+
+	if (isset($_GET['orderId'])) {
+		$orderId = $_GET['orderId'];
+		$customerId = $_GET['cutomerId'];
+	}
+
+?>
+<?php 
+
+	$selectOrderType = '';
+	$confirmed = 1;
+	$canceled = 2;
+
+	if (isset($_POST['submitStatus'])) {
+		
+			$selectOrderType = $_POST['selectOrderType'];
+
+			if ( $confirmed == $selectOrderType) {
+				$queryStatus = "UPDATE orderdetails SET orderStatus=1 WHERE orderId={$_GET['orderId']}";
+				mysqli_query($connection,$queryStatus);
+				$msg = "Order Confirmed";
+				echo "<script type='text/javascript'>alert('$msg');</script>";			
+			}else if ($canceled == $selectOrderType) {
+				$queryStatus = "UPDATE orderdetails SET orderStatus=2 WHERE orderId={$_GET['orderId']}";
+				mysqli_query($connection,$queryStatus);				
+				$msg = "Order Canceled!";
+				echo "<script type='text/javascript'>alert('$msg');</script>";			
+
+			}
+	}
+
+
+?>
+
 <div class="adminViewOrder">
 	<div class="col-md-12" >
 		<nav aria-label="breadcrumb">
@@ -18,104 +53,158 @@
 	<div class="card">
 		<div class="row justify-content-center">
 			<div class="col-12 col-sm-12 col-md-5">
-				<h2 class="text-center">User Details</h2>
+				<h2 class="text-center">Order Details</h2>
 					<div class="card-body">
 					    <div class="table-responsive-md">
 							  	<table class="table table-hover table-bordered table-sm">
+
+
+<?php  
+
+	$sub = 1;
+
+	$queryView = 	"SELECT *
+					FROM orderdetails 
+					INNER JOIN customer 
+					ON orderdetails.customerId=customer.customerId where customer.customerId = '{$customerId}' and orderdetails.orderId='{$orderId}'
+					 and orderdetails.orderStatus = 0";
+
+	$view = mysqli_query($connection, $queryView);
+    if($view){
+		while ($fm = mysqli_fetch_assoc($view)){
+
+
+
+
+?>
+
+
 									<tr>
-										<th>Order Number</th>
-										<td>12312312313</td>
+										<th>Order Id</th>
+										<td>0000<?php echo "{$fm['orderId']}"; ?></td>
 									</tr>
 									<tr>
 										<th>First Name</th>
-										<td>xdvsdfsdfsdf</td>
+										<td><?php echo "{$fm['customerFirstName']}"; ?></td>
 									</tr>
 									<tr>
 										<th>last Name</th>
-										<td>sdfsdfdsfs</td>
+										<td><?php echo "{$fm['customerLastName']}"; ?></td>
 									</tr>
 									<tr>
 										<th>Email</th>
-										<td>sdfsdfsdf</td>
+										<td><?php echo "{$fm['customerEmail']}"; ?></td>
 									</tr>
 									<tr>
 										<th>Mobile Number</th>
-										<td>sfsdfsdfsd</td>
+										<td><?php echo "{$fm['customerContactNo']}"; ?></td>
 									</tr>
 									<tr>
 										<th>Flat Number or Building Number</th>
-										<td></td>
+										<td><?php echo "{$fm['flatBuildingNo']}"; ?></td>
 									</tr>
 									<tr>
 										<th>Street Name</th>
-										<td></td>
+										<td><?php echo "{$fm['streetName']}"; ?></td>
 									</tr>
 									<tr>
 										<th>Area</th>
-										<td></td>
+										<td><?php echo "{$fm['area']}"; ?></td>
 									</tr>
 									<tr>
 										<th>Land Mark</th>
-										<td></td>
+										<td><?php echo "{$fm['landMark']}"; ?></td>
 									</tr>
 									<tr>
 										<th>City</th>
-										<td></td>
+										<td><?php echo "{$fm['city']}"; ?></td>
 									</tr>
 									<tr>
 										<th>Order Date</th>
-										<td></td>
+										<td><?php echo "{$fm['orderDate']}"; ?></td>
 									</tr>
 									<tr>
 										<th>Order Final Status</th>
-										<td></td>
+										<td><?php echo "{$fm['orderStatus']}"; ?></td>
 									</tr>
 							  	</table>
 						</div>
 					</div>
 			</div>	
-
-			<div class="col-12 col-sm-12 col-md-5 text-center" style="margin-left: 10px;">
+		<div class="col-12 col-sm-12 col-md-5 text-center" style="margin-left: 10px;">
 					<h2 class="text-center">Order Details</h2>
 						<div class="card-body">
 						    <div class="table-responsive-md">
 								  	<table class="table table-hover table-bordered table-sm">
 										<tr>
-											<th>#</th>
+											<th>Food MenuId</th>
 											<th>Food Name</th>
-											<th>Price</th>
+											<th>Quantity</th>
+											<th>Sub Total</th>
 										</tr>
+
+
+<?php  
+
+					$query2 = "SELECT * from cart";					
+					$view2 = mysqli_query($connection, $query2);
+    				if($view2){
+        				while ($fm2 = mysqli_fetch_assoc($view2)) {
+
+        					$sub = $fm2['itemPrice']*$fm2['foodQuantity'];
+?>
+	
+
+
+
 										<tr>
-											<td>1</td>
-											<td>Chees</td>
-											<td>344</td>
+											<td><?php echo "{$fm2['foodMenuId']}"; ?></td>
+											<td><?php echo "{$fm2['itemName']}"; ?></td>
+											<td><?php echo "{$fm2['foodQuantity']}"; ?></td>
+											<td>Rs.<?php echo $sub; ?>/=</td>
 										</tr>
+
+<?php  
+	}
+}
+
+
+?>
 										<tr>
-											<td colspan="2">Grand Total</td>
-											<td>344</td>
+											<td colspan="3">Grand Total</td>
+											<td>Rs.<?php echo "{$fm['total']}"; ?>/=</td>
 										</tr>
 								  	</table>
 							</div>
 						</div>
 				</div>
+<?php
+
+		}
+    }
+
+
+
+?>
+
 				<div class="col-12 col-sm-12 col-md-12 text-center">
 						<div class="card-body">
-						    <form>
-							    <div class="form-group">
+						    <form action="viewNotConfirmedOrderDetail.php" method="post">
+							   <!--  <div class="form-group">
 								    <label for="resturantStatus" class="col-sm-2 col-form-label">Resturant Remark:</label>
 								    <textarea class="form-control" id="resturantStatus" rows="3"></textarea>
-								</div>
+								</div> -->
 								<div class="form-group">
 								    <label for="exampleFormControlSelect2">Resturant Status:</label>
-								    <select class="form-control" id="exampleFormControlSelect2">
-								      <option>Confirm the Order</option>
-								      <option>Cancel the Order</option>
+								    <select class="form-control" id="exampleFormControlSelect2" name="selectOrderType">
+								      <option value="1">Confirm the Order</option>
+								      <option value="2">Cancel the Order</option>
 <!-- 								      <option>Food B</option>
 								      <option>Order Pickup</option>
 								      <option>Food Delivered</option> -->
 								    </select>
 								  </div>							  
-							  <button type="submit" class="btn btn-primary">Update</button>
+							  <button type="submit" class="btn btn-primary" name="submitStatus">Update</button>
 							</form>
 						</div>
 				</div>

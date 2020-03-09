@@ -4,6 +4,7 @@
       <div class="row d-flex justify-content-around">
         <div class="col-4 col-md-2 col-sm-4">
           <h5>Home</h5>
+          <h6><a href="../admin/admin_login.php" class="text-white">Admin</a></h6>
         </div>
         <div class="col-4 col-md-2 col-sm-4">
             <h5>Food Menu</h5>
