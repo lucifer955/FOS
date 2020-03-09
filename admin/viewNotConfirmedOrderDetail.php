@@ -4,10 +4,10 @@
 
 <?php  
 
-	if (isset($_GET['orderId'])) {
+	if (isset($_GET['orderId']) && isset($_GET['cutomerId'])) {
 		$orderId = $_GET['orderId'];
 		$customerId = $_GET['cutomerId'];
-	}
+
 
 ?>
 <?php 
@@ -224,27 +224,54 @@
 		}
     }
 
+}
+
+?>
+
+	<div class="col-12 text-center">
+		<h2 class="text-center">Resturant Confirmation</h2>
+			<div class="card-body">
+						 <div class="table-responsive-md">
+								<table class="table table-hover table-bordered table-sm">
+							<tr>
+								<th>Order Id</th>
+								<th>Customer Id</th>
+								<th>Total</th>
+								<th>Status</th>
+								<th>Time</th>
+							</tr>
+
+
+
+
+<?php
+
+	$query3 = "SELECT * from orderdetails";					
+	$view3 = mysqli_query($connection, $query3);
+    if($view3){
+        while ($fm3 = mysqli_fetch_assoc($view3)) {
+
 
 
 ?>
-				<div class="col-12 text-center">
-					<h2 class="text-center">Resturant Confirmation</h2>
-						<div class="card-body">
-						    <div class="table-responsive-md">
-								  	<table class="table table-hover table-bordered table-sm">
+
+
 										<tr>
-											<th>#</th>
-											<th>Order Number</th>
-											<th>Remark</th>
-											<th>Status</th>
-											<th>Time</th>
+											<td><?php echo "{$fm3['orderId']}"; ?></td>
+											<td><?php echo "{$fm3['customerId']}"; ?></td>
+											<td>Rs.<?php echo "{$fm3['total']}"; ?>/=</td>
+											<td><?php echo "{$fm3['orderStatus']}"; ?></td>
+											<td><?php echo "{$fm3['orderDate']}"; ?></td>
 										</tr>
-										<tr>
-											<td>1</td>
-											<td>resturant remark here</td>
-											<td>Order Confirmed</td>
-											<td>344</td>
-										</tr>
+<?php 	 
+
+		}
+	}	
+
+?>
+
+
+										
 								  	</table>
 							</div>
 						</div>

@@ -3,10 +3,10 @@
 ?>
 <?php  
 
-	if (isset($_GET['orderId'])) {
+	if (isset($_GET['orderId']) && isset($_GET['cutomerId'])) {
 		$orderId = $_GET['orderId'];
 		$customerId = $_GET['cutomerId'];
-	}
+
 
 ?>
 <div class="adminViewOrder">
@@ -155,7 +155,7 @@
 		}
     }
 
-
+}
 
 ?>
 		</div>

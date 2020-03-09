@@ -7,7 +7,7 @@
 	if (isset($_GET['orderId'])) {
 		$orderId = $_GET['orderId'];
 		$customerId = $_GET['cutomerId'];
-	}
+
 
 ?>
 <div class="adminViewOrder">
@@ -156,7 +156,7 @@
 		}
     }
 
-
+}
 
 ?>
 		</div>
