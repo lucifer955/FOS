@@ -2,6 +2,79 @@
   $page= 'myAccount';include('adminIncludes/adminHeader.php');
 ?>
 
+<?php 
+	$adminId = $_SESSION['admin_id'];
+	$password = '';
+	$repeat_password = '';
+
+
+    //check for form subbmission
+    if (isset($_POST['changeAdminPassword'])) {
+
+      $errors = array();
+
+    //check if usename and password has been entered
+      if (!isset($_POST['currentPassword']) || strlen(trim($_POST['currentPassword'])) < 1) {
+        
+        $errors[] = 'Current Password is missing / invalid';
+      }
+
+      if (!isset($_POST['newPassword']) || strlen(trim($_POST['newPassword'])) < 1) {
+        
+        $errors[] = 'Password is missing / invalid';
+      }
+
+      if (!isset($_POST['repeatPassword']) || strlen(trim($_POST['repeatPassword'])) < 1) {
+        
+        $errors[] = 'Password is Not Mactching';
+      }
+
+      $password = $_POST['newPassword'];
+      $repeat_password = $_POST['repeatPassword'];
+
+      if ($password != $repeat_password) {
+        $errors[] = 'Two passwords are not matching';
+      }
+
+      //check if there are any errors in the file
+      if(empty($errors)){
+
+        // save username and password into variables
+        $password = mysqli_real_escape_string($connection, $_POST['newPassword']);
+        $repeat_password = mysqli_real_escape_string($connection, $_POST['repeatPassword']);
+        $password_hash = md5($password);
+
+        $query =  "UPDATE admin SET adminPassword = '{$password_hash}' WHERE adminId=$adminId";
+        $rs = mysqli_query($connection,$query);
+
+        if($rs){
+          //send mail
+          // $to = $email;
+          // $subject = "Pizza Mart";
+          // $txt = "You have successfully registered!";
+          // $headers = "From: pizzamart.badulla@gmail.com";
+          // mail($to,$subject,$txt,$headers);
+
+          $msg = "Password Changed successfully";
+          echo "<script type='text/javascript'>alert('$msg');</script>";          
+        
+      }else{
+        $errors[] = 'Failed to change the password';
+      }        
+
+       
+      }
+    }
+
+?>
+
+
+
+
+
+
+
+
 <div class="adminViewOrder">
 	<div class="col-md-12" >
 		<nav aria-label="breadcrumb">
@@ -19,7 +92,7 @@
 				<div class="text-center">
 <!-- 					  <h5 class="card-header">Search</h5> -->
 					<div class="card-body">
-						 <form>
+						 <form action="adminChangePassword.php" method="POST">
 					        <div class="form-row">
 					            <div class="col-12 col-sm-12">
 					              <label for="password">Current Password</label>
@@ -35,7 +108,7 @@
 					            </div>
 					      </div>
 					      <br>
-					        <button type="submit" class="btn btn-primary">Update</button>
+					        <button type="submit" class="btn btn-primary" name="changeAdminPassword">Update</button>
 					    </form>   
 				  	</div>
 				</div>

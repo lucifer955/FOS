@@ -2,6 +2,8 @@
 <?php 
   require_once('../includes/connection.php'); 
 ?>
+
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -30,7 +32,7 @@
         </div>
 
         <div class="col-12 col-sm-12 col-md-4 col-lg-4 ">
-          <form class="form-container">
+          <form class="form-container" >
                 <div class="form-group">
                   <label for="exampleInputEmail1">Email address</label>
                   <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">

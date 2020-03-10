@@ -5,7 +5,7 @@
 <?php  
 
   //checkin if a user is logged in
-  if (!isset($_SESSION['user_id'])) {
+  if (!isset($_SESSION['admin_id'])) {
     header('Location: admin_login.php');
   }
 ?>
@@ -33,7 +33,7 @@
       <div id="wrapper">
           <aside id="sidebar-wrapper">
             <div class="sidebar-brand">
-              <h2>PIZZAMART</h2>
+              <h4 class="text-white"><span style="color: red">PIZZA</span>MART | <span class="text-warning">ADMIN</span></h4>
             </div>
             
             <ul class="sidebar-nav">
@@ -45,9 +45,8 @@
               <li class=" <?php if($page=='regUsers') {echo 'active1';}?>">
                 <a href="regUsers.php"><i class="fa fa-users"></i>Reg Users</a>
               </li>
-             <!--  <li class=" <?php if($page=='foodCategory') {echo 'active1';}?>">
-                <a href="foodCategory.php"><i class="fa fa-plus-square"></i>Food Category</a>
-              </li> -->
+              
+
               <li class=" <?php if($page=='foodCategory') {echo 'active1';}?>">
                 <a class="dropdown-toggle " href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="fa fa-plus-square"></i>Food Category</a>
@@ -77,8 +76,6 @@
                   <a class="dropdown-item text-white" href="orderNotConfirmed.php">Not Confirmed yet</a>
                   <a class="dropdown-item text-white" href="orderConfirmed.php">Order Confirmed</a>
                   <a class="dropdown-item text-white" href="orderCancelled.php">Cancelled</a>
-<!--                   <a class="dropdown-item text-white" href="order.php">All orders</a> -->
-                <!-- </div> -->
               </li>
               <li class=" <?php if($page=='reports') {echo 'active1';}?>">
                 <a href="reports.php"><i class="fa fa-file"></i>Reports</a>
@@ -86,6 +83,16 @@
               <li class=" <?php if($page=='search') {echo 'active1';}?>">
                 <a href="search.php"><i class="fa fa-search"></i>Search</a>
               </li>
+            <li class=" <?php if($page=='cashieradd') {echo 'active1';}?>">
+                <a class="dropdown-toggle " href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fa fa-money"></i>Cashier</a>
+                <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                  <div>
+                    <a class="dropdown-item text-white" href="cashieradd.php">Add Cashier</a>
+                    <a class="dropdown-item text-white" href="cashierDetail.php">View Cashiers</a>                    
+                  </div>
+                </div>
+              </li>              
               <li class=" <?php if($page=='myAccount') {echo 'active1';}?>">
                 <a class="dropdown-toggle" href="adminAccount.php" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
                   <i class="fa fa-user"></i><?php echo $_SESSION['user_name']; ?></a>

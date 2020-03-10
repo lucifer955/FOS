@@ -27,13 +27,13 @@
         // save username adn password into variables
         $email = mysqli_real_escape_string($connection, $_POST['email']);
         $password = mysqli_real_escape_string($connection, $_POST['password']);
-        $hashed_password = sha1($password);
+        $hashed_password = md5($password);
 
         // prepare database query
         $query = "SELECT * FROM admin
                     WHERE adminEmail = '{$email}'
                     -- hashed password should be included
-                    AND adminPassword = '{$password}'
+                    AND adminPassword = '{$hashed_password}'
                     LIMIT 1";
 
         $result_set = mysqli_query($connection,$query);
@@ -44,9 +44,9 @@
           if(mysqli_num_rows($result_set) == 1){
             //valid user found
 
-            $user = mysqli_fetch_assoc($result_set);
-            $_SESSION['user_id'] = $user['adminId'];
-            $_SESSION['user_name'] = $user['userName'];
+            $us = mysqli_fetch_assoc($result_set);
+            $_SESSION['admin_id'] = $us['adminId'];
+            $_SESSION['user_name'] = $us['userName'];
             //redirect to dashboard.php
             header('Location: dashboard.php');
           }else{

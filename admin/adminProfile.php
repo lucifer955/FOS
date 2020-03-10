@@ -3,7 +3,10 @@
 ?>
 <?php  
 
-	$adminId = $_SESSION['user_id'];
+	$adminId = $_SESSION['admin_id'];
+
+	// $msg = "User Details {$_SESSION['admin_id']} Updated";
+ //    echo "<script type='text/javascript'>alert('$msg');</script>";
 	$query_reg = "SELECT * FROM admin where adminId = $adminId";
 	$users = mysqli_query($connection, $query_reg);
 
@@ -24,6 +27,42 @@
 				}
 	}
 ?>
+
+
+<?php  
+
+
+if (isset($_POST['adminHidId'])) {
+    	
+
+    	$adminId1 = $_POST['adminHidId'];
+    	$username1 = $_POST['user_name'];
+        $full_name1 = $_POST['full_name'];
+        $email1 = $_POST['email'];
+        $mobile_number1 = $_POST['mobile_number'];
+
+
+		$query =  "UPDATE admin 
+		SET userName = '{$username1}',
+		adminName = '{$full_name1}',
+		adminContactNo = '{$mobile_number1}',
+		adminEmail = '{$email1}'
+		WHERE adminId =  {$adminId1}";
+        $rs = mysqli_query($connection,$query);
+
+        if ($rs) {
+        	$msg = "admin Details Updated";
+          	echo "<script type='text/javascript'>alert('$msg');</script>";
+        }else{
+
+        	// $msg = "Error Updated";
+         //  	echo "<script type='text/javascript'>alert('$msg');</script>";
+        }
+
+
+}
+
+?>
 <div class="adminViewOrder">
 	<div class="col-md-12" >
 		<nav aria-label="breadcrumb">
@@ -39,39 +78,65 @@
 		<div class="card col-12 text-center">
 				<h2 class="text-center">Update</h2>
 					<div class="card-body">
-						<form action="adminProfile.php" method="POST">
-						  <div class="form-group row">
-						    <label for="inputFirstName" class="col-sm-2 col-form-label">First Name:</label>
-						    <div class="col-sm-10">
-						      <input type="text" class="form-control" id="inputFirstName" placeholder="First Name" <?php echo 'value ="' . $admin_name . '"'; ?> name="first_name">
+			<form action="adminProfile.php" method="POST">
+
+<?php  
+
+	$queryAdmin = "SELECT * FROM admin where adminId = {$adminId}";
+	$adminrs = mysqli_query($connection, $queryAdmin);
+
+	if($adminrs){
+		while ($user = mysqli_fetch_assoc($adminrs)) {
+
+echo "
+
+
+						  <div class=\"form-group row\">
+						    <label for=\"inputFirstName\" class=\"col-sm-2 col-form-label\">Admin Name:</label>
+						    <div class=\"col-sm-10\">
+						      <input type=\"text\" class=\"form-control\" id=\"inputFirstName\" value={$user['userName']} name=\"user_name\">
 						    </div>
 						  </div>
-						  <div class="form-group row">
-						    <label for="inputLastName" class="col-sm-2 col-form-label">Last Name:</label>
-						    <div class="col-sm-10">
-						      <input type="text" class="form-control" id="inputLastName" placeholder="Last Name" <?php echo 'value ="' . $user_name . '"'; ?> name="last_name">
+						  <div class=\"form-group row\">
+						    <label for=\"inputLastName\" class=\"col-sm-2 col-form-label\">User Name:</label>
+						    <div class=\"col-sm-10\">
+						      <input type=\"text\" class=\"form-control\" id=\"inputLastName\" value={$user['adminName']} name=\"full_name\">
 						    </div>
 						  </div>
-						  <div class="form-group row">
-						    <label for="inputEmail" class="col-sm-2 col-form-label">Email:</label>
-						    <div class="col-sm-10">
-						      <input type="email" class="form-control" id="inputEmail" placeholder="user@test.com" <?php echo 'value ="' . $adminEmail . '"'; ?> name="email">
+						  <div class=\"form-group row\">
+						    <label for=\"inputEmail\" class=\"col-sm-2 col-form-label\">Email:</label>
+						    <div class=\"col-sm-10\">
+						      <input type=\"email\" class=\"form-control\" id=\"inputEmail\" value={$user['adminEmail']} name=\"email\">
 						    </div>
 						  </div>
-						  <div class="form-group row">
-						    <label for="inputMobileNumber" class="col-sm-2 col-form-label">Mobile Number:</label>
-						    <div class="col-sm-10">
-						      <input type="text" class="form-control" id="inputMobileNumber" placeholder="0123123456" <?php echo 'value ="' . $adminContactNo. '"'; ?> name="mobile_number">
+						  <div class=\"form-group row\">
+						    <label for=\"inputMobileNumber\" class=\"col-sm-2 col-form-label\">Mobile Number:</label>
+						    <div class=\"col-sm-10\">
+						      <input type=\"text\" class=\"form-control\" id=\"inputMobileNumber\" value={$user['adminContactNo']}  name=\"mobile_number\">
 						    </div>
 						  </div>
-						  <div class="form-group row">
-						    <label for="inputRegDate" class="col-sm-2 col-form-label">Registered Date:</label>
-						    <div class="col-sm-10">
-						      <input type="text" class="form-control" id="inputRegDate" placeholder="2019-04-08 13:11:22" disabled <?php echo 'value ="' . $adminRegDate . '"'; ?> name="customerRegDate">
+						  <div class=\"form-group row\">
+						    <label for=\"inputRegDate\" class=\"col-sm-2 col-form-label\">Registered Date:</label>
+						    <div class=\"col-sm-10\">
+						      <input type=\"text\" class=\"form-control\" id=\"inputRegDate\" value={$user['adminRegDate']} disabled name=\"customerRegDate\">
 						    </div>
 						  </div>
-						  <button type="submit" class="btn btn-primary" name="adminUserDetailButton">Update</button>
+						  <button type=\"submit\" class=\"btn btn-primary\" name=\"adminUserDetailButton\">Update</button>
+					
+
+					<input type='hidden' value={$user['adminId']} name='adminHidId' id=''>
+
+
+"; 
+		}
+	}
+
+
+?>
 						</form>
+
+
+
 					</div>
 			</div>	
 	</div>

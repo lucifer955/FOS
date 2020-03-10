@@ -74,7 +74,7 @@ border-right: 10px solid black;
 							    </tr>
 							    <tr>
 							      <th>Customer Reg Date</th>
-							      <td class='text-secondary'>0000{$fm['customerRegDate']}</td>
+							      <td class='text-secondary'>00{$fm['customerRegDate']}</td>
 							    </tr>
 							    <tr>
 							      <th>Customer Id</th>
