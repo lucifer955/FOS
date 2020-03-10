@@ -2,11 +2,96 @@
   $page= 'orders';include('adminIncludes/adminHeader.php');
 ?>
 
+<div class="adminViewOrder">
+	<div class="col-md-12" >
+		<nav aria-label="breadcrumb">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="#">Home</a></li>
+				<li class="breadcrumb-item"><a href="#">Order</a></li>
+				<li class="breadcrumb-item active" aria-current="page">View Order Details</li>
+			</ol>
+		</nav>
+	</div>
+</div>
+
 <?php  
 
 	if (isset($_GET['orderId']) && isset($_GET['cutomerId'])) {
 		$orderId = $_GET['orderId'];
 		$customerId = $_GET['cutomerId'];
+
+	}else{
+		$orderId = '';
+		$customerId = '';
+
+
+
+
+
+
+echo "
+
+
+
+<div class=\"container\">
+<div class=\"row\">
+	<div class=\"col-12\">
+
+	<div class=\"col-12 text-center\">
+		<h2 class=\"text-center\">Resturant Confirmation</h2>
+			<div class=\"card-body col-12\">
+						 <div class=\"\">
+								<table class=\"table table-hover table-bordered table-sm\">
+							<tr>
+								<th>Order Id</th>
+								<th>Customer Id</th>
+								<th>Total</th>
+								<th>Status</th>
+								<th>Time</th>
+							</tr>
+
+
+
+";
+
+	$query3 = "SELECT * from orderdetails";					
+	$view3 = mysqli_query($connection, $query3);
+    if($view3){
+        while ($fm3 = mysqli_fetch_assoc($view3)) {
+
+
+
+echo "
+
+										<tr>
+											<td>{$fm3['orderId']}</td>
+											<td>{$fm3['customerId']}</td>
+											<td>{$fm3['total']}/=</td>
+											<td>{$fm3['orderStatus']}</td>
+											<td>{$fm3['orderDate']}</td>
+										</tr>
+";
+		}
+	}	
+
+
+echo "
+
+
+										
+								  	</table>
+							</div>
+						</div>
+				</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+";
 
 	}
 ?>
@@ -20,6 +105,20 @@
 		
 			$selectOrderType = $_POST['selectOrderType'];
 			$orderId = $_POST['orderIdHidden'];
+			// $customerId = $_POST['customerIdHidden'];
+
+	// $queryV = 	"SELECT *
+	// 				FROM orderdetails 
+	// 				INNER JOIN customer 
+	// 				ON orderdetails.customerId=customer.customerId where customer.customerId = '{$customerId}' and orderdetails.orderId='{$orderId}'
+	// 				 and orderdetails.orderStatus = 0";
+
+	// $v = mysqli_query($connection, $queryV);
+ //    if($v){
+	// 	while ($fm = mysqli_fetch_assoc($v)){
+	// 		$email = $fm['customerEmail'];
+	// 	}
+	// }
 
 			if ( $confirmed == $selectOrderType) {
 				$queryStatus = "UPDATE orderdetails SET orderStatus= 1 WHERE orderId=$orderId";
@@ -27,11 +126,11 @@
 				$msg = "Order Confirmed";
 				echo "<script type='text/javascript'>alert('$msg');</script>";
 							     //send mail
-        		$to = $email;
-        		$subject = "Pizza Mart Order Confirmed";
-        		$txt = "Your Order '{$email}' is Confimed!";
-        		$headers = "From: pizzamart.badulla@gmail.com";
-        		mail($to,$subject,$txt,$headers);
+        		// $to = $email;
+        		// $subject = "Pizza Mart Order Confirmed";
+        		// $txt = "Your Order '{$email}' is Confimed!";
+        		// $headers = "From: pizzamart.badulla@gmail.com";
+        		// mail($to,$subject,$txt,$headers);
 		
 			}else if ($canceled == $selectOrderType) {
 				$queryStatus = "UPDATE orderdetails SET orderStatus= 2 WHERE orderId=$orderId";
@@ -39,38 +138,34 @@
 				$msg = "Order Canceled!";
 				echo "<script type='text/javascript'>alert('$msg');</script>";
 							     //send mail
-        		$to = $email;
-        		$subject = "Pizza Mart Order Canceled";
-        		$txt = "Your Order '{$email}' is Confimed!";
-        		$headers = "From: pizzamart.badulla@gmail.com";
-        		mail($to,$subject,$txt,$headers);
+        		// $to = $email;
+        		// $subject = "Pizza Mart Order Canceled";
+        		// $txt = "Your Order '{$email}' is Confimed!";
+        		// $headers = "From: pizzamart.badulla@gmail.com";
+        		// mail($to,$subject,$txt,$headers);
 			}
 	}
 
+
 ?>
-
-<div class="adminViewOrder">
-	<div class="col-md-12" >
-		<nav aria-label="breadcrumb">
-			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><a href="#">Home</a></li>
-				<li class="breadcrumb-item"><a href="#">Order</a></li>
-				<li class="breadcrumb-item active" aria-current="page">View Order Details</li>
-			</ol>
-		</nav>
-	</div>
-</div>
-
-<div class="container">
-	<div class="card">
-		<div class="row justify-content-center">
-			<div class="col-12 col-sm-12 col-md-5">
-				<h2 class="text-center">Order Details</h2>
-					<div class="card-body">
-					    <div class="table-responsive-md">
-							  	<table class="table table-hover table-bordered table-sm">
+<?php 
+	if (isset($_GET['orderId']) && isset($_GET['cutomerId'])) {
+		$orderId = $_GET['orderId'];
+		$customerId = $_GET['cutomerId'];
 
 
+echo "
+<div class=\"container\">
+	<div class=\"card\">
+		<div class=\"row justify-content-center\">
+			<div class=\"col-12 col-sm-12 col-md-5\">
+				<h2 class=\"text-center\">Order Details</h2>
+					<div class=\"card-body\">
+					    <div class=\"table-responsive-md\">
+							  	<table class=\"table table-hover table-bordered table-sm\">
+							  	";
+	}
+?>
 <?php  
 
 	$sub = 1;
@@ -218,53 +313,6 @@
 
 ?>
 
-	<div class="col-12 text-center">
-		<h2 class="text-center">Resturant Confirmation</h2>
-			<div class="card-body">
-						 <div class="table-responsive-md">
-								<table class="table table-hover table-bordered table-sm">
-							<tr>
-								<th>Order Id</th>
-								<th>Customer Id</th>
-								<th>Total</th>
-								<th>Status</th>
-								<th>Time</th>
-							</tr>
-
-
-
-
-<?php
-	$query3 = "SELECT * from orderdetails";					
-	$view3 = mysqli_query($connection, $query3);
-    if($view3){
-        while ($fm3 = mysqli_fetch_assoc($view3)) {
-
-
-
-?>
-
-
-										<tr>
-											<td><?php echo "{$fm3['orderId']}"; ?></td>
-											<td><?php echo "{$fm3['customerId']}"; ?></td>
-											<td>Rs.<?php echo "{$fm3['total']}"; ?>/=</td>
-											<td><?php echo "{$fm3['orderStatus']}"; ?></td>
-											<td><?php echo "{$fm3['orderDate']}"; ?></td>
-										</tr>
-<?php 	 
-
-		}
-	}	
-
-?>
-
-
-										
-								  	</table>
-							</div>
-						</div>
-				</div>
 		</div>
 	</div>
 
