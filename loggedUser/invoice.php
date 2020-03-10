@@ -1,109 +1,185 @@
 <?php session_start(); ?>
-  <?php 
-    require_once('../includes/connection.php'); 
-  ?>
-
-  <?php  
-    // $category_list = '';
-    $usr_id = $_SESSION['user_id'];
-    // $foodMenuId = $_SESSION['foodMenuId'];
-    $foodMenuId = $_GET['foodMenuId'];
-    $orderNo = $_GET['orderNo'];
-    $quantity = $_GET['quantity'];
-    $itemPrice = $_GET['itemPrice'];
-
-
-
-  ?>
-
-  <!doctype html>
-  <html lang="en">
-    <head>
-      <!-- Required meta tags -->
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-      <!-- Bootstrap CSS -->
-     
-          <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-          
-<!------ Include the above in your HEAD tag ---------->
-      <title>Cancel Order</title>
-    </head>
-    <body>
-
-
-
-      <h1 class="text-center" style="margin-top: 60px">Cancel Order</h1>
-
-    <div class="row justify-content-center">
-    <div class="col-6 text-center">
-
-
-  <?php
-
-      //getting the list of food Menu
-      // $queryOrder = "SELECT * FROM foodmenu where foodMenuId = $foodMenuId";
-      // $fod = mysqli_query($connection, $queryOrder);
-      // if($fod){
-      //   $var = 1;
-      //     while ($fm = mysqli_fetch_assoc($fod)) {
-
-      //         echo "
-      //            <table class=\"table table-hover table-bordered\">
-      //                   <thead>
-      //                     <tr>
-      //                       <th colspan=\"5\">Order no : $orderNo</th>
-      //                     </tr>
-      //                     <tr>
-      //                       <th scope=\"col\">#</th>
-      //                       <th scope=\"col\">Food name</th>
-      //                       <th scope=\"col\">Unit Price</th>
-      //                       <th scope=\"col\">Quantity</th>
-      //                       <th scope=\"col\">Price</th>
-      //                     </tr>
-      //                   </thead>
-      //                   <tbody>
-      //                     <tr>
-      //                       <th>$var</th>
-      //                       <td>{$fm['itemName']}</td>
-      //                       <td>{$fm['itemPrice']}</td>
-      //                       <td>$quantity</td>
-      //                       <td>".$itemPrice*$quantity."</td>
-      //                     </tr>
-      //                     <tr>
-      //                       <td colspan=\"4\">Grand Total</td>
-      //                       <td>Rs.".$itemPrice*$quantity."/=</td>
-      //                     </tr>
-      //                   </tbody>
-      //                 </table>               
-
-
-      //         ";
-      //     }   
-      // }
-
-  ?>     
-         
-
-
-
-<!--   </div> -->
 <?php 
-    // $qw = "truncate table orderdetails";
-    // $rs = mysqli_query($connection,$qw);
+    require_once('../includes/connection.php'); 
+?>
+
+<?php  
+    // $category_list = '';
+  $usr_id = $_SESSION['user_id'];
+
+
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Invoice</title>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+</head>
+<body>
+
+<?php
+    if((isset($_GET['orderId'])) && (isset($_GET['customerId']))) {
+      $orderId = $_GET['orderId'];
+      $customerId = $_GET['customerId'];
+
+
+        $queryView1 =   "SELECT *
+          FROM orderdetails 
+          INNER JOIN customer 
+          ON orderdetails.customerId=customer.customerId where customer.customerId = '{$customerId}' and orderdetails.orderId='{$orderId}'";
+
+      $view1 = mysqli_query($connection, $queryView1);
+        if($view1){
+          while ($fm = mysqli_fetch_assoc($view1)){
+
+?>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+        <div class="invoice-title">
+          <h2>Invoice</h2><h3 class="pull-right">Order # 0000<?php echo "{$fm['orderId']}"; ?></h3>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-xs-6">
+            <address>
+            <strong>Billed To:</strong><br>
+              <?php echo "{$fm['customerFirstName']}"; ?><br>
+              <?php echo "{$fm['flatBuildingNo']}"; ?><br>
+              <?php echo "{$fm['streetName']}"; ?><br>
+              <?php echo "{$fm['city']}"; ?>
+            </address>
+          </div>
+          <div class="col-xs-6 text-right">
+            <address>
+              <strong>Shipped To:</strong><br>
+              <?php echo "{$fm['customerFirstName']}"; ?><br>
+              <?php echo "{$fm['flatBuildingNo']}"; ?><br>
+              <?php echo "{$fm['streetName']}"; ?><br>
+              <?php echo "{$fm['city']}"; ?>
+            </address>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6">
+            <address>
+              <strong>Order Method:</strong><br>
+              <?php echo "{$fm['orderType']}"; ?><br>
+              <?php echo "{$fm['customerEmail']}"; ?>
+            </address>
+          </div>
+          <div class="col-xs-6 text-right">
+            <address>
+              <strong>Order Date:</strong><br>
+                <?php echo "{$fm['orderDate']}"; ?><br><br>
+            </address>
+          </div>
+        </div>
+      </div>
+    </div>
+<?php 
+      }
+    }
+}
+?>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title"><strong>Order summary</strong></h3>
+          </div>
+          <div class="panel-body">
+            <div class="table-responsive">
+              <table class="table table-condensed">
+                <thead>
+                                <tr>
+                      <td><strong>Item</strong></td>
+                      <td class="text-center"><strong>Price</strong></td>
+                      <td class="text-center"><strong>Quantity</strong></td>
+                      <td class="text-right"><strong>Totals</strong></td>
+                                </tr>
+                </thead>
+                <tbody>
+                  <!-- foreach ($order->lineItems as $line) or some such thing here -->
+
+<?php  
+
+$tot = 0;
+          $query2 = "SELECT * from cart where customerId = '{$customerId}'";          
+          $view2 = mysqli_query($connection, $query2);
+            if($view2){
+                while ($fm2 = mysqli_fetch_assoc($view2)) {
+                          $med = $fm2['itemPrice']*$fm2['foodQuantity'];
+                          $tot= $tot+$med;
+echo "
+
+
+                  <tr>
+                    <td>{$fm2['foodMenuId']}</td>
+                    <td class=\"text-center\">{$fm2['itemPrice']}</td>
+                    <td class=\"text-center\">{$fm2['foodQuantity']}</td>
+                    <td class=\"text-right\">Rs.$med.00</td>
+                  </tr>
+
+
+
+";
+
+
+                }
+              }
+
 ?>
 
 
+                  <tr>
+                    <td class="thick-line"></td>
+                    <td class="thick-line"></td>
+                    <td class="thick-line text-center"><strong>Subtotal</strong></td>
+                    <td class="thick-line text-right">Rs.<?php echo $tot; ?>.00</td>
+                  </tr>
+                  <tr>
+                    <td class="no-line"></td>
+                    <td class="no-line"></td>
+                    <td class="no-line text-center"><strong>Shipping</strong></td>
+                    <td class="no-line text-right">Rs.0.00</td>
+                  </tr>
+                  <tr>
+                    <td class="no-line"></td>
+                    <td class="no-line"></td>
+                    <td class="no-line text-center"><strong>Total</strong></td>
+                    <td class="no-line text-right">Rs.<?php echo $tot; ?>.00</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="text-center">
+        <button onclick="myprint()">Print</button>
+        
+      </div>
+    </div>
+</div>
 
 
-
-      <!-- Optional JavaScript -->
-      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<!--       <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> -->
-      <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-      <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    </body>
-  </html>
+<script type="text/javascript">
+  
+  function myprint(){
+    window.print();
+  }
+</script>
+</body>
+</html>
+   

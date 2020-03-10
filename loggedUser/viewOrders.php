@@ -74,7 +74,7 @@ border-right: 10px solid black;
 							    </tr>
 							    <tr>
 							      <th>Customer Reg Date</th>
-							      <td class='text-secondary'>00{$fm['customerRegDate']}</td>
+							      <td class='text-secondary'>{$fm['customerRegDate']}</td>
 							    </tr>
 							    <tr>
 							      <th>Customer Id</th>
@@ -131,6 +131,7 @@ border-right: 10px solid black;
 				    <!-- cancel order -->
 				    <div class=\"text-center\">
 				    	<a href=\"cancelOrder.php?orderId={$fm['orderId']}\" class=\"btn btn-danger\" name=\"cancelOrder\" id=\"disableCancel\" >Cancel Order</a>
+				    	<a href=\"invoice.php?orderId={$fm['orderId']}&customerId={$fm['customerId']}\" class=\"btn btn-primary\" name=\"printInvoice\" target='_blank'>Print</a>
 				    </div>
 ";
 		if (0 == $fm['orderStatus']) {
