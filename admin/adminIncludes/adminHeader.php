@@ -1,7 +1,8 @@
 <?php session_start(); ?>
 <?php 
-  require_once('../includes/connection.php'); 
+  require_once('../includes/connection.php');
 ?>
+
 <?php  
 
   //checkin if a user is logged in
@@ -83,16 +84,10 @@
               <li class=" <?php if($page=='search') {echo 'active1';}?>">
                 <a href="search.php"><i class="fa fa-search"></i>Search</a>
               </li>
-            <li class=" <?php if($page=='cashieradd') {echo 'active1';}?>">
-                <a class="dropdown-toggle " href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="fa fa-money"></i>Cashier</a>
-                <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-                  <div>
-                    <a class="dropdown-item text-white" href="cashieradd.php">Add Cashier</a>
-                    <a class="dropdown-item text-white" href="cashierDetail.php">View Cashiers</a>                    
-                  </div>
-                </div>
-              </li>              
+              <li class=" <?php if($page=='cashier') {echo 'active1';}?>">
+                <a href="cashierDetail.php"><i class="fa fa-money"></i>Cashier</a>
+              </li>
+             
               <li class=" <?php if($page=='myAccount') {echo 'active1';}?>">
                 <a class="dropdown-toggle" href="adminAccount.php" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
                   <i class="fa fa-user"></i><?php echo $_SESSION['user_name']; ?></a>

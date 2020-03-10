@@ -61,7 +61,7 @@
                             <p class=\"card-text\"> {$fm['itemDescription']} </p>
 
                             <div class=\"text-center\">
-                                <a href=\"cart.php?foodMenuId={$fm['foodMenuId']}\" class=\"btn btn-primary btn-dark\" name=\"addtocart\">Add to Cart <i class=\"fa fa-cart-plus\"></i></a>
+                                <a href=\"cart.php?foodMenuId={$fm['foodMenuId']}\" class=\"btn btn-primary btn-dark\" name=\"addtocart\" onclick=\"addedTocart()\">Add to Cart <i class=\"fa fa-cart-plus\"></i></a>
                             </div>
                           </div>
                         </div>
@@ -113,6 +113,12 @@
 
 
     }
+
+    function addedTocart(){
+        alert("Added to Cart");
+    }
+
+
 </script>
 <!-- include the footer files -->
 <?php 

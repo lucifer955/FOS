@@ -98,9 +98,9 @@ $query_cart3 = "SELECT * FROM cart where customerId= '{$usr_id}'";
 
 				$result = mysqli_query($connection, $query);
 
-		      	$message = "New order Added";
+
 				if ($result) {
-					
+		      		$message = "New order Added";					
 					echo "<script type='text/javascript'>alert('$message');</script>";
 					header('Location: orders.php');
 				}else{
@@ -240,7 +240,7 @@ $query_cart3 = "SELECT * FROM cart where customerId= '{$usr_id}'";
 							    </div>
 						    </div>
 						    <div class="row justify-content-center" >
-						    	<button type="submit" class="btn btn-success btn-sm btn-block" name="orderNow" style="margin: 20px 0 10px 0;">Order Now</button>
+						    	<button type="submit" class="btn btn-success btn-sm btn-block" name="orderNow" style="margin: 20px 0 10px 0;"  onclick="orderdata()">Order Now</button>
 						    	
 						    </div>
 
@@ -279,6 +279,10 @@ $query_cart3 = "SELECT * FROM cart where customerId= '{$usr_id}'";
 		})
 
 
+	}
+
+	function orderdata(){
+		alert("Order Added");
 	}
 </script>
 

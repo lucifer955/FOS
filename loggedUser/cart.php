@@ -18,17 +18,20 @@
 
 
 		if($categories){
+
 			while ($cart = mysqli_fetch_assoc($categories)) {
 				$query = "INSERT INTO cart (foodMenuId,itemName,foodImage,itemPrice,customerId) VALUES ('{$cart['foodMenuId']}','{$cart['itemName']}','{$cart['foodImage']}','{$cart['itemPrice']}','{$usr_id}')";
 
 	      		$result = mysqli_query($connection,$query);
-	      		$message = "Added to cart";
-	      		header('Location: ../loggedUser/cart.php');
 
-	      		if ($result) {
-	      				$foodMenuId =  $cart['foodMenuId'];
-	      			echo "<script type='text/javascript'>alert('$message');</script>";	
-	      		}		
+
+
+			if ($result) {
+	      		// $message = "Added to Cart";
+	      		// $foodMenuId =  $cart['foodMenuId'];
+	      		// echo "<script type='text/javascript'>alert('$message');</script>";	
+	      	}	      		
+	      	header('Location: ../loggedUser/cart.php');	
 			}
 		}
 

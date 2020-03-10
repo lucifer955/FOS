@@ -8,7 +8,7 @@
 		$orderId = $_GET['orderId'];
 		$customerId = $_GET['cutomerId'];
 
-
+	}
 ?>
 <?php 
 
@@ -22,7 +22,7 @@
 			$orderId = $_POST['orderIdHidden'];
 
 			if ( $confirmed == $selectOrderType) {
-				$queryStatus = "UPDATE orderdetails SET orderStatus=1 WHERE orderId=$orderId";
+				$queryStatus = "UPDATE orderdetails SET orderStatus= 1 WHERE orderId=$orderId";
 				mysqli_query($connection,$queryStatus);
 				$msg = "Order Confirmed";
 				echo "<script type='text/javascript'>alert('$msg');</script>";
@@ -34,7 +34,7 @@
         		mail($to,$subject,$txt,$headers);
 		
 			}else if ($canceled == $selectOrderType) {
-				$queryStatus = "UPDATE orderdetails SET orderStatus=2 WHERE orderId=$orderId";
+				$queryStatus = "UPDATE orderdetails SET orderStatus= 2 WHERE orderId=$orderId";
 				mysqli_query($connection,$queryStatus);				
 				$msg = "Order Canceled!";
 				echo "<script type='text/javascript'>alert('$msg');</script>";
@@ -45,11 +45,7 @@
         		$headers = "From: pizzamart.badulla@gmail.com";
         		mail($to,$subject,$txt,$headers);
 			}
-
-
-
 	}
-
 
 ?>
 
@@ -79,18 +75,15 @@
 
 	$sub = 1;
 
-	$queryView = 	"SELECT *
+	$queryView1 = 	"SELECT *
 					FROM orderdetails 
 					INNER JOIN customer 
 					ON orderdetails.customerId=customer.customerId where customer.customerId = '{$customerId}' and orderdetails.orderId='{$orderId}'
 					 and orderdetails.orderStatus = 0";
 
-	$view = mysqli_query($connection, $queryView);
-    if($view){
-		while ($fm = mysqli_fetch_assoc($view)){
-
-
-
+	$view1 = mysqli_query($connection, $queryView1);
+    if($view1){
+		while ($fm = mysqli_fetch_assoc($view1)){
 
 ?>
 
@@ -181,9 +174,9 @@
 										</tr>
 
 <?php  
-	}
-}
-
+						}
+					}
+					// end of cart
 
 ?>
 										<tr>
@@ -210,9 +203,6 @@
 								    <select class="form-control" id="exampleFormControlSelect2" name="selectOrderType">
 								      <option value="1">Confirm the Order</option>
 								      <option value="2">Cancel the Order</option>
-<!-- 								      <option>Food B</option>
-								      <option>Order Pickup</option>
-								      <option>Food Delivered</option> -->
 								    </select>
 								  </div>
 								  <input type="hidden" name="orderIdHidden" value="<?php echo "{$fm['orderId']}"; ?>">							  
@@ -224,7 +214,7 @@
 		}
     }
 
-}
+    // end of order and customer details
 
 ?>
 
@@ -245,7 +235,6 @@
 
 
 <?php
-
 	$query3 = "SELECT * from orderdetails";					
 	$view3 = mysqli_query($connection, $query3);
     if($view3){
