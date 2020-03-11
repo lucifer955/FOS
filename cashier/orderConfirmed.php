@@ -32,10 +32,10 @@
 <?php  
 
     //getting the list of food Menu
-    $query_fm = "SELECT * FROM orderdetails where orderStatus = 1";
-    $fms = mysqli_query($connection, $query_fm);
-    if($fms){
-        while ($fm = mysqli_fetch_assoc($fms)) {
+    $query_fm1 = "SELECT * FROM orderdetails where orderStatus = 1";
+    $fms1 = mysqli_query($connection, $query_fm1);
+    if($fms1){
+        while ($fm = mysqli_fetch_assoc($fms1)) {
 
             echo "
 

@@ -37,14 +37,12 @@ if (isset($_POST['cashierHidId'])) {
 
     	$cashierId1 = $_POST['cashierHidId'];
     	$username1 = $_POST['user_name'];
-        $full_name1 = $_POST['full_name'];
         $email1 = $_POST['email'];
         $mobile_number1 = $_POST['mobile_number'];
 
 
 		$query =  "UPDATE cashier 
-		SET userName = '{$username1}',
-		cashierName = '{$full_name1}',
+		SET	cashierName = '{$username1}',
 		cashierContactNo = '{$mobile_number1}',
 		cashierEmail = '{$email1}'
 		WHERE cashierId =  {$cashierId1}";

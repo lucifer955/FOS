@@ -60,10 +60,16 @@
 	  //   "; 	
    //  }
 
-
+    $conf = 1;
+    $not = 0;
+    $canc = 2;
 
     if($ordr){
         while ($fm = mysqli_fetch_assoc($ordr)) {
+
+
+
+
 
 echo "
 <form method='GET' action='orders.php'>
@@ -73,7 +79,19 @@ echo "
     <div class='3'>
 		<td class=\"align-middle\">
       		<b>Order Id: <span class='text-primary'>0000{$fm['orderId']}</span></b>
-      	</td>
+      	</td>	
+		<td class=\"align-middle\">
+      	";
+
+      	if ($not == $fm['orderStatus']) {
+        	echo "<b><span class='text-warning'>Order Not Confirmed</span></b><br>";
+        }else if ($conf == $fm['orderStatus']) {
+        	echo "<b><span class='text-success'>Order Confirmed</span></b><br>";
+        }else if ($canc == $fm['orderStatus']) {
+        	echo "<b><span class='text-danger'>Order Canceled</span></b><br>";
+        }
+    echo "  		
+    </td>
     <div>
     <div class='2'>
       	<td class=\"align-middle\"><img src=\"../images/bag.png\" height=\"60px\" width=\"60px\"></div>

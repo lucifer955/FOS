@@ -240,12 +240,12 @@ echo "
 						<div class="card-body">
 						    <div class="table-responsive-md">
 								  	<table class="table table-hover table-bordered table-sm">
-										<tr>
+<!-- 										<tr>
 											<th>Food MenuId</th>
 											<th>Food Name</th>
 											<th>Quantity</th>
 											<th>Sub Total</th>
-										</tr>
+										</tr> -->
 
 
 <?php  
@@ -261,12 +261,12 @@ echo "
 
 
 
-										<tr>
+<!-- 										<tr>
 											<td><?php echo "{$fm2['foodMenuId']}"; ?></td>
 											<td><?php echo "{$fm2['itemName']}"; ?></td>
 											<td><?php echo "{$fm2['foodQuantity']}"; ?></td>
 											<td>Rs.<?php echo $sub; ?>/=</td>
-										</tr>
+										</tr> -->
 
 <?php  
 						}

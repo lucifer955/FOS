@@ -84,6 +84,7 @@
       </div>
     </div>
 <?php 
+       $tot =  $fm['total'];
       }
     }
 }
@@ -98,45 +99,8 @@
           <div class="panel-body">
             <div class="table-responsive">
               <table class="table table-condensed">
-                <thead>
-                                <tr>
-                      <td><strong>Item</strong></td>
-                      <td class="text-center"><strong>Price</strong></td>
-                      <td class="text-center"><strong>Quantity</strong></td>
-                      <td class="text-right"><strong>Totals</strong></td>
-                                </tr>
-                </thead>
                 <tbody>
                   <!-- foreach ($order->lineItems as $line) or some such thing here -->
-
-<?php  
-
-$tot = 0;
-          $query2 = "SELECT * from cart where customerId = '{$customerId}'";          
-          $view2 = mysqli_query($connection, $query2);
-            if($view2){
-                while ($fm2 = mysqli_fetch_assoc($view2)) {
-                          $med = $fm2['itemPrice']*$fm2['foodQuantity'];
-                          $tot= $tot+$med;
-echo "
-
-
-                  <tr>
-                    <td>{$fm2['foodMenuId']}</td>
-                    <td class=\"text-center\">{$fm2['itemPrice']}</td>
-                    <td class=\"text-center\">{$fm2['foodQuantity']}</td>
-                    <td class=\"text-right\">Rs.$med.00</td>
-                  </tr>
-
-
-
-";
-
-
-                }
-              }
-
-?>
 
 
                   <tr>
@@ -148,7 +112,7 @@ echo "
                   <tr>
                     <td class="no-line"></td>
                     <td class="no-line"></td>
-                    <td class="no-line text-center"><strong>Shipping</strong></td>
+                    <td class="no-line text-center"><strong>Delivering</strong></td>
                     <td class="no-line text-right">Rs.0.00</td>
                   </tr>
                   <tr>

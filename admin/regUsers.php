@@ -27,7 +27,6 @@
 									      <th scope="col">Last Name</th>
 									      <th scope="col">Mail</th>
 									      <th scope="col">Contact No</th>
-									      <th scope="col">Password</th>
 									      <th scope="col">Edit</th>
 									    </tr>
 									  </thead>
@@ -49,7 +48,6 @@
 			echo "<td>{$user['customerLastName']}</td>";
 			echo "<td>{$user['customerEmail']}</td>";
 			echo "<td>{$user['customerContactNo']}</td>";
-			echo "<td>{$user['customerPassword']}</td>";
 			echo "<td><a href=\"adminUserDetail.php?x={$user['customerId']}\">Edit</a></td>";
 			echo "</tr>";
 		}

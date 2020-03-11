@@ -35,10 +35,10 @@
 <?php  
 
     //getting the list of food Menu
-    $query_fm = "SELECT * FROM orderdetails where orderStatus = 0";
-    $fms = mysqli_query($connection, $query_fm);
-    if($fms){
-        while ($fm = mysqli_fetch_assoc($fms)) {
+    $query_fm2 = "SELECT * FROM orderdetails where orderStatus = 0";
+    $fms2 = mysqli_query($connection, $query_fm2);
+    if($fms2){
+        while ($fm = mysqli_fetch_assoc($fms2)) {
 
             echo "
 
@@ -50,13 +50,9 @@
 									    </tr>
 
 
-
             ";
         }   
     }
-
-
-
 
 ?>									  
 

@@ -1,6 +1,6 @@
 <?php
 //fetch.php
-$connect = mysqli_connect("localhost", "root", "", "food_ordering_system");
+$connect = mysqli_connect("localhost", "root", "", "fosdbnew");
 $request = mysqli_real_escape_string($connect, $_POST["query"]);
 $query = "
  SELECT * FROM foodmenu WHERE itemName LIKE '%".$request."%'

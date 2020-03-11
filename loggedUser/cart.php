@@ -118,7 +118,7 @@
 				  </tbody>
 				</table>
 				<div class="row">
-					<div class="col-auto mr-auto"><button type="button" class="btn btn-primary btn-sm">Continue shopping</button></div>
+					<div class="col-auto mr-auto"><button type="button" class="btn btn-primary btn-sm" onclick="redirectToPage()">Continue shopping</button></div>
 				  	<div class="col-auto"><button type="submit" name="updateCart" class="btn btn-success btn-sm">OrderNow</button></div>
 				  </form>
 				</div>
@@ -170,6 +170,11 @@
 		})
 
 
+	}
+
+
+	function redirectToPage(){
+		window.location.href = "foodMenu.php";
 	}
 </script>
 <!-- include the footer files -->
