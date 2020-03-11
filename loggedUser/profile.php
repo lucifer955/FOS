@@ -5,8 +5,44 @@
 
 
 <?php  
-
+if (isset($_SESSION['user_id'])) {
   $usr_id = $_SESSION['user_id'];
+}
+
+
+?>
+
+
+
+<?php  
+if (isset($_POST['updateUser'])) {
+      
+      $customerFName = $_POST['customerFName'];
+      $customerLName = $_POST['customerLName'];
+      $customerIdx = $_POST['customerIdHidden'];
+
+
+
+    $query =  "UPDATE customer 
+    SET customerFirstName = '{$customerFName}',
+    customerLastName = '{$customerLName}'
+    WHERE customerId =  {$customerIdx}";
+        $rs6 = mysqli_query($connection,$query);
+
+        if ($rs6) {
+          $_SESSION['first_name'] = $rs6['customerFirstName'];
+          $msg = "User Details Updated";
+          echo "<script type='text/javascript'>alert('$msg');</script>";
+        }else{
+
+          // $msg = "Error Updated";
+         //   echo "<script type='text/javascript'>alert('$msg');</script>";
+        }
+
+
+}else{
+
+}
 
 ?>
 <div class="logg"></div>
@@ -67,15 +103,15 @@ box-shadow: 7px -7px 42px -10px rgba(48,38,39,0.71);
       while ($fm = mysqli_fetch_assoc($ls)) {
         echo "
 
-        <form>
+        <form action=\"profile.php\" method=\"POST\">
         <div class=\"form-row\">
         <div class=\"col-12 col-sm\">
           <label for=\"firstName\">First Name</label>
-          <input type=\"text\" class=\"form-control\" placeholder=\"First name\" id=\"firstName\" value={$fm['customerFirstName']}>
+          <input type=\"text\" class=\"form-control\" placeholder=\"First name\" id=\"firstName\" value={$fm['customerFirstName']} name=\"customerFName\">
         </div>
         <div class=\"col-12 col-sm\">
           <label for=\"lastName\">Last Name</label>
-          <input type=\"text\" class=\"form-control\" placeholder=\"Last name\" id=\"lastName\" value={$fm['customerLastName']}>
+          <input type=\"text\" class=\"form-control\" placeholder=\"Last name\" id=\"lastName\" value={$fm['customerLastName']} name=\"customerLName\">
         </div>
       </div>
       <div class=\"form-row secondRoCss\">
@@ -97,8 +133,10 @@ box-shadow: 7px -7px 42px -10px rgba(48,38,39,0.71);
           </div>
         </div>
         <div class=''>
-          <button type=\"submit\" class=\"btn btn-primary\">Update</button>
+          <button type=\"submit\" class=\"btn btn-primary\" name=\"updateUser\">Update</button>
         </div>
+
+        <input type='hidden' name='customerIdHidden' value={$fm['customerId']} >
       </form>
     </div>
 

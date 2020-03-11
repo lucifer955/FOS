@@ -1,5 +1,5 @@
 <?php 
-  $page= 'search';include('adminIncludes/adminHeader.php');
+  $page= 'search';include('cashierIncludes/cashierHeader.php');
 ?>
 
 	<div class="adminSearch">
@@ -22,7 +22,7 @@
 					  <div class="card-body">
 						<form action="search.php" method="POST">
 							<div class="form-group">
-								<input class="form-control buttonSearch1" placeholder="Search for Registered Users" aria-label="Search" type="text" name="searchFood2" id="searchFood" autocomplete="off">	
+								<input class="form-control buttonSearch1" placeholder="Search For Registered Users" aria-label="Search" type="text" name="searchFood2" id="searchFood" autocomplete="off">	
 							</div>
 				            <button class="btn btn-primary buttonSearch" type="submit" name="searchSubmitadmin" id="buttonSearch1">Search</button>
 				          </form>
@@ -47,7 +47,7 @@
 									      <th scope="col">Mobile Number</th>
 									      <th scope="col">Email</th>
 									      <th scope="col">Password</th>
-									      <th scope="col">Edit</th>
+									      <!-- <th scope="col">Edit</th> -->
 									    </tr>
 									  </thead>
 									  <tbody>
@@ -69,7 +69,7 @@
 			echo "<td>{$fm4['customerEmail']}</td>";
 			echo "<td>{$fm4['customerContactNo']}</td>";
 			echo "<td>{$fm4['customerPassword']}</td>";
-			echo "<td><a href=\"adminUserDetail.php?x={$fm4['customerId']}\">Edit</a></td>";
+			// echo "<td><a href=\"adminUserDetail.php?x={$fm4['customerId']}\">Edit</a></td>";
 			echo "</tr>";
         }   
     }
@@ -84,5 +84,5 @@
 	</div>
 </div>
 <?php 
-  include('adminIncludes/adminFooter.php');
+  include('cashierIncludes/cashierFooter.php');
 ?>

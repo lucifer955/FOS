@@ -15,8 +15,8 @@
 		<nav aria-label="breadcrumb">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="#">Home</a></li>
-				<li class="breadcrumb-item"><a href="#">Order</a></li>
-				<li class="breadcrumb-item active" aria-current="page">View Order Details</li>
+				<li class="breadcrumb-item"><a href="#">canceled Order Details</a></li>
+				<li class="breadcrumb-item active" aria-current="page">View canceled Order Details</li>
 			</ol>
 		</nav>
 	</div>

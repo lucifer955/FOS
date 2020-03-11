@@ -1,11 +1,6 @@
-<?php ?>
 <?php 
-  require_once('includes/connection.php'); 
+  $page= 'cashieradd';include('cashierIncludes/cashierHeader.php');
 ?>
-<?php  
-  require_once('includes/functions.php');
-?>
-
 
 <?php  
 
@@ -100,26 +95,13 @@
 
 
       if($result){
-
-        // Always set content-type when sending HTML email
-      $headers = "MIME-Version: 1.0" . "\r\n";
-      $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
      //send mail
-
         $to = $email;
         $subject = "Pizza Mart";
         $txt = "You have successfully registered!";
         $headers = "From: pizzamart.badulla@gmail.com";
         mail($to,$subject,$txt,$headers);
         
-     //send mms
-        
-        $to1 = $mobile_number."@mms.dialog.lk";
-        $subject1 = "Pizza Mart";
-        $txt1 = "You have successfully registered!";
-        $headers1 = "From: pizzamart.badulla@gmail.com";
-        mail($to1,$subject1,$txt1,$headers1);
-
         header('Location: sign_in.php?added=true');
       }else{
         $errors[] = 'Failed to add the new record';
@@ -137,26 +119,9 @@
 
 <div class="container" >
     <nav aria-label="breadcrumb" >
-    <ol class="breadcrumb" 
-    style="
-
-margin-top: 50px;
-background-color: white !important;
-  /*-webkit-box-shadow: 2px 6px 4px -6px black;
-     -moz-box-shadow: 2px 6px 4px -6px black;
-          box-shadow: 2px 6px 4px -6px black;*/
-  -webkit-box-shadow: 1px 1px 6px 0px rgba(50, 50, 50, 0.5);
--moz-box-shadow:    1px 1px 6px 0px rgba(50, 50, 50, 0.5);
-box-shadow:         1px 1px 6px 0px rgba(50, 50, 50, 0.5);
-             border-left: 3px solid red;
-/*             border-right: 3px solid #cc0000;*/
-             border-radius: 0 !important;
-             margin-bottom: 40px;
-
-
-">
-        <li class="breadcrumb-item"><a href="#">Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Sign Up</li>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Add Cashier</li>
     </ol>
     </nav>
 </div>
@@ -168,18 +133,7 @@ box-shadow:         1px 1px 6px 0px rgba(50, 50, 50, 0.5);
       <!-- <h3 style="color:black">Just Sign up to Order the food you want.</h3>
       <img class="mx-auto d-block" src="images\sign-up.png" alt=""> -->
     </div>
-    <div class="col-12 col-md-8 col-sm-12" style="
-    /*-webkit-box-shadow: 0 8px 6px -6px black;
-     -moz-box-shadow: 0 8px 6px -6px black;
-          box-shadow: 0 8px 6px -6px black;*/
--webkit-box-shadow: 7px -7px 42px -10px rgba(48,38,39,0.71);
--moz-box-shadow: 7px -7px 42px -10px rgba(48,38,39,0.71);
-box-shadow: 7px -7px 42px -10px rgba(48,38,39,0.71);
-          padding: 50px;
-          border-radius: 0.9rem;
-      
-
-    ">
+    <div class="col-12 col-md-8 col-sm-12">
 
 
     <?php  
@@ -243,11 +197,3 @@ box-shadow: 7px -7px 42px -10px rgba(48,38,39,0.71);
     
   </div>
 </div>
-
-<!-- include the footer files -->
-<?php 
-  include('includes/footer.php');
-?>
-<?php 
-//mysqli_close($connection); 
-?>

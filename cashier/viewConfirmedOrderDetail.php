@@ -1,5 +1,5 @@
 <?php 
-  $page= 'orders';include('adminIncludes/adminHeader.php');
+  $page= 'orders';include('cashierIncludes/cashierHeader.php');
 ?>
 <?php  
 
@@ -163,5 +163,5 @@
 </div>
 
 <?php 
-  include('adminIncludes/adminFooter.php');
+  include('cashierIncludes/cashierFooter.php');
 ?>

@@ -22,7 +22,7 @@
 							  	<table class="table table-hover table-bordered">
 									<thead>
 									    <tr>
-									      <th scope="col">S.NO</th>
+									      <th scope="col">Category No</th>
 									      <th scope="col">Category Name</th>
 									      <th scope="col">Creation Date</th>
 									      <th scope="col">Action</th>

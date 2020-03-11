@@ -1,9 +1,10 @@
 <?php 
-  $page= 'orders';include('adminIncludes/adminHeader.php');
+  $page= 'orders';include('cashierIncludes/cashierHeader.php');
 ?>
+
 <?php  
 
-	if (isset($_GET['orderId']) && isset($_GET['cutomerId'])) {
+	if (isset($_GET['orderId'])) {
 		$orderId = $_GET['orderId'];
 		$customerId = $_GET['cutomerId'];
 
@@ -14,8 +15,8 @@
 		<nav aria-label="breadcrumb">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="#">Home</a></li>
-				<li class="breadcrumb-item"><a href="#">Confirmed Order Details</a></li>
-				<li class="breadcrumb-item active" aria-current="page">View Confirmed Order Details</li>
+				<li class="breadcrumb-item"><a href="#">Cannceled Order Details</a></li>
+				<li class="breadcrumb-item active" aria-current="page">View Canceled Order Details</li>
 			</ol>
 		</nav>
 	</div>
@@ -25,7 +26,7 @@
 	<div class="card">
 		<div class="row justify-content-center">
 			<div class="col-12 col-sm-12 col-md-5">
-				<h2 class="text-center">Confirmed Order Details</h2>
+				<h2 class="text-center">Canceled Order Details</h2>
 					<div class="card-body">
 					    <div class="table-responsive-md">
 							  	<table class="table table-hover table-bordered table-sm">
@@ -39,7 +40,7 @@
 					FROM orderdetails 
 					INNER JOIN customer 
 					ON orderdetails.customerId=customer.customerId where customer.customerId = '{$customerId}' and orderdetails.orderId='{$orderId}'
-					 and orderdetails.orderStatus = 1";
+					 and orderdetails.orderStatus = 2";
 
 	$view = mysqli_query($connection, $queryView);
     if($view){
@@ -104,7 +105,7 @@
 					</div>
 			</div>	
 		<div class="col-12 col-sm-12 col-md-5 text-center" style="margin-left: 10px;">
-					<h2 class="text-center">Confirmed Order Details</h2>
+					<h2 class="text-center">Canceled Order Details</h2>
 						<div class="card-body">
 						    <div class="table-responsive-md">
 								  	<table class="table table-hover table-bordered table-sm">
@@ -163,5 +164,5 @@
 </div>
 
 <?php 
-  include('adminIncludes/adminFooter.php');
+  include('cashierIncludes/cashierFooter.php');
 ?>

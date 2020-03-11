@@ -99,7 +99,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <title>Index</title>
   </head>
-  <body onload="setTimeout(disableButton, 50000 )">
+  <body onload="setTimeout(disableButton, 300000 )">
     <!-- navbar -->
     <div class="navex">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">

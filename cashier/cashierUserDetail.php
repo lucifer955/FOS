@@ -1,5 +1,5 @@
 <?php 
-  $page= 'regUsers';include('adminIncludes/adminHeader.php');
+  $page= 'regUsers';include('cashierIncludes/cashierHeader.php');
 ?>
 
 <!-- update and delete user  -->
@@ -63,7 +63,7 @@ if (isset($_POST['updateButton'])) {
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="#">Home</a></li>
 				<li class="breadcrumb-item"><a href="#">User Details</a></li>
-				<li class="breadcrumb-item active" aria-current="page">Update User Details</li>
+				<li class="breadcrumb-item active" aria-current="page">Update</li>
 			</ol>
 		</nav>
 	</div>
@@ -72,12 +72,12 @@ if (isset($_POST['updateButton'])) {
 <div class="container">
 	<div class="row justify-content-center">
 		<div class="card col-12 text-center">
-				<h2 class="text-center">Update User Details</h2>
+				<h2 class="text-center">Update</h2>
 					<div class="card-body">
 
 
 
-						<form action="adminUserDetail.php" method="POST">
+						<form action="cashierUserDetail.php" method="POST">
 
 <?php  
 
@@ -174,5 +174,5 @@ echo "
 </script>
 
 <?php 
-  include('adminIncludes/adminFooter.php');
+  include('cashierIncludes/cashierFooter.php');
 ?>

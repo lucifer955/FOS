@@ -1,13 +1,12 @@
 <?php session_start(); ?>
 <?php 
-  require_once('../includes/connection.php');
+  require_once('../includes/connection.php'); 
 ?>
-
 <?php  
 
   //checkin if a user is logged in
-  if (!isset($_SESSION['admin_id'])) {
-    header('Location: admin_login.php');
+  if (!isset($_SESSION['cashier_id'])) {
+    header('Location: cashier_login.php');
   }
 ?>
 
@@ -27,14 +26,14 @@
     <!-- external css file -->
     <link rel="stylesheet" href="..\css\adminPanel.css">
  
-    <title>Admin Panel - Admin</title>
+    <title>Admin Panel - Cashier</title>
   </head>
 
   <body>
       <div id="wrapper">
           <aside id="sidebar-wrapper">
             <div class="sidebar-brand">
-              <h4 class="text-white"><span style="color: red">PIZZA</span>MART | <span class="text-warning">ADMIN</span></h4>
+              <h4 class="text-white"><span style="color: red">PIZZA</span>MART | <span class="text-warning">CASHIER</span></h4>
             </div>
             
             <ul class="sidebar-nav">
@@ -48,13 +47,13 @@
               </li>
               
 
-              <li class=" <?php if($page=='foodCategory') {echo 'active1';}?>">
-                <a class="dropdown-toggle " href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="fa fa-plus-square"></i>Food Category</a>
+             
+                <!-- <a class="dropdown-toggle " href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> -->
+                  <!-- <i class="fa fa-plus-square"></i>Food Category</a> -->
                 <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
                   <div style="display: block">
-                    <a class="dropdown-item text-white" href="foodCategory.php">Food Categogy</a>
-                    <a class="dropdown-item text-white" href="manageFoodCategory.php">Manage Food Category</a>                    
+                    <!-- <a class="dropdown-item text-white" href="foodCategory.php">Food Categogy</a> -->
+                    <!-- <a class="dropdown-item text-white" href="manageFoodCategory.php">Manage Food Category</a>                     -->
                   </div>
                 </div>
               </li>
@@ -62,11 +61,11 @@
                 <a href="foodMenu.php"><i class="fa fa-align-justify"></i>Food Menu</a>
               </li> -->
               <li class=" <?php if($page=='foodMenu') {echo 'active1';}?>">
-                <a class="dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
-                  <i class="fa fa-align-justify"></i>Food Menu</a>
+                <!-- <a class="dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" > -->
+                  <!-- <i class="fa fa-align-justify"></i>Food Menu</a> -->
                 <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item text-white" href="foodMenu.php">Add Food Menu</a>
-                  <a class="dropdown-item text-white" href="manageFoodMenu.php">Manage Food Menu</a>
+                  <!-- <a class="dropdown-item text-white" href="foodMenu.php">Add Food Menu</a> -->
+                  <!-- <a class="dropdown-item text-white" href="manageFoodMenu.php">Manage Food Menu</a> -->
                 </div>
               </li>
 
@@ -78,22 +77,25 @@
                   <a class="dropdown-item text-white" href="orderConfirmed.php">Order Confirmed</a>
                   <a class="dropdown-item text-white" href="orderCancelled.php">Cancelled</a>
               </li>
-              <li class=" <?php if($page=='reports') {echo 'active1';}?>">
-                <a href="reports.php"><i class="fa fa-file"></i>Reports</a>
-              </li>
               <li class=" <?php if($page=='search') {echo 'active1';}?>">
                 <a href="search.php"><i class="fa fa-search"></i>Search</a>
               </li>
-              <li class=" <?php if($page=='cashier') {echo 'active1';}?>">
-                <a href="cashierDetail.php"><i class="fa fa-money"></i>Cashier</a>
-              </li>
-             
+            <!-- <li class=" <?php if($page=='cashieradd') {echo 'active1';}?>"> -->
+                <!-- <a class="dropdown-toggle " href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> -->
+                  <!-- <i class="fa fa-money"></i>Cashier</a> -->
+                <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                  <!-- <div>
+                    <a class="dropdown-item text-white" href="cashieradd.php">Add Cashier</a>
+                    <a class="dropdown-item text-white" href="cashierDetail.php">View Cashiers</a>                    
+                  </div> -->
+                </div>
+              </li>              
               <li class=" <?php if($page=='myAccount') {echo 'active1';}?>">
                 <a class="dropdown-toggle" href="adminAccount.php" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
-                  <i class="fa fa-user"></i><?php echo $_SESSION['user_name']; ?></a>
+                  <i class="fa fa-user"></i><?php echo $_SESSION['cashier_name']; ?></a>
                 <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item text-white" href="adminProfile.php">Profile</a>
-                  <a class="dropdown-item text-white" href="adminChangePassword.php">Change Password</a>
+                  <a class="dropdown-item text-white" href="cashierProfile.php">Profile</a>
+                  <a class="dropdown-item text-white" href="cashierChangePassword.php">Change Password</a>
                 </div>
               </li>
             </ul>

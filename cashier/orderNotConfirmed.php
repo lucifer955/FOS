@@ -1,5 +1,5 @@
 <?php 
-  $page= 'orders';include('adminIncludes/adminHeader.php');
+  $page= 'orders';include('cashierIncludes/cashierHeader.php');
 ?>
 
 
@@ -18,7 +18,7 @@
 <div class="container">
 	<div class="row justify-content-center">
 		<div class="card col-12 text-center">
-				<h2 class="text-center">Unconfirmed Order Details</h2>
+				<h2 class="text-center">Not Confirmed Order Details</h2>
 					<div class="card-body">
 					    <div class="table-responsive-md">
 							  	<table class="table table-hover table-bordered">
@@ -68,5 +68,5 @@
 	</div>
 </div>
 <?php 
-  include('adminIncludes/adminFooter.php');
+  include('cashierIncludes/cashierFooter.php');
 ?>

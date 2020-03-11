@@ -1,15 +1,12 @@
 <?php 
-  $page= 'orders';include('adminIncludes/adminHeader.php');
+  $page= 'orders';include('cashierIncludes/cashierHeader.php');
 ?>
-
-
-
 <div class="adminOrder">
 	<div class="col-md-12" >
 		<nav aria-label="breadcrumb">
 			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><a href="dashboard.php">Home</a></li>
-				<li class="breadcrumb-item active" aria-current="page">Not Confirmed Order Details</li>
+				<li class="breadcrumb-item"><a href="#">Home</a></li>
+				<li class="breadcrumb-item active" aria-current="page"> Canceled Order Details</li>
 			</ol>
 		</nav>
 	</div>
@@ -18,7 +15,7 @@
 <div class="container">
 	<div class="row justify-content-center">
 		<div class="card col-12 text-center">
-				<h2 class="text-center">Unconfirmed Order Details</h2>
+				<h2 class="text-center">Canceled Order Details</h2>
 					<div class="card-body">
 					    <div class="table-responsive-md">
 							  	<table class="table table-hover table-bordered">
@@ -35,7 +32,7 @@
 <?php  
 
     //getting the list of food Menu
-    $query_fm = "SELECT * FROM orderdetails where orderStatus = 0";
+    $query_fm = "SELECT * FROM orderdetails where orderStatus = 2";
     $fms = mysqli_query($connection, $query_fm);
     if($fms){
         while ($fm = mysqli_fetch_assoc($fms)) {
@@ -46,7 +43,7 @@
 									      <th>0000{$fm['orderId']}</th>
 									      <td>0000{$fm['customerId']}</td>
 									      <td>Rs.{$fm['total']}/=</td>
-									      <td><a href=\"viewNotConfirmedOrderDetail.php?orderId={$fm['orderId']}&cutomerId={$fm['customerId']}\">View Details</a></td>
+									      <td><a href=\"viewCancelledOrderDetail.php?orderId={$fm['orderId']}&cutomerId={$fm['customerId']}\">View Details</a></td>
 									    </tr>
 
 
@@ -67,6 +64,7 @@
 			</div>	
 	</div>
 </div>
+
 <?php 
-  include('adminIncludes/adminFooter.php');
+  include('cashierIncludes/cashierFooter.php');
 ?>

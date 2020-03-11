@@ -23,7 +23,7 @@
 							  	<table class="table table-hover table-bordered">
 									<thead>
 									    <tr>
-									      <th scope="col">FoodMenu ID </th>
+									      <th scope="col">Food Menu ID </th>
 									      <th scope="col">Category Name</th>
 									      <th scope="col">Item Name</th>
 									      <th scope="col">Item Desc.</th>
