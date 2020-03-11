@@ -8,7 +8,7 @@
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="#">Home</a></li>
 				<li class="breadcrumb-item"><a href="#">Order</a></li>
-				<li class="breadcrumb-item active" aria-current="page">View Order Details</li>
+				<li class="breadcrumb-item active" aria-current="page">View Not confirmed Order Details</li>
 			</ol>
 		</nav>
 	</div>
@@ -236,7 +236,7 @@ echo "
 					</div>
 			</div>	
 		<div class="col-12 col-sm-12 col-md-5 text-center" style="margin-left: 10px;">
-					<h2 class="text-center">Order Details</h2>
+					<h2 class="text-center">Not Confirmed Order Details</h2>
 						<div class="card-body">
 						    <div class="table-responsive-md">
 								  	<table class="table table-hover table-bordered table-sm">

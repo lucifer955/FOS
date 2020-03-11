@@ -16,7 +16,7 @@
 <div class="container">
 	<div class="row justify-content-center">
 		<div class="card col-12 text-center">
-				<h2 class="text-center">User Details</h2>
+				<h2 class="text-center">Registered User Details</h2>
 					<div class="card-body">
 					    <div class="table-responsive-md">
 							  	<table class="table table-hover table-bordered">

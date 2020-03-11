@@ -26,7 +26,7 @@
 	<div class="card">
 		<div class="row justify-content-center">
 			<div class="col-12 col-sm-12 col-md-5">
-				<h2 class="text-center">Order Details</h2>
+				<h2 class="text-center">Canceled Order Details</h2>
 					<div class="card-body">
 					    <div class="table-responsive-md">
 							  	<table class="table table-hover table-bordered table-sm">
@@ -105,7 +105,7 @@
 					</div>
 			</div>	
 		<div class="col-12 col-sm-12 col-md-5 text-center" style="margin-left: 10px;">
-					<h2 class="text-center">Order Details</h2>
+					<h2 class="text-center">Canceled Order Details</h2>
 						<div class="card-body">
 						    <div class="table-responsive-md">
 								  	<table class="table table-hover table-bordered table-sm">
