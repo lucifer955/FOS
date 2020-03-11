@@ -59,7 +59,7 @@
 		      	$message = "New Food Added";
 				if ($result) {
 					echo "<script type='text/javascript'>alert('$message');</script>";
-					$_SESSION["foodMenuId"] = $foodMenuId;						
+					// $_SESSION["foodMenuId"] = $foodMenuId;						
 				}else{
       				$errors_foodmenu[] = 'Failed to add the new Food';
 				}
@@ -91,10 +91,10 @@
 						<?php  
 
 					  		if (!empty($errors_foodmenu)) {
-					  			echo '<div class="errmsg">';
+					  			echo '<div class="errmsg text-center text-danger">';
 					  			echo '<b>There were error(s)</b><br>';
 					  			foreach ($errors_foodmenu as $error) {
-					  				echo '- ' . $error . '<br>';
+					  				echo  $error . '<br>';
 					  			}
 					  			echo '</div>';
 					  		}

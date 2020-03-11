@@ -44,24 +44,15 @@
 			echo "<td>{$cat['categoryId']}</td>";
 			echo "<td>{$cat['categoryName']}</td>";
 			echo "<td>{$cat['creationDate']}</td>";
-			echo "<td><a href=\"manageFoodCategoryEdit.php\">Edit</a></td>";
+			echo "<td><a href=\"manageFoodCategoryEdit.php?categoryId={$cat['categoryId']}\">Edit</a></td>";
 			echo "</tr>";
+
+
 		}
 	}
 
 ?>	  	
-<!-- 									  	<tr>
-									      <th>1</th>
-									      <td>Mark</td>
-									      <td>Otto</td>
-									      <td><a href="manageFoodCategoryEdit.php">Edit</a></td>
-									    </tr>
-									    <tr>
-									      <th>2</th>
-									      <td>Mark</td>
-									      <td>Otto</td>
-									      <td>Otto</td>
-									    </tr> -->
+
 									  </tbody>
 							  	</table>
 						</div>

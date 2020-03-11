@@ -53,7 +53,7 @@
 		    	</nav>
 			</div>
 
-	<<div class="container">
+	<div class="container">
 		<div class="row justify-content-center">
 			<div class="card col-12 col-sm-12 col-md-6">
 
@@ -64,7 +64,7 @@
 						<?php  
 
 					  		if (!empty($errors_category)) {
-					  			echo '<div class="errmsg">';
+					  			echo '<div class="errmsg text-center text-danger">';
 					  			echo '<b>There were error(s)</b><br>';
 					  			foreach ($errors_category as $error) {
 					  				echo $error . '<br>';

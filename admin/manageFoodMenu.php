@@ -50,7 +50,7 @@
 			echo "<td>{$fdmenu['itemDescription']}</td>";
 			echo "<td>{$fdmenu['itemQuantity']}</td>";
 			echo "<td>{$fdmenu['itemPrice']}</td>";
-			echo "<td><a href=\"manageFoodMenuEdit.php\">Edit</a></td>";
+			echo "<td><a href=\"manageFoodMenuEdit.php?foodMenuId={$fdmenu['foodMenuId']}\">Edit</a></td>";
 			echo "</tr>";
 		}
 	}
