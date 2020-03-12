@@ -4,10 +4,71 @@
 
 <?php 
 
-	$c = $_POST['cateIdx'];
-	echo $c;
+	if (isset($_POST['categoId'])) {
+
+	$c = $_POST['categoId'];
 	
-	// $query = "SELECT FROM foodMenu WHERE categoryName = '{$c}'";
+
 	// $rs = mysqli_query($connection,$query);
 
-?>
+    //getting the list of food Menu
+    $query_fm = "SELECT * FROM foodmenu WHERE categoryName = '$c'";
+    $fms = mysqli_query($connection, $query_fm);
+    if($fms){
+        $x  = 0;
+            while ($fm = mysqli_fetch_assoc($fms)) {
+                $x = $x + 1;
+                    echo "
+                    <div class=\"col-12 col-md-6 col-sm-12 col-lg-4 itemDeal\" >
+                    <form action=\"foodMenu.php\" method=\"GET\">
+                        <div class=\"card\">
+                          <img class=\"card-img-top\" src=\"../images/{$fm['foodImage']}\" alt=\"Card image cap\" style=\"height:150px;\">
+                          <div class=\"card-body\">
+                            <h5 class=\"card-title\"> {$fm['itemName']} </h5>
+                            <p class=\"card-text\"> {$fm['itemDescription']} </p>
+
+                            <div class=\"text-center\">
+                                <a href=\"cart.php?foodMenuId={$fm['foodMenuId']}\" class=\"btn btn-primary btn-dark\"  name=\"addtocart\" onclick=\"addedTocart()\">Add to Cart <i class=\"fa fa-cart-plus\"></i></a>
+                            </div>
+                          </div>
+                        </div>                
+                        </form>     
+                    </div>
+            ";
+        }   
+    }
+
+}else{
+
+
+    //getting the list of food Menu
+    $query_fm1 = "SELECT * FROM foodmenu";
+    $fms1 = mysqli_query($connection, $query_fm1);
+    if($fms1){
+        $x  = 0;
+            while ($fm1 = mysqli_fetch_assoc($fms1)) {
+                $x = $x + 1;
+                    echo "
+                    <div class=\"col-12 col-md-6 col-sm-12 col-lg-4 itemDeal\" >
+                    <form action=\"foodMenu.php\" method=\"GET\">
+                        <div class=\"card\">
+                          <img class=\"card-img-top\" src=\"../images/{$fm1['foodImage']}\" alt=\"Card image cap\" style=\"height:150px;\">
+                          <div class=\"card-body\">
+                            <h5 class=\"card-title\"> {$fm1['itemName']} </h5>
+                            <p class=\"card-text\"> {$fm1['itemDescription']} </p>
+
+                            <div class=\"text-center\">
+                                <a href=\"cart.php?foodMenuId={$fm1['foodMenuId']}\" class=\"btn btn-primary btn-dark\"  name=\"addtocart\" onclick=\"addedTocart()\">Add to Cart <i class=\"fa fa-cart-plus\"></i></a>
+                            </div>
+                          </div>
+                        </div>                
+                        </form>     
+                    </div>
+            ";
+        }   
+    }
+
+
+
+}
+?> 

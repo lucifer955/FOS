@@ -27,51 +27,39 @@
                 </div>
             
     
-                <div class="row">
-<!-- get the category name -->
+                <div class="row" id="resultx" class="resultb">
 <?php  
-    
-    // if(isset($_POST['filterMenu'])){
-
-    //             $catex=$_POST['filterMenu'];
-    // }
-
-
-?>
-
-<!-- <form action="foodMenu.php" method="post">
-    <input type='submit' role="button" id='cateNamex' name='filterMenu' value="" style="display: none">    
-</form> -->
-
-<?php
-
     //getting the list of food Menu
-    $query_fm = "SELECT * FROM foodmenu";
-    $fms = mysqli_query($connection, $query_fm);
-    if($fms){
-        while ($fm = mysqli_fetch_assoc($fms)) {
-
-            echo "
+    $query_fm1 = "SELECT * FROM foodmenu";
+    $fms1 = mysqli_query($connection, $query_fm1);
+    if($fms1){
+        $x  = 0;
+            while ($fm1 = mysqli_fetch_assoc($fms1)) {
+                $x = $x + 1;
+                    echo "
                     <div class=\"col-12 col-md-6 col-sm-12 col-lg-4 itemDeal\" >
                     <form action=\"foodMenu.php\" method=\"GET\">
                         <div class=\"card\">
-                          <img class=\"card-img-top\" src=\"../images/{$fm['foodImage']}\" alt=\"Card image cap\" style=\"height:150px;\">
+                          <img class=\"card-img-top\" src=\"../images/{$fm1['foodImage']}\" alt=\"Card image cap\" style=\"height:150px;\">
                           <div class=\"card-body\">
-                            <h5 class=\"card-title\"> {$fm['itemName']} </h5>
-                            <p class=\"card-text\"> {$fm['itemDescription']} </p>
+                            <h5 class=\"card-title\"> {$fm1['itemName']} </h5>
+                            <p class=\"card-text\"> {$fm1['itemDescription']} </p>
 
                             <div class=\"text-center\">
-                                <a href=\"cart.php?foodMenuId={$fm['foodMenuId']}\" class=\"btn btn-primary btn-dark\" name=\"addtocart\" onclick=\"addedTocart()\">Add to Cart <i class=\"fa fa-cart-plus\"></i></a>
+                                <a href=\"cart.php?foodMenuId={$fm1['foodMenuId']}\" class=\"btn btn-primary btn-dark\"  name=\"addtocart\" onclick=\"addedTocart()\">Add to Cart <i class=\"fa fa-cart-plus\"></i></a>
                             </div>
                           </div>
-                        </div>
+                        </div>                
                         </form>     
                     </div>
             ";
         }   
     }
 
-?>                  
+
+
+
+?>
 
                 </div>
             </div>  
@@ -98,25 +86,44 @@
 
 <script type="text/javascript">
     function filterFoodMenu(f){
-        var cateId = parseInt(f.value);
+        var id = f.value;
         // h.value = y;
 
         $.ajax({
             method : "POST",
-            url : "filter.php",
-            data : {cateId : cateId},
+            url : "../includes/filter.php",
+            data : {'categoId' : id },
             success:function(result){
-                alert(result);
+                $("#resultx").html(result);
                 // location.reload(true);
             }
-        })
-
-
+        });
     }
 
     function addedTocart(){
         alert("Added to Cart");
     }
+// load to All categories when clicked
+    function cateAll(){
+        $.ajax({
+            method : "POST",
+            url : "../includes/filter.php",
+            success:function(result){
+                $("#resultx").html(result);
+                // location.reload(true);
+            }
+        });
+    }
+    // const element = document.querySelector(".linkAll");
+    // if (element.classList.contains("active")) {
+    //         $.ajax({
+    //         url : "../includes/filterAll.php",
+    //         success:function(result1){
+    //             $("#resultx").html(result1);
+    //             // location.reload(true);
+    //         }
+    //     });
+    // }
 
 
 </script>
