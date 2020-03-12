@@ -102,8 +102,8 @@
                 <tbody>
                   <!-- foreach ($order->lineItems as $line) or some such thing here -->
                   <tr>
-                    <td class="thick-line">Item</td>
-                    <td class="thick-line">Item Price</td>
+                    <td class="thick-line text-left">Food Item</td>
+                    <td class="thick-line text-center">Unit Price</td>
                     <td class="thick-line text-center">Quantity</td>
                     <td class="thick-line text-right">Total</td>
                   </tr>
@@ -128,7 +128,7 @@ SELECT * FROM ((cartorder INNER JOIN checkout ON cartorder.cartID = checkout.car
 echo "
                   <tr>
                     <td>{$fm2['itemName']}</td>
-                    <td class=\"text-center\">{$fm2['itemPrice']}</td>
+                    <td class=\"text-center\">Rs.{$fm2['itemPrice']}.00</td>
                     <td class=\"text-center\">{$fm2['foodQuantity']}</td>
                     <td class=\"text-right\">Rs.$med.00</td>
                   </tr>

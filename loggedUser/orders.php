@@ -8,8 +8,86 @@
 	$usr_id = $_SESSION['user_id'];
 
 
+// enter data to the chekout table
+	$getCart = "SELECT * FROM cart ";
+	$resultCart = mysqli_query($connection,$getCart);
+
+	if ($resultCart) {
+		while ($rsCart = mysqli_fetch_assoc($resultCart)) {
+			$itemName1 = $rsCart['itemName'];
+			$itemPrice1 = $rsCart['itemPrice'];
+			$foodQuantity1 = $rsCart['foodQuantity'];
+			$foodMenuId1 = $rsCart['foodMenuId'];
+			$cartID1 = $rsCart['cartID'];
+    //checking if any record  is already exixts
+    $q2 = "SELECT * FROM checkout WHERE cartID = $cartID1 LIMIT 1";
+
+    $r2 = mysqli_query($connection, $q2);
+
+    if ($r2) {
+      			if (mysqli_num_rows($r2) == 0) {
+				$sql = "INSERT INTO checkout(
+					itemName,
+					itemPrice,
+					foodQuantity,
+					foodMenuId,
+					cartID
+					) VALUES(
+					'{$itemName1}',
+					'{$itemPrice1}',
+					'{$foodQuantity1}',
+					'{$foodMenuId1}',
+					'{$cartID1}'
+					)";
+					mysqli_query($connection,$sql);
+      			}
+
+    		}		
+
+		}
+	}
 
 
+?>
+
+<!-- enter data to cartorder table -->
+<?php  
+
+	$getLastOrder = "SELECT * FROM orderdetails where customerId = '{$usr_id}' ORDER BY orderId DESC LIMIT 1";
+	$resultOrder = mysqli_query($connection,$getLastOrder);
+	if ($resultOrder) {
+		while ($rsOrd = mysqli_fetch_assoc($resultOrder)) {
+			$lastOrderId = $rsOrd['orderId'];
+		}
+	}
+
+	$cartItems = "SELECT * FROM cart";
+	$rsCartNow = mysqli_query($connection,$cartItems);
+
+	if ($rsCartNow) {
+		while ($itemCat = mysqli_fetch_assoc($rsCartNow)) {
+
+			$cartId = $itemCat['cartID'];
+
+			$checkCartOrder = "SELECT * FROM cartorder WHERE orderId = $lastOrderId LIMIT 1";
+			$rsCO = mysqli_query($connection,$checkCartOrder);
+
+			if ($rsCO) {
+				if (mysqli_num_rows($rsCO) == 0) {					
+
+					$inserQuery = "INSERT INTO cartorder(
+					cartID,
+					orderId
+					)VALUES(
+					'{$cartId}',
+					'{$lastOrderId}'
+					)";
+					mysqli_query($connection,$inserQuery);
+				}
+			}
+		}
+	}
+ 
 ?>
 
 <div class="loggedOrders">
