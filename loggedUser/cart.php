@@ -16,7 +16,6 @@
 
 		$categories = mysqli_query($connection, $query_cart);
 
-
 		if($categories){
 
 			while ($cart = mysqli_fetch_assoc($categories)) {
