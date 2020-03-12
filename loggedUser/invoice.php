@@ -31,7 +31,7 @@
         $queryView1 =   "SELECT *
           FROM orderdetails 
           INNER JOIN customer 
-          ON orderdetails.customerId=customer.customerId where customer.customerId = '{$customerId}' and orderdetails.orderId='{$orderId}'";
+          ON orderdetails.customerId=customer.customerId where customer.customerId = $customerId and orderdetails.orderId=$orderId ";
 
       $view1 = mysqli_query($connection, $queryView1);
         if($view1){
@@ -101,7 +101,47 @@
               <table class="table table-condensed">
                 <tbody>
                   <!-- foreach ($order->lineItems as $line) or some such thing here -->
+                  <tr>
+                    <td class="thick-line">Item</td>
+                    <td class="thick-line">Item Price</td>
+                    <td class="thick-line text-center">Quantity</td>
+                    <td class="thick-line text-right">Total</td>
+                  </tr>
 
+<?php  
+$med = 1;
+$tot1 = 0;
+          $query2 = "
+
+
+SELECT * FROM ((cartorder INNER JOIN checkout ON cartorder.cartID = checkout.cartID) INNER JOIN orderdetails ON cartorder.orderId = orderdetails.orderId) where cartorder.orderId = $orderId and orderdetails.customerId = $customerId
+
+
+
+          ";          
+          $view2 = mysqli_query($connection, $query2);
+            if($view2){
+                while ($fm2 = mysqli_fetch_assoc($view2)) {
+                          $med = $fm2['itemPrice']*$fm2['foodQuantity'];
+                          $tot1= $tot1+$med;
+
+echo "
+                  <tr>
+                    <td>{$fm2['itemName']}</td>
+                    <td class=\"text-center\">{$fm2['itemPrice']}</td>
+                    <td class=\"text-center\">{$fm2['foodQuantity']}</td>
+                    <td class=\"text-right\">Rs.$med.00</td>
+                  </tr>
+
+
+
+";
+
+
+                }
+              }
+
+?>
 
                   <tr>
                     <td class="thick-line"></td>
