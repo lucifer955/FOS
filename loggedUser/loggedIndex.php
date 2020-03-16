@@ -10,10 +10,12 @@
       <p class="lead">Ordering a pizza from PIZZAMART is one click away.</p>
     </div>
     <div>
-        <form class="form-inline d-flex justify-content-center" action="loggedIndex.php" method="POST">
+        <!-- <form class="form-inline d-flex justify-content-center" action="loggedIndex.php" method="POST"> -->
+        <div class="form-inline d-flex justify-content-center">
             <input class="form-control mx-1 col-6 col-md-4 col-sm-6" placeholder="Search Food" aria-label="Search" type="text" name="searchFood1" id="searchFood" autocomplete="off">
-            <button class="btn btn-dark mx-1 col-3 col-md-2 col-sm-2 buttonSearch" type="submit" name="searchSubmit" id="buttonSearch" onclick="smoothScroll(document.getElementById('searchResults'))"><i class="fa fa-search"></i></button>
-          </form>      
+            <button class="btn btn-dark mx-1 col-3 col-md-2 col-sm-2 buttonSearch" type="submit" name="searchSubmit" id="buttonSearch" onclick="searchFunction(document.getElementById('searchFood'))"><i class="fa fa-search"></i></button>
+        </div>  
+          <!-- </form>       -->
     </div>
 
     <div class="container howToStuff rounded">
@@ -44,54 +46,21 @@
 
 
 </div>
-  <!-- top deals -->
+
   <div class="container containerDeals">
 
-   <!-- search results -->
-   <div class="searchResults">
-     <div class="row " >
-         
-<?php
+   <!-- searched results -->
 
-  $searchFood = '';
-
-
-  if (isset($_POST['searchSubmit'])) {
-      $searchFood1 = $_POST['searchFood1'];
-
-    $query3 = "SELECT * FROM foodmenu where itemName = '$searchFood1'";
-    $fms1 = mysqli_query($connection, $query3);
-    if($fms1){
-        while ($fm = mysqli_fetch_assoc($fms1)) {
-
-            echo "  <div class=\"col-12\" style=\"margin-top:100px\">
-                        <h1 class=\"text-left \">Search Results....</h1>
-                        <hr>
-                    </div>
-                    <div class=\"col-12 col-md-6 col-sm-12 col-lg-4 itemDeal\" style=\"margin-bottom: 100px\">
-                    <form action=\"foodMenu.php\" method=\"GET\">
-                        <div class=\"card\">
-                          <img class=\"card-img-top\" src=\"../images/{$fm['foodImage']}\" alt=\"Card image cap\" style=\"height:150px;\">
-                          <div class=\"card-body\">
-                            <h5 class=\"card-title\"> {$fm['itemName']} </h5>
-                            <p class=\"card-text\"> {$fm['itemDescription']} </p>
-
-                            <div class=\"text-center\">
-                                <a href=\"cart.php?foodMenuId={$fm['foodMenuId']}\" class=\"btn btn-primary btn-dark\" name=\"addtocart\">Add to Cart <i class=\"fa fa-cart-plus\"></i></a>
-                            </div>
-                          </div>
-                        </div>
-                        </form>     
-                    </div>
-            ";
-        }   
-    }
-  }
-?>
- 
-     </div>
-   </div>
+  <div id="searchedFoodResultsDIv">
+    <div class="searchedFoodResults" >
+      <div class="row" >
+        <div id="searchedFoodResults">
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
 
 <div class="container containerDeals" style="margin-top: 100px">
   <div>
@@ -158,7 +127,7 @@
           <div class="card">
                     <img class="card-img-top" src="..\images\BBQChickenPizza-foodgawker (1).jpg" alt="Card image cap">
                     <div class="card-body">
-                      <h5 class="card-title">Chicken Bacon</h5>
+                      <h5 class="card-title">Chicken Bacon <span class="badge badge-danger"> NEW</span></h5>
                       <p class="card-text">Chicken Bacon Pizza is loaded with chicken bacon and onions & green chillies with a double layer of mozzarella cheese.</p>
                       <!-- <div class="text-center">
                         <a href="#" class="btn btn-primary btn-dark">Add to Cart <i class="fa fa-cart-plus"></i></a>
@@ -170,7 +139,7 @@
           <div class="card">
                     <img class="card-img-top" src="..\images\Hot-Spicy-Pizza.jpg" alt="Card image cap">
                     <div class="card-body">
-                      <h5 class="card-title">Spicy Seafood</h5>
+                      <h5 class="card-title">Spicy Seafood <span class="badge badge-danger">NEW</span></h5>
                       <p class="card-text">A fiery mix of prawns, devilled fish, olives, bell peppers and onions with a double layer of mozzarella cheese.</p>
                       <!-- <div class="text-center">
                         <a href="#" class="btn btn-primary btn-dark">Add to Cart <i class="fa fa-cart-plus"></i></a>
@@ -182,7 +151,7 @@
           <div class="card">
                     <img class="card-img-top" src="..\images\chicken-bacon-ranch-pizza.jpg" alt="Card image cap">
                     <div class="card-body">
-                      <h5 class="card-title">Hot Garlic Prawns</h5>
+                      <h5 class="card-title">Hot Garlic Prawns <span class="badge badge-danger">NEW</span></h5>
                       <p class="card-text">Spicy prawns, hot garlic sauce, onions, peppers and tomatoes with a double layer of mozzarella cheese.</p>
                       <!-- <div class="text-center">
                         <a href="#" class="btn btn-primary btn-dark">Add to Cart <i class="fa fa-cart-plus"></i></a>
@@ -206,6 +175,25 @@
   </div>
 </div>
 </div>
+
+<script>
+  function searchFunction(searchedFood){
+    var searchedFood = searchedFood.value;
+        window.location.href = "#searchedFoodResultsDIv";
+    $.ajax({
+            method : "POST",
+            url : "../includes/fetchSearchResults.php",
+            data : {'searchedFood' : searchedFood },
+            success:function(result){
+                $("#searchedFoodResults").html(result);
+                // alert(result);
+                // location.reload(true);
+
+            }
+        });
+
+    }
+</script>
 <!-- include the footer files -->  
 <?php 
   include('../includes/loggedFooter.php');

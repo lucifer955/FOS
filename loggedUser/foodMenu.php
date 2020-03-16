@@ -42,9 +42,8 @@
                         <div class=\"card\">
                           <img class=\"card-img-top\" src=\"../images/{$fm1['foodImage']}\" alt=\"Card image cap\" style=\"height:150px;\">
                           <div class=\"card-body\">
-                            <h5 class=\"card-title\"> {$fm1['itemName']} </h5>
+                            <h5 class=\"card-title text-center\"> {$fm1['itemName']} <br><span class=\"badge badge-success\">Rs.{$fm1['itemPrice']}/=</span></h5>
                             <p class=\"card-text\"> {$fm1['itemDescription']} </p>
-
                             <div class=\"text-center\">
                                 <a href=\"cart.php?foodMenuId={$fm1['foodMenuId']}\" class=\"btn btn-primary btn-dark\"  name=\"addtocart\" onclick=\"addedTocart()\">Add to Cart <i class=\"fa fa-cart-plus\"></i></a>
                             </div>
@@ -124,6 +123,18 @@
     //         }
     //     });
     // }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 </script>

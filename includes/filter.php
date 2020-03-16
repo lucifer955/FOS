@@ -24,7 +24,7 @@
                         <div class=\"card\">
                           <img class=\"card-img-top\" src=\"../images/{$fm['foodImage']}\" alt=\"Card image cap\" style=\"height:150px;\">
                           <div class=\"card-body\">
-                            <h5 class=\"card-title\"> {$fm['itemName']} </h5>
+                            <h5 class=\"card-title text-center\"> {$fm['itemName']} <br><span class=\"badge badge-success\">Rs.{$fm['itemPrice']}/=</span></h5>
                             <p class=\"card-text\"> {$fm['itemDescription']} </p>
 
                             <div class=\"text-center\">
@@ -54,7 +54,7 @@
                         <div class=\"card\">
                           <img class=\"card-img-top\" src=\"../images/{$fm1['foodImage']}\" alt=\"Card image cap\" style=\"height:150px;\">
                           <div class=\"card-body\">
-                            <h5 class=\"card-title\"> {$fm1['itemName']} </h5>
+                            <h5 class=\"card-title text-center\"> {$fm1['itemName']} <br><span class=\"badge badge-success\">Rs.{$fm1['itemPrice']}/=</span></h5>
                             <p class=\"card-text\"> {$fm1['itemDescription']} </p>
 
                             <div class=\"text-center\">

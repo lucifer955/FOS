@@ -18,7 +18,7 @@
 	
 	<div class="panel-body panelContent"><!--  style="margin-top: 50px;" -->
 		<div class="panel-heading">
-			<h3 class="panel-title">Product Categories</h3>
+			<h3 class="panel-title text-center">Food Categories</h3>
 		</div>
 		<div class="row">
 		  	<div class="col-12 col-sm-12 col-md sideBarMenu" >
