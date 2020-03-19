@@ -27,74 +27,38 @@
 				</div>
 			
 
-				<div class="row">
-					<?php
-
+                <div class="row" id="resultm" class="resultb">
+<?php  
     //getting the list of food Menu
-    $query_fm = "SELECT * FROM foodmenu";
-    $fms = mysqli_query($connection, $query_fm);
-    if($fms){
-        while ($fm = mysqli_fetch_assoc($fms)) {
-
-            echo "
+    $query_fm7 = "SELECT * FROM foodmenu";
+    $fms1 = mysqli_query($connection, $query_fm7);
+    if($fms1){
+        $x  = 0;
+            while ($fm1 = mysqli_fetch_assoc($fms1)) {
+                $x = $x + 1;
+                    echo "
                     <div class=\"col-12 col-md-6 col-sm-12 col-lg-4 itemDeal\" >
-                    <form action=\"foodMenu.php\" method=\"GET\">
+                    <form>
                         <div class=\"card\">
-                          <img class=\"card-img-top\" src=\"images/{$fm['foodImage']}\" alt=\"Card image cap\" style=\"height:150px;\">
+                          <img class=\"card-img-top\" src=\"images/{$fm1['foodImage']}\" alt=\"Card image cap\" style=\"height:150px;\">
                           <div class=\"card-body\">
-                            <h5 class=\"card-title\"> {$fm['itemName']} </h5>
-                            <p class=\"card-text\"> {$fm['itemDescription']} </p>
-
+                            <h5 class=\"card-title text-center\"> {$fm1['itemName']} <br><span class=\"badge badge-success\">Rs.{$fm1['itemPrice']}/=</span></h5>
+                            <p class=\"card-text\"> {$fm1['itemDescription']} </p>
                             <div class=\"text-center\">
-                                <a href=\"sign_in.php\" class=\"btn btn-primary btn-dark\" name=\"addtocart\">Add to Cart <i class=\"fa fa-cart-plus\"></i></a>
+                                <a href=\"\" class=\"btn btn-primary btn-dark\"  name=\"addtocart\">Add to Cart <i class=\"fa fa-cart-plus\"></i></a>
                             </div>
                           </div>
-                        </div>
+                        </div>                
                         </form>     
                     </div>
             ";
         }   
     }
 
+
+
+
 ?>
-<!-- 					<div class="col-12 col-md-6 col-sm-12 col-lg-4 itemDeal">
-		          		<div class="card">
-			              <img class="card-img-top" src="..\images\BBQChickenPizza-foodgawker (1).jpg" alt="Card image cap">
-			              <div class="card-body">
-			                <h5 class="card-title">Chicken Bacon</h5>
-			                <p class="card-text">Chicken Bacon Pizza is loaded with chicken bacon and onions & green chillies with a double layer of mozzarella cheese.
-							.</p>
-			                <div class="text-center">
-			                	<a href="cart.php" class="btn btn-primary btn-dark">Add to Cart <i class="fa fa-cart-plus"></i></a>
-			                </div>
-			              </div>
-		            	</div>
-		      		</div>
-		      		<div class="col-12 col-md-6 col-sm-12 col-lg-4 itemDeal">
-		          		<div class="card">
-			              <img class="card-img-top" src="..\images\Hot-Spicy-Pizza.jpg" alt="Card image cap">
-			              <div class="card-body">
-			                <h5 class="card-title">Spicy Seafood</h5>
-			                <p class="card-text">A fiery mix of prawns, devilled fish, olives, bell peppers and onions with a double layer of mozzarella cheese.
-							</p>
-			                <div class="text-center">
-			                	<a href="cart.php" class="btn btn-primary btn-dark">Add to Cart <i class="fa fa-cart-plus"></i></a>
-			                </div>
-			              </div>
-		            	</div>
-		      		</div>
-		      		<div class="col-12 col-md col-sm-12 col-lg-4 itemDeal">
-		          		<div class="card">
-			              <img class="card-img-top" src="..\images\chicken-bacon-ranch-pizza.jpg" alt="Card image cap">
-			              <div class="card-body">
-			                <h5 class="card-title">Hot Garlic Prawns</h5>
-			                <p class="card-text">Spicy prawns, hot garlic sauce, onions, peppers and tomatoes with a double layer of mozzarella cheese.</p>
-			                <div class="text-center">
-			                	<a href="cart.php" class="btn btn-primary btn-dark">Add to Cart <i class="fa fa-cart-plus"></i></a>
-			                </div>
-			              </div>
-		            	</div>
-		      		</div> -->
 				</div>
 			</div>	
 		</div>
@@ -117,6 +81,36 @@
 		</nav>
 	</div>
 </div>
+
+<script type="text/javascript">
+    function filterFoodMenu(f){
+        var id = f.value;
+        // h.value = y;
+
+        $.ajax({
+            method : "POST",
+            url : "includes/filter.php",
+            data : {'categoId' : id },
+            success:function(result){
+                $("#resultm").html(result);
+                // location.reload(true);
+            }
+        });
+    }
+
+// load to All categories when clicked
+    function cateAll(){
+        $.ajax({
+            method : "POST",
+            url : "includes/filter.php",
+            success:function(result){
+                $("#resultm").html(result);
+                // location.reload(true);
+            }
+        });
+    }
+
+</script>
 <!-- include the footer files -->
 <?php 
   include('includes/footer.php');

@@ -104,7 +104,7 @@
 
 	<div class="container">
 		<div class="row justify-content-around">
-			<div class="col-3">
+			<div class="col-12 col-md-3">
 					<div class="table">
 				  <div class="card-body text-center">
 				  	<h4 class="p-4 mb-4 bg-dark text-white">Your Orders are Here</h4>
@@ -113,7 +113,7 @@
 				  </div>
 				</div>			
 			</div>
-			<div class="col-9">
+			<div class="col-12 col-md-9">
 				<div class="col-12">
 
 <?php  
@@ -151,7 +151,7 @@
 
 echo "
 <form method='GET' action='orders.php'>
-<table class=\"table\">
+<table class=\"table table-responsive\">
   <tbody>
     <tr class='text-secondary'>
     <div class='3'>

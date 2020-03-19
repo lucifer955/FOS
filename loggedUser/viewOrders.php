@@ -49,7 +49,7 @@ border-right: 10px solid black;
 				</div>
 				  <div class="card-body">
 				    <div class="row">
-				    	<div class="col-6">
+				    	<div class="col-12 col-md-6">
 				    		
 				<table class="table">
 							 

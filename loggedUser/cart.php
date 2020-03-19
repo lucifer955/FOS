@@ -64,7 +64,7 @@
 	</div>
 	<div class="container">
 		<div class="row justify-content-around">
-			<div class="col-8 text-center">
+			<div class="col-12 col-md-8 text-center">
 				
 				<table class="table table-hover table-responsive-sm table-sm">
 				  <thead>
@@ -123,7 +123,7 @@
 				</div>
 			</div>
 
-			<div class="col-3">
+			<div class="col-12 col-md-3">
 
 				<div class="table">
 				  <div class="card-body text-center">
