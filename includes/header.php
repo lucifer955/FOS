@@ -10,55 +10,65 @@
 
       $errors = array();
 
-    //check if usename and password has been entered
-      if (!isset($_POST['email']) || strlen(trim($_POST['email'])) < 1) {
-        
-        $errors[] = 'Username is missing / invalid';
-      }
+      // strat of the cookie check
+      if (!empty($_POST["email"]) && !empty($_POST["password"])) {
 
-      if (!isset($_POST['password']) || strlen(trim($_POST['password'])) < 1) {
-        
-        $errors[] = 'Password is missing / invalid';
-      }
+        //check if usename and password has been entered
+        if (!isset($_POST['email']) || strlen(trim($_POST['email'])) < 1) {
+          
+          $errors[] = 'Username is missing / invalid';
+        }
 
-      //check if there are any errors in the file
-      if(empty($errors)){
+        if (!isset($_POST['password']) || strlen(trim($_POST['password'])) < 1) {
+          
+          $errors[] = 'Password is missing / invalid';
+        }
 
-        // save username and password into variables
-        $email = mysqli_real_escape_string($connection, $_POST['email']);
-        $password = mysqli_real_escape_string($connection, $_POST['password']);
-        $password_hash = md5($password);
+        //check if there are any errors in the file
+        if(empty($errors)){
 
-        // prepare database query
-        $query = "SELECT * FROM customer
-                    WHERE customerEmail = '{$email}'
-                    -- hashed password should be included
-                    AND customerPassword =  '{$password_hash}'
-                    LIMIT 1";
-                    // add hash password
-        $result_set = mysqli_query($connection,$query);
+          // save username and password into variables
+          $email = mysqli_real_escape_string($connection, $_POST['email']);
+          $password = mysqli_real_escape_string($connection, $_POST['password']);
+          $password_hash = md5($password);
 
-        if ($result_set) {
-          //query successful
+          // prepare database query
+          $query = "SELECT * FROM customer
+                      WHERE customerEmail = '{$email}'
+                      -- hashed password should be included
+                      AND customerPassword =  '{$password_hash}'
+                      LIMIT 1";
+                      // add hash password
+          $result_set = mysqli_query($connection,$query);
 
-          if(mysqli_num_rows($result_set) == 1){
-            //valid user found
+          if ($result_set) {
+            //query successful
 
-            $user = mysqli_fetch_assoc($result_set);
-            $_SESSION['user_id'] = $user['customerId'];
-            $_SESSION['first_name'] = $user['customerFirstName'];
-            //redirect to dashboard.php
-            header('Location: loggedUser/loggedIndex.php');
+            if(mysqli_num_rows($result_set) == 1){
+              //valid user found
+
+              $user = mysqli_fetch_assoc($result_set);
+              $_SESSION['user_id'] = $user['customerId'];
+              $_SESSION['first_name'] = $user['customerFirstName'];
+
+              //set cookies to rember the password
+              setcookie ("member_login",$email,time()+ (10 * 365 * 24 * 60 * 60));  
+              setcookie ("member_password",$password,time()+ (10 * 365 * 24 * 60 * 60));
+
+              //redirect to dashboard.php
+              header('Location: loggedUser/loggedIndex.php');
+            }else{
+              //user name and password invalid
+
+              $errors[] = 'Invalid Username / Password';
+            }
+
           }else{
-            //user name and password invalid
 
-            $errors[] = 'Invalid Username / Password';
-          }
-
-        }else{
-
-          $errors[] = 'Database query failed';
-        } 
+            $errors[] = 'Database query failed';
+          } 
+        }
+        // end of the cookie check
       }
     }
 ?>
