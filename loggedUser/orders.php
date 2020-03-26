@@ -9,7 +9,7 @@
 
 
 // enter data to the chekout table
-	$getCart = "SELECT * FROM cart ";
+	$getCart = "SELECT * FROM cart";
 	$resultCart = mysqli_query($connection,$getCart);
 
 	if ($resultCart) {
@@ -61,6 +61,9 @@
 		}
 	}
 
+	if (empty($lastOrderId)) {
+	}else{
+
 	$cartItems = "SELECT * FROM cart";
 	$rsCartNow = mysqli_query($connection,$cartItems);
 
@@ -69,11 +72,15 @@
 
 			$cartId = $itemCat['cartID'];
 
-			$checkCartOrder = "SELECT * FROM cartorder WHERE orderId = $lastOrderId LIMIT 1";
+			$checkCartOrder = "SELECT * FROM cartorder WHERE cartID = $cartId LIMIT 1";
 			$rsCO = mysqli_query($connection,$checkCartOrder);
 
 			if ($rsCO) {
 				if (mysqli_num_rows($rsCO) == 0) {					
+
+		      		$message = "sssss";					
+					echo "<script type='text/javascript'>alert('$message');</script>";
+
 
 					$inserQuery = "INSERT INTO cartorder(
 					cartID,
@@ -87,7 +94,7 @@
 			}
 		}
 	}
- 
+ }
 ?>
 
 <div class="loggedOrders">
@@ -202,30 +209,6 @@ echo "
 </form>
 ";
 
-
-     //        echo "
-					// <div class=\"card mb-2\" style='border-left: 10px solid green;border-right: 10px solid green; ' >
-					//   <div class=\"card-body\">
-					//   	<div class=\"row justify-content-around\">
-					//   	<div class='col-3 align-self-center'>
-					//   		<div class=\" align-self-center\"><b>Order Id : <span class='text-primary'>00000{$fm['orderId']}</span> </b></div>
-					//   	</div>
-
-					//   		<div class=\"col-2 align-self-center\">
-					// 			<img src=\"../images/bag.png\" height=\"80px\" width=\"80px\"></div>
-					//   		<div class=\"col-4 align-self-center\">
-					//   			<b>
-					//   				<p>Order Date: <span class='text-info'><br>{$fm['orderDate']}</span></p>
-					//   				<p>Customer Id: <span class='text-info'>".$_SESSION['user_id']."</span></p>
-					//   			</b>
-					//   		</div>
-					//   		<div class=\"col-2 align-self-center\">Total : Rs.<span class='te'>{$fm['total']}</span>/=</div>	
-					//   	</div>
-					//   </div>
-					// </div>
-
-                    
-     //        ";
         }   
     }
 
@@ -250,7 +233,7 @@ echo "
 
 <!-- include the footer files -->
 <?php
-	// $qw = "truncate table orderdetails";
-	// $rs = mysqli_query($connection,$qw);
+	$qw = "truncate table cart";
+	$rs = mysqli_query($connection,$qw);
   include('../includes/loggedFooter.php');
 ?>
