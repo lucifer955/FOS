@@ -82,35 +82,7 @@
 	</div>
 </div>
 
-<script type="text/javascript">
-    function filterFoodMenu(f){
-        var id = f.value;
-        // h.value = y;
 
-        $.ajax({
-            method : "POST",
-            url : "includes/filter.php",
-            data : {'categoId' : id },
-            success:function(result){
-                $("#resultm").html(result);
-                // location.reload(true);
-            }
-        });
-    }
-
-// load to All categories when clicked
-    function cateAll(){
-        $.ajax({
-            method : "POST",
-            url : "includes/filter.php",
-            success:function(result){
-                $("#resultm").html(result);
-                // location.reload(true);
-            }
-        });
-    }
-
-</script>
 <!-- include the footer files -->
 <?php 
   include('includes/footer.php');

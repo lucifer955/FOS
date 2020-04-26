@@ -38,9 +38,7 @@
       }
     }
 
-    if ($password != $repeat_password) {
-      $errors[] = 'Two passwords are not matching';
-    }
+
 
     //checking max length
     $max_len_fields = array('first_name' => 50,'last_name' => 50,'email' => 100,'mobile_number' => 10,'password' => 10,'repeat_password' => 10);
@@ -95,9 +93,6 @@
       // $query .= ")";
 
       $result = mysqli_query($connection,$query);
-
-       
-
 
       if($result){
 

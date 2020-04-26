@@ -94,7 +94,7 @@
 						<tr>
 						  <td  class=\"align-middle\" id=\"menuId\">{$cart1['foodMenuId']}</td>
 					      <td  class=\"align-middle\"><img src=\"../images/{$cart1['foodImage']}\" height=\"50px\" width='100px'></td>
-					      <td class=\"align-middle\">{$cart1['foodImage']}</td>
+					      <td class=\"align-middle\">{$cart1['itemName']}</td>
 					      <td class=\"align-middle\" id=\"unitPrice$x\">{$cart1['itemPrice']}.00</td>
 					      <td class=\"align-middle\"><input type=\"number\" name=\"quantity$x\" value=\"1\" min=\"1\" style=\"width: 50px\" id=\"quan$x\" onchange=\"quantityFunc(document.getElementById('quan$x'),document.getElementById('unitPrice$x'),document.getElementById('subTotal$x'),document.getElementById('IDsubData$x'))\"></td>
 					      <td class=\"align-middle\"  id=\"subTotal$x\">{$cart1['itemPrice']}.00</td>

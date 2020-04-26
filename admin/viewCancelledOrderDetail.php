@@ -97,6 +97,10 @@
 										<td><?php echo "{$fm['orderDate']}"; ?></td>
 									</tr>
 									<tr>
+										<th>Delivery Type</th>
+										<td><?php echo "{$fm['orderType']}"; ?></td>
+									</tr>
+									<tr>
 										<th>Order Final Status</th>
 										<td><?php echo "{$fm['orderStatus']}"; ?></td>
 									</tr>
@@ -109,44 +113,69 @@
 						<div class="card-body">
 						    <div class="table-responsive-md">
 								  	<table class="table table-hover table-bordered table-sm">
-<!-- 										<tr>
-											<th>Food MenuId</th>
-											<th>Food Name</th>
-											<th>Quantity</th>
-											<th>Sub Total</th>
-										</tr>
- -->
+<!-- statasdahsdjasd -->
+
+<!-- foreach ($order->lineItems as $line) or some such thing here -->
+<tr>
+                    <td class="thick-line text-left">Food Item</td>
+                    <td class="thick-line text-center">Unit Price</td>
+                    <td class="thick-line text-center">Quantity</td>
+                    <td class="thick-line text-right">Total</td>
+                  </tr>
 
 <?php  
+$med = 1;
+$tot1 = 0;
+          $query2 = "
 
-					$query2 = "SELECT * from cart where customerId = '{$customerId}'";					
-					$view2 = mysqli_query($connection, $query2);
-    				if($view2){
-        				while ($fm2 = mysqli_fetch_assoc($view2)) {
 
-        					$sub = $fm2['itemPrice']*$fm2['foodQuantity'];
+SELECT * FROM ((cartorder INNER JOIN checkout ON cartorder.cartID = checkout.cartID) INNER JOIN orderdetails ON cartorder.orderId = orderdetails.orderId) where cartorder.orderId = $orderId and orderdetails.customerId = $customerId
+
+
+
+          ";          
+          $view2 = mysqli_query($connection, $query2);
+            if($view2){
+                while ($fm2 = mysqli_fetch_assoc($view2)) {
+                          $med = $fm2['itemPrice']*$fm2['foodQuantity'];
+                          $tot1= $tot1+$med;
+
+echo "
+                  <tr>
+                    <td>{$fm2['itemName']}</td>
+                    <td class=\"text-center\">Rs.{$fm2['itemPrice']}.00</td>
+                    <td class=\"text-center\">{$fm2['foodQuantity']}</td>
+                    <td class=\"text-right\">Rs.$med.00</td>
+                  </tr>
+
+
+
+";
+
+
+                }
+              }
+
 ?>
-	
+
+                  <tr>
+                    <td class="thick-line text-center" colspan="3"><strong>Subtotal</strong></td>
+                    <td class="thick-line text-right">Rs.<?php echo $tot1; ?>.00</td>
+                  </tr>
+                  <tr>
+                    <td class="no-line text-center" colspan="3"><strong>Delivering</strong></td>
+                    <td class="no-line text-right">Rs.0.00</td>
+                  </tr>
+                  <tr>
+                    <td class="no-line text-center" colspan="3"><strong>Total</strong></td>
+                    <td class="no-line text-right">Rs.<?php echo $tot1; ?>.00</td>
+                  </tr>
 
 
 
-<!-- 										<tr>
-											<td><?php echo "{$fm2['foodMenuId']}"; ?></td>
-											<td><?php echo "{$fm2['itemName']}"; ?></td>
-											<td><?php echo "{$fm2['foodQuantity']}"; ?></td>
-											<td>Rs.<?php echo $sub; ?>/=</td>
-										</tr> -->
-
-<?php  
-	}
-}
 
 
-?>
-										<tr>
-											<td colspan="3"><b>Grand Total</b></td>
-											<td>Rs.<?php echo "{$fm['total']}"; ?>/=</td>
-										</tr>
+<!-- enddddd -->
 								  	</table>
 							</div>
 						</div>
