@@ -52,9 +52,15 @@
               $_SESSION['first_name'] = $user['customerFirstName'];
 
               //set cookies to rember the password
-              setcookie ("member_login",$email,time()+ (10 * 365 * 24 * 60 * 60));  
-              setcookie ("member_password",$password,time()+ (10 * 365 * 24 * 60 * 60));
-
+              if(!empty($_POST["remember"])) {
+                setcookie ("member_login",$_POST["email"],time()+ (10 * 365 * 24 * 60 * 60));
+                setcookie ("member_password",$_POST["password"],time()+ (10 * 365 * 24 * 60 * 60));
+              } else {
+                if(isset($_COOKIE["member_login"]) && isset($_COOKIE["member_password"])) {
+                  setcookie ("member_login","");
+                  setcookie ("member_password","");
+                }
+              }
               //redirect to dashboard.php
               header('Location: loggedUser/loggedIndex.php');
             }else{
