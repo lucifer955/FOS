@@ -42,7 +42,7 @@
                         <div class=\"card\">
                           <img class=\"card-img-top\" src=\"images/{$fm1['foodImage']}\" alt=\"Card image cap\" style=\"height:150px;\">
                           <div class=\"card-body\">
-                            <h5 class=\"card-title text-center\"> {$fm1['itemName']} <br><span class=\"badge badge-success\">Rs.{$fm1['itemPrice']}/=</span></h5>
+                            <h5 class=\"card-title text-center\"> {$fm1['itemName']} <br><span class=\"badge badge-info\">{$fm1['categoryName']}</span> <span class=\"badge badge-success\">Rs.{$fm1['itemPrice']}/=</span></h5>
                             <p class=\"card-text\"> {$fm1['itemDescription']} </p>
                             <div class=\"text-center\">
                                 <a href=\"\" class=\"btn btn-primary btn-dark\"  name=\"addtocart\">Add to Cart <i class=\"fa fa-cart-plus\"></i></a>
@@ -54,10 +54,6 @@
             ";
         }   
     }
-
-
-
-
 ?>
 				</div>
 			</div>	
@@ -66,7 +62,7 @@
 
 	<div class="container">
 		<!-- pagination -->
-		<nav aria-label="Page navigation example" class="paginationCss"> <!-- style="background: white; margin-top: 20px;" -->
+		<!-- <nav aria-label="Page navigation example" class="paginationCss"> 
 			  <ul class="pagination justify-content-center">
 			    <li class="page-item disabled">
 			      <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
@@ -78,10 +74,37 @@
 			      <a class="page-link" href="#">Next</a>
 			    </li>
 			  </ul>
-		</nav>
+		</nav> -->
 	</div>
 </div>
+<script type="text/javascript">
+    function filterFoodMenu(f){
+        var id = f.value;
+	    // h.value = y;
+        $.ajax({
+            method : "POST",
+            url : "includes/foodFilter.php",
+            data : {'categoId' : id },
+            success:function(result){
+                $("#resultm").html(result);
+                // location.reload(true);
+            }
+        });
+    }
 
+// load to All categories when clicked
+    function cateAll(){
+        $.ajax({
+            method : "POST",
+            url : "includes/foodFilter.php",
+            success:function(result){
+                $("#resultm").html(result);
+                // location.reload(true);
+            }
+        });
+    }
+
+</script>
 
 <!-- include the footer files -->
 <?php 

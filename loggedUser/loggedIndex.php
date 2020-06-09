@@ -127,7 +127,7 @@
           <div class="card">
                     <img class="card-img-top" src="..\images\BBQChickenPizza-foodgawker (1).jpg" alt="Card image cap">
                     <div class="card-body">
-                      <h5 class="card-title">Chicken Bacon <span class="badge badge-danger"> NEW</span></h5>
+                      <h5 class="card-title">Chicken Bacon <span class="badge badge-danger"> Comming Soon</span></h5>
                       <p class="card-text">Chicken Bacon Pizza is loaded with chicken bacon and onions & green chillies with a double layer of mozzarella cheese.</p>
                       <!-- <div class="text-center">
                         <a href="#" class="btn btn-primary btn-dark">Add to Cart <i class="fa fa-cart-plus"></i></a>
@@ -139,7 +139,7 @@
           <div class="card">
                     <img class="card-img-top" src="..\images\Hot-Spicy-Pizza.jpg" alt="Card image cap">
                     <div class="card-body">
-                      <h5 class="card-title">Spicy Seafood <span class="badge badge-danger">NEW</span></h5>
+                      <h5 class="card-title">Spicy Seafood <span class="badge badge-danger"> Comming Soon</span></h5>
                       <p class="card-text">A fiery mix of prawns, devilled fish, olives, bell peppers and onions with a double layer of mozzarella cheese.</p>
                       <!-- <div class="text-center">
                         <a href="#" class="btn btn-primary btn-dark">Add to Cart <i class="fa fa-cart-plus"></i></a>
@@ -151,7 +151,7 @@
           <div class="card">
                     <img class="card-img-top" src="..\images\chicken-bacon-ranch-pizza.jpg" alt="Card image cap">
                     <div class="card-body">
-                      <h5 class="card-title">Hot Garlic Prawns <span class="badge badge-danger">NEW</span></h5>
+                      <h5 class="card-title">Hot Garlic Prawns <span class="badge badge-danger"> Comming Soon</span></h5>
                       <p class="card-text">Spicy prawns, hot garlic sauce, onions, peppers and tomatoes with a double layer of mozzarella cheese.</p>
                       <!-- <div class="text-center">
                         <a href="#" class="btn btn-primary btn-dark">Add to Cart <i class="fa fa-cart-plus"></i></a>
