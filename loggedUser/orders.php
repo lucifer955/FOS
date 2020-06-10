@@ -20,12 +20,12 @@
 			$foodMenuId1 = $rsCart['foodMenuId'];
 			$cartID1 = $rsCart['cartID'];
     //checking if any record  is already exixts
-    $q2 = "SELECT * FROM checkout WHERE cartID = $cartID1 LIMIT 1";
+    // $q2 = "SELECT * FROM checkout WHERE cartID = $cartID1 LIMIT 1";
 
-    $r2 = mysqli_query($connection, $q2);
+    // $r2 = mysqli_query($connection, $q2);
 
-    if ($r2) {
-      			if (mysqli_num_rows($r2) == 0) {
+    // if ($r2) {
+      			// if (mysqli_num_rows($r2) == 0) {
 				$sql = "INSERT INTO checkout(
 					itemName,
 					itemPrice,
@@ -40,9 +40,9 @@
 					'{$cartID1}'
 					)";
 					mysqli_query($connection,$sql);
-      			}
+      		// 	}
 
-    		}		
+    		// }		
 
 		}
 	}
@@ -72,14 +72,15 @@
 
 			$cartId = $itemCat['cartID'];
 
-			$checkCartOrder = "SELECT * FROM cartorder WHERE cartID = $cartId LIMIT 1";
-			$rsCO = mysqli_query($connection,$checkCartOrder);
+			// $checkCartOrder = "SELECT * FROM cartorder ORDER BY cartHistoryId DESC LIMIT 1";
+			// $rsCO = mysqli_query($connection,$checkCartOrder);
+			// $row = mysqli_fetch_row($rsCO);
+			// if ($rsCO) {
+				// $message = "sssss";					
+				// echo "<script type='text/javascript'>alert('$row[1] $row[2]');</script>";
+				// if ( && $lastOrderId == $row[2]) {					
 
-			if ($rsCO) {
-				if (mysqli_num_rows($rsCO) == 0) {					
 
-		      		$message = "sssss";					
-					echo "<script type='text/javascript'>alert('$message');</script>";
 
 
 					$inserQuery = "INSERT INTO cartorder(
@@ -90,8 +91,8 @@
 					'{$lastOrderId}'
 					)";
 					mysqli_query($connection,$inserQuery);
-				}
-			}
+				// }
+			// }
 		}
 	}
  }

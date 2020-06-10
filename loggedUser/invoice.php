@@ -114,8 +114,11 @@ $tot1 = 0;
           $query2 = "
 
 
-SELECT * FROM ((cartorder INNER JOIN checkout ON cartorder.cartID = checkout.cartID) INNER JOIN orderdetails ON cartorder.orderId = orderdetails.orderId) where cartorder.orderId = $orderId and orderdetails.customerId = $customerId
-
+          SELECT * FROM cartorder 
+          INNER JOIN checkout ON cartorder.cartID = checkout.cartID 
+          INNER JOIN orderdetails ON cartorder.orderId = orderdetails.orderId 
+          WHERE cartorder.orderId = $orderId
+          GROUP BY cartorder.cartID, cartorder.orderId
 
 
           ";          
@@ -147,7 +150,7 @@ echo "
                     <td class="thick-line"></td>
                     <td class="thick-line"></td>
                     <td class="thick-line text-center"><strong>Subtotal</strong></td>
-                    <td class="thick-line text-right">Rs.<?php echo $tot; ?>.00</td>
+                    <td class="thick-line text-right">Rs.<?php echo $tot1; ?>.00</td>
                   </tr>
                   <tr>
                     <td class="no-line"></td>
@@ -159,7 +162,7 @@ echo "
                     <td class="no-line"></td>
                     <td class="no-line"></td>
                     <td class="no-line text-center"><strong>Total</strong></td>
-                    <td class="no-line text-right">Rs.<?php echo $tot; ?>.00</td>
+                    <td class="no-line text-right">Rs.<?php echo $tot1; ?>.00</td>
                   </tr>
                 </tbody>
               </table>
