@@ -44,9 +44,9 @@
 									      <th scope="col">Customer Id</th>
 									      <th scope="col">First Name</th>
 									      <th scope="col">Last Name</th>
-									      <th scope="col">Mobile Number</th>
 									      <th scope="col">Email</th>
-									      <th scope="col">Password</th>
+									      <th scope="col">Mobile Number</th>
+									      <!-- <th scope="col">Password</th> -->
 									      <th scope="col">Edit</th>
 									    </tr>
 									  </thead>
@@ -68,7 +68,7 @@
 			echo "<td>{$fm4['customerLastName']}</td>";
 			echo "<td>{$fm4['customerEmail']}</td>";
 			echo "<td>{$fm4['customerContactNo']}</td>";
-			echo "<td>{$fm4['customerPassword']}</td>";
+			// echo "<td>{$fm4['customerPassword']}</td>";
 			echo "<td><a href=\"adminUserDetail.php?x={$fm4['customerId']}\">Edit</a></td>";
 			echo "</tr>";
         }   

@@ -7,6 +7,14 @@
 	// $category_list = '';
 	$usr_id = $_SESSION['user_id'];
 
+	$getLastOrder = "SELECT * FROM orderdetails where customerId = '{$usr_id}' ORDER BY orderId DESC LIMIT 1";
+	$resultOrder = mysqli_query($connection,$getLastOrder);
+	if ($resultOrder) {
+		while ($rsOrd = mysqli_fetch_assoc($resultOrder)) {
+			$lastOrderId = $rsOrd['orderId'];
+		}
+	}
+
 
 // enter data to the chekout table
 	$getCart = "SELECT * FROM cart";
@@ -31,13 +39,15 @@
 					itemPrice,
 					foodQuantity,
 					foodMenuId,
-					cartID
+					cartID,
+					orderId
 					) VALUES(
 					'{$itemName1}',
 					'{$itemPrice1}',
 					'{$foodQuantity1}',
 					'{$foodMenuId1}',
-					'{$cartID1}'
+					'{$cartID1}',
+					'{$lastOrderId}'
 					)";
 					mysqli_query($connection,$sql);
       		// 	}

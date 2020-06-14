@@ -129,9 +129,9 @@ $tot1 = 0;
           $query2 = "
 
 
-SELECT * FROM ((cartorder INNER JOIN checkout ON cartorder.cartID = checkout.cartID) INNER JOIN orderdetails ON cartorder.orderId = orderdetails.orderId) where cartorder.orderId = $orderId and orderdetails.customerId = $customerId
-
-
+          SELECT * FROM `orderdetails` 
+          INNER JOIN checkout ON orderdetails.orderId = checkout.orderId 
+          where orderdetails.orderId = $orderId
 
           ";          
           $view2 = mysqli_query($connection, $query2);

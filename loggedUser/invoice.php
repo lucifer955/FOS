@@ -114,11 +114,9 @@ $tot1 = 0;
           $query2 = "
 
 
-          SELECT * FROM cartorder 
-          INNER JOIN checkout ON cartorder.cartID = checkout.cartID 
-          INNER JOIN orderdetails ON cartorder.orderId = orderdetails.orderId 
-          WHERE cartorder.orderId = $orderId
-          GROUP BY cartorder.cartID, cartorder.orderId
+          SELECT * FROM `orderdetails` 
+          INNER JOIN checkout ON orderdetails.orderId = checkout.orderId 
+          where orderdetails.orderId = $orderId
 
 
           ";          
