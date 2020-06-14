@@ -157,7 +157,7 @@ $query_cart3 = "SELECT * FROM cart where customerId= '{$usr_id}'";
 						<tr>
 						  <td  class=\"align-middle\" id=\"menuId\">{$cart1['foodMenuId']}</td>
 					      <td  class=\"align-middle\"><img src=\"../images/{$cart1['foodImage']}\" height=\"50px\" width=\"70px\"></td>
-					      <td class=\"align-middle\">{$cart1['foodImage']}</td>
+					      <td class=\"align-middle\">{$cart1['itemName']}</td>
 					      <td class=\"align-middle\" id=\"unitPrice$x\">{$cart1['itemPrice']}.00</td>
 					      <td class=\"align-middle\">{$cart1['foodQuantity']}</td>
 					     ";
