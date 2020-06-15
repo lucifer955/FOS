@@ -179,7 +179,14 @@ echo "
 						</div>
 				</div>
 
-<?php		
+<?php
+
+echo "
+<div class=\"col-12 text-center mb-2\">
+<a href=\"../loggedUser/invoice.php?orderId={$fm['orderId']}&customerId={$fm['customerId']}\" class=\"btn btn-primary\" name=\"printInvoice\" target='_blank'>Preview the Bill</a>
+</div>
+
+";
 		}
     }
 

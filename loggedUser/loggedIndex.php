@@ -72,8 +72,8 @@
         <div class="section-heading center-holder" style="margin-top: 100px">
             <h3>Pick the right PIZZA at the right time</h3>
             <div class="section-heading-line"></div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                <br>incididunt ut labore et dolore magna aliqua.</p>
+            <p>We assure to give you a completely delightful experience alongside pizzas that are loaded with 
+            </br>cheese and various topping according to your choice.</p>
         </div>
         <div class="row mt-60">
             <div class="col-md-4 col-sm-12 col-12">
