@@ -85,10 +85,10 @@ box-shadow: 7px -7px 42px -10px rgba(48,38,39,0.71);
               <label class="form-check-label" for="exampleCheck1">Remember Me</label>
           </div>
         <div class="text-center">
-          <div class="forget-password">
+          <!-- <div class="forget-password">
             <p style="color:tomato"><a href="">Forgot Your Password?</a></p>
           </div>
-          
+           -->
           <button type="submit" class="btn btn-primary btn-block" name="login_user">Sign in</button>
           <div class="form-footer">
             <div>

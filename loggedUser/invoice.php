@@ -47,6 +47,7 @@
         </div>
         <hr>
         <div class="row">
+        
           <div class="col-xs-6">
             <address>
             <strong>Billed To:</strong><br>
@@ -79,6 +80,24 @@
               <strong>Order Date:</strong><br>
                 <?php echo "{$fm['orderDate']}"; ?><br><br>
             </address>
+          </div>
+
+        </div>
+        <div class="row">
+        <div class="col-xs-6 text-left">
+              <strong>Order Status:</strong>
+ <?php 
+  if($fm['orderStatus'] == 0) {
+echo "<strong>Order Not Confirmed</strong>";
+  } else if ($fm['orderStatus'] == 1) {
+    echo "<strong>Order Confirmed</strong>";
+  } else if ($fm['orderStatus'] == 2) {
+    echo "<strong>Order Cancelled</strong>";
+  }
+ 
+ ?> 
+ <br>
+ <br>
           </div>
         </div>
       </div>

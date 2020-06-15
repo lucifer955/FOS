@@ -120,7 +120,7 @@
 
                 <button type="submit" class="btn btn-primary btn-block" name="login_cashier">Submit</button>
 
-                <label style="margin-top: 5px"><a href="cashier_resetPassword.php">Forgot password?</a></label>
+                <!-- <label style="margin-top: 5px"><a href="cashier_resetPassword.php">Forgot password?</a></label> -->
               </form>
           </div>
         </div>

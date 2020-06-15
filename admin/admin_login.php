@@ -119,7 +119,7 @@
 
                 <button type="submit" class="btn btn-primary btn-block" name="login_admin">Submit</button>
 
-                <label style="margin-top: 5px"><a href="admin_resetPassword.php">Forgot password?</a></label>
+                <!-- <label style="margin-top: 5px"><a href="admin_resetPassword.php">Forgot password?</a></label> -->
               </form>
           </div>
         </div>
