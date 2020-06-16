@@ -35,9 +35,9 @@ box-shadow:         1px 1px 6px 0px rgba(50, 50, 50, 0.5);
 <div class="container signInPage">
   <div class="row justify-content-around">
 
-    <div class="col-12 col-md-5 col-sm-12">
-      <!-- <h3 class="" style="color:black;">Just Sign in to Order the food you want.</h3>
-      <img class="mx-auto d-block" src="images\log-in.png" alt=""> -->
+    <div class="col-12 col-md-5 col-sm-12 align-self-center">
+      <h3 class="text-center" style="color:gray">Just Sign in to Order the food you want.</h3>
+      <img class="mx-auto d-block" src="images\login.png" alt="">
     </div>
     <div class="col-12 col-md-7 col-sm-12" style="padding:40px;border-radius: 0.9rem;
 

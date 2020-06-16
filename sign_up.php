@@ -159,9 +159,9 @@ box-shadow:         1px 1px 6px 0px rgba(50, 50, 50, 0.5);
 
 <div class="container signUpPage">
   <div class="row justify-content-around">
-    <div class="col-12 col-md-4 col-sm-12">
-      <!-- <h3 style="color:black">Just Sign up to Order the food you want.</h3>
-      <img class="mx-auto d-block" src="images\sign-up.png" alt=""> -->
+    <div class="col-12 col-md-4 col-sm-12 align-self-center">
+      <h3 class="text-center" style="color:gray">Just Sign up to Order the food you want.</h3>
+      <img class="mx-auto d-block" src="images\delivery.png" alt="">
     </div>
     <div class="col-12 col-md-8 col-sm-12" style="
     /*-webkit-box-shadow: 0 8px 6px -6px black;
