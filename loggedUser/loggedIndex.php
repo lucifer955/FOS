@@ -115,7 +115,7 @@
 <!-- top deals -->
   <div class="container containerDeals" style="margin-top: 150px;">
     <div>
-      <h1 class="text-center">Our Hot Deals</h1>
+      <h1 class="text-center">Comming Soon</h1>
       <hr>
     </div>
     <div class="text-center">
